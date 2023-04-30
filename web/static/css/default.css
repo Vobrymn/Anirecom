@@ -23,8 +23,8 @@ body {
   .hamburger {
     position: fixed;
     top: 1vh;
-    left: 1vh;
-    font-size: 10vh;
+    left: 1vw;
+    font-size: 5vh;
     background: none;
     border: none;
     cursor: pointer;
