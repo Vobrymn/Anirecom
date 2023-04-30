@@ -7,7 +7,7 @@ startButton.addEventListener('click', () => {
   image.style.transition = 'transform 1s';
   image.style.transform = 'scale(8) rotate(720deg)'; //add rotation along with scaling
   setTimeout(() => {
-    window.location.href = 'menu.html';
+    window.location.href = 'quiz';
   }, 1000);
 });
 

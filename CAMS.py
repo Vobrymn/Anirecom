@@ -5,9 +5,9 @@ app = Flask(__name__,
             template_folder='web/templates')
 
 @app.route('/')
-def index():
+def start():
 
-   return render_template('index.html')
+   return render_template('start_screen.html')
 
 '''
 @app.route('/login', methods = ['GET', 'POST'])
@@ -17,6 +17,28 @@ def login():
       return redirect(url_for('index'))
    return
 '''
+
+
+@app.route('/quiz')
+def quiz():
+
+   return render_template('quiz.html')
+
+
+
+@app.route('/suggestions')
+def suggestions():
+
+   return render_template('suggestions.html')
+
+
+
+@app.route('/history')
+def history():
+
+   return render_template('history.html')
+
+
 
 if __name__ == '__main__':
    app.run(debug = True)
