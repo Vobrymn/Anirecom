@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main page</title>
+  <link rel="stylesheet" href= "{{ url_for('static', filename = '/css/main-page.css') }}">
+</head>
+<body>
+  <div class="container">
+    <img src="/images/mp_backg.jpg" alt="Your Image" id="ms-back" class="image">
+    <button id = "sb" class="start-button">Start</button>
+
+    <!--button at the left hand side of the page, for history, login, sign up, etc-->
+    <!--i looked it up and it's called a hamburger button, i thought it was p cute so i named the class hamburger-->
+    <button class="hamburger">&#9776;</button>
+
+    <!--side navigation menu -->
+    <div class="side-nav">
+    <a href="#" class="profile-history">Profile History</a>
+    <a href="#" class="Register">Login</a>
+    <a href="#" class="sign-in">Sign In</a>
+    </div>
+
+  </div>
+  <script src="/js/main-page.js"></script>
+</body>
+</html>
