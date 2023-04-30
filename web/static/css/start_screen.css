@@ -1,25 +1,4 @@
-body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-    overflow:hidden;
-  }
-  
-  .container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .image {
-    display: block;
-    width: auto;
-    height: auto;
-  }
-  
-  .start-button {
+  .start_button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -34,46 +13,6 @@ body {
     text-align: center;
   }
   
-  .start-button:hover {
+  .start_button:hover {
     background-color: grey;
-  }
-  
-/*for the hamburger button*/
-  .hamburger {
-    position: fixed;
-    top: 1vh;
-    left: 1vh;
-    font-size: 10vh;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1000;
-    color:white
-  }
-  
-  /* Side navigation menu */
-  .side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    background-color: rgb(239, 207, 211);
-    overflow-x: hidden;
-    transition: 0.3s;
-    padding-top: 60px;
-  }
-  
-  .side-nav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .side-nav a:hover {
-    color: black;
   }
