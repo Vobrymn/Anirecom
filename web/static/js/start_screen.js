@@ -9,7 +9,6 @@ startButton.addEventListener('click', () => {
     window.location.href = 'quiz';
   }, 1000);
 });
-
 var ph = window.outerHeight;
 var pw = window.outerWidth;
 var sb = document.getElementById("sb");
@@ -17,7 +16,7 @@ var sb = document.getElementById("sb");
     sb.style.width = String(ph * 0.1) + "px";
     sb.style.fontSize = String(ph * 0.025) + "px";
 
-    background.style.height = String(ph) + "px";
+
 
 /*
 this one doesn't spin the image. it just zooms in
