@@ -13,7 +13,6 @@ startButton.addEventListener('click', () => {
 var ph = window.outerHeight;
 var pw = window.outerWidth;
 var sb = document.getElementById("sb");
-    sb.innerHTML = window.innerHeight + " " + ph;
     sb.style.height = String(ph * 0.05) + "px";
     sb.style.width = String(ph * 0.1) + "px";
     sb.style.fontSize = String(ph * 0.025) + "px";

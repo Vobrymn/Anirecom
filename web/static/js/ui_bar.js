@@ -9,3 +9,10 @@ hamburger.addEventListener('click', () => {
       sideNav.style.width = '250px';
     }
   });
+
+
+$( window ).on( "resize", function(){
+    $(".background").height("100vh");
+    $(".hamburger").style.fontSize("2vh");
+    
+});
