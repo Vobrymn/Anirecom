@@ -2,32 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
   <link rel="stylesheet" href= "/css/default.css">
   <link rel="stylesheet" href= "/css/start_screen.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
-    <button id = "sb" class="start_button">Start</button>
-    <div class="loader"></div>
 
-    <!--button at the left hand side of the page, for history, login, sign up, etc-->
-    <!--i looked it up and it's called a hamburger button, i thought it was p cute so i named the class hamburger-->
+  <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
 
-    <div class="ui_bar">
-      <button class="hamburger">&#9776;</button>
-      <button id = "lb" class="login_button">Sign in</button>
-      <button id = "hb" class="home_button">Home</button>
-   </div>
-    <!--side navigation menu -->
-    <div class="side_nav">
-      <a href="#" class="profile-history">Profile History</a>
-      <a href="#" class="Register">Register</a>
-    </div>  
+  <button id = "start_button">Start</button>
+
+  <div class="loader"></div>
+
+  <div class="ui_bar">
+    <button class="hamburger">&#9776;</button>
+    <button id = "sb" class="button" onclick="document.getElementById('login_form').style.display='block'" style="width:auto;">Sign in</button>
+    <button id = "hb" class="button">Home</button>
   </div>
+
+  <div class="side_nav">
+    <a href="#" class="register">Register</a>
+    <a href="#" class="settings">Settings</a>
+    <a href="#" class="history">History</a>
+    <a href="#" class="logout">Log out</a>
+  </div> 
+
+  <div id="login_form" class="modal">
+  
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <div class="x_container">
+        <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+  
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+  
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+  
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('login_form').style.display='none'" class="cancel_btn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
   <script src="/js/default.js"></script>
   <script src="/js/start_screen.js"></script>
 </body>

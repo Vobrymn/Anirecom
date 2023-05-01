@@ -1,23 +1,23 @@
- .start_button {
+ #start_button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(239, 207, 211);
+    background: rgba(13, 168, 65, 0.6);
     color: white;
-    
     padding: none;
-    border: none;
+    border: solid;  
+    border-radius: 0.75vh;
+    border-width: 0.2vh;
     cursor: pointer;
     text-align: center;
-    border-radius: 0.5vh;
     height: 6vh;
     width: 12vh;
     font-size:3vh;
 
   }
   
-  .start_button:hover {
+  #start_button:hover {
     background-color: grey;
   }
 

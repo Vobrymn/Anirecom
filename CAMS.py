@@ -7,7 +7,14 @@ app = Flask(__name__,
 @app.route('/')
 def start():
 
-   return render_template('index.html')
+
+   r = app.make_response(render_template('index.html'))
+
+   r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+   r.headers["Pragma"] = "no-cache"
+   r.headers["Expires"] = "0"
+
+   return r
 
 '''
 @app.route('/login', methods = ['GET', 'POST'])
@@ -18,11 +25,10 @@ def login():
    return
 '''
 
-
 @app.route('/quiz')
 def quiz():
 
-   return render_template('quiz.html')
+   return render_template('test.html')
 
 
 
@@ -42,3 +48,5 @@ def history():
 
 if __name__ == '__main__':
    app.run(debug = True)
+
+

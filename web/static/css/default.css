@@ -9,10 +9,75 @@ body {
   }
   
   .container {
-    position: relative;
+    padding: 16px;
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
     display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: dimgray;
+    color: white;
+    padding: none;
+    border: none;    
+    border-radius: 4px;  
+    cursor: pointer;
+    text-align: center;
+    height: 40px;
+    width: 80px;
+    font-size:20px;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  #sb {
+    border: solid;  
+    border-width: 1.5px; 
+    position: absolute;
+    top: 20px;
+    left: 80px;
+
+  }
+
+  #hb {
+    border: solid;  
+    border-width: 1.5px; 
+    position: absolute;
+    top: 20px;
+    right: 20px;
+   }
+
+   .cancel_btn {
+    width: auto;
+    padding: 0px 10px 0px 10px;
+    background-color: #f44336;
+    border: none;
+  }
+
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
   }
   
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+
   .background {
     display: block;
     width: auto;
@@ -28,40 +93,6 @@ body {
     left: 0;
     z-index: 1000;
   }
- 
- .login_button {
- 	  position: absolute;
-    background-color: rgb(13, 168, 65);
-    color: white;
-    padding: none;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 4px;
-    height: 40px;
-    width: 80px;
-    font-size:20px;
-    top: 20px;
-    left: 80px;
-    z-index: 998;
-  }
-
-  .home_button {
-    position: absolute;
-    background-color: rgb(13, 168, 65);
-    color: white;
-    padding: none;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    border-radius: 4px;
-    height: 40px;
-    width: 80px;
-    font-size:20px;
-    top: 20px;
-    right: 20px;
-    z-index: 998;
-   }
   
  .hamburger {
    height: 75px;
@@ -81,7 +112,7 @@ body {
     z-index: 999;
     top: 0;
     left: 0;
-    background-color: rgb(239, 207, 211);
+    background: rgba(13, 168, 65, 0.6);
     overflow-x: hidden;
     transition: 0.2s;
     padding-top: 80px;
@@ -90,7 +121,7 @@ body {
   .side_nav a {
     padding: 8px 32px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     display: block;
     transition: 0.2s;
@@ -99,3 +130,63 @@ body {
   .side_nav a:hover {
     color: black;
   }
+
+  .x_container {
+    text-align: center;
+    margin: 10px 0 10px 0;
+    position: relative;
+  }
+
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+
+  /* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancel_btn {
+     width: 100%;
+  }
+}
