@@ -1,6 +1,3 @@
-var sideNav = document.querySelector('.side_nav');
-var nav_width = $(".side_nav").width();
-
 function window_ratio(){
   if(window.innerHeight / window.innerWidth > 2160 /3840){
     return true;
@@ -19,7 +16,8 @@ function window_skinny(){
   }
 }
 
-
+var sideNav = document.querySelector('.side_nav');
+var nav_width = $(".side_nav").width();
 
 function resize_bg(){
   if(window_ratio()){
@@ -77,11 +75,20 @@ $('.hamburger').click(function() {
   }
 });
 
-$('.login_button').click(function() {
-window.location.href = "/login";
+$('#sb').click(function() {
+  $('#login_form').css({"display":"block"});
 });
 
 $('.home_button').click(function() {
 window.location.href = "/";
 });
+
+var modal = document.getElementById('login_form');
+
+// When the user clicks anywhere outside of the modal, close it
+document.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 

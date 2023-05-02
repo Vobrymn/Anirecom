@@ -1,13 +1,25 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect, request, session
+import re 
+import sqlite3
+
 app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
             template_folder='web/templates')
 
+
+'''app.secret_key = 'your secret key'
+ 
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'your password'
+app.config['MYSQL_DB'] = 'geeklogin'
+ 
+mysql = MySQL(app)'''
+
+
 @app.route('/')
 def start():
-
-
    r = app.make_response(render_template('index.html'))
 
    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -16,19 +28,22 @@ def start():
 
    return r
 
-'''
-@app.route('/login', methods = ['GET', 'POST'])
+@app.route('/login', methods =['GET', 'POST'])
 def login():
-   if request.method == 'POST':
-      session['username'] = request.form['username']
-      return redirect(url_for('index'))
-   return
-'''
+    return render_template('login.html')
+ 
+@app.route('/logout')
+def logout():
+    return redirect(url_for('login'))
+ 
+@app.route('/register', methods =['GET', 'POST'])
+def register():
+    return render_template('register.html')
 
 @app.route('/quiz')
 def quiz():
 
-   return render_template('test.html')
+   return render_template('quiz.html')
 
 
 
