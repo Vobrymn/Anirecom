@@ -1,22 +1,18 @@
 from flask import Flask, render_template, url_for, redirect, request, session
-import re 
-import sqlite3
+from flask_login import login_manager
+import sqlite3 as sql
+
+
+entries_con = sql.connect("/databases/entries.db")
+entries_cur = entries_con.cursor()
+
+users_con = sql.connect("/databases/users.db")
+users_cur = users_con.cursor()
 
 app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
             template_folder='web/templates')
-
-
-'''app.secret_key = 'your secret key'
- 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'your password'
-app.config['MYSQL_DB'] = 'geeklogin'
- 
-mysql = MySQL(app)'''
-
 
 @app.route('/')
 def start():
@@ -25,11 +21,16 @@ def start():
    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
    r.headers["Pragma"] = "no-cache"
    r.headers["Expires"] = "0"
-
+   
    return r
 
 @app.route('/login', methods =['GET', 'POST'])
 def login():
+    
+    username = request.form['uname']
+    password = request.form['psw']
+    remember = request.form.get('remember')
+
     return render_template('login.html')
  
 @app.route('/logout')
