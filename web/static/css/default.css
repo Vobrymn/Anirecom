@@ -1,3 +1,8 @@
+html * {
+  font-weight: bold !important;
+  font-family: 'Quicksand', sans-serif !important;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -17,7 +22,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: rgba(65, 42, 19);
+}
+
+label[for="uname"], label[for="psw"] {
+  font-size: 20px; 
 }
 
 input[type=text], input[type=password] {
@@ -25,7 +34,7 @@ input[type=text], input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 3px solid #ccc;
+  border: 3px solid #ae947a;
   box-sizing: border-box;
   border-radius: 10px;
 }
@@ -41,17 +50,20 @@ button {
   height: 40px;
   width: 80px;
   font-size:20px;
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
 }
 
 button:hover, #hb:hover {
   opacity: 0.8;
 }
 
-#sb { 
-  border-width: 1.5px; 
+#sb {  
   position: absolute;
   top: 20px;
   left: 80px;
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
 }
 
 #hb {
@@ -66,6 +78,8 @@ button:hover, #hb:hover {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
 }
 
 #hb_pic { 
@@ -79,18 +93,25 @@ button:hover, #hb:hover {
   position: absolute;
   right: 25px;
   top: 0;
-  color: white;
+  color: rgba(65, 42, 19);
   font-size: 35px;
   font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: white;
   opacity: 0.9;
   cursor: pointer;
 }
 
+#register {
+  color: rgba(65, 42, 19);
+}
+
+#register:hover {
+  color: white;
+}
 
 .background {
   display: block;
@@ -223,7 +244,7 @@ input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
 }
 
 .side_nav a:hover {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgb(65, 42, 19, 0.9);
 }
 
 .x_container {
@@ -247,16 +268,18 @@ span.psw {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(65, 42, 19); /* Fallback color */
+  background-color: rgba(65, 42, 19, 0.4); /* Black w/ opacity */
   padding-top: 80px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: rgba(203, 119, 174, 0.7);
+  background-color: rgba(221, 213, 190);
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   width: 80%; /* Could be more or less, depending on screen size */
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
   border-radius: 10px;
 }
 
@@ -281,12 +304,4 @@ span.psw {
    display: block;
    float: none;
 }
-}
-
-#register {
-  color: white;
-}
-
-#register:hover {
-  color:black;
 }
