@@ -4,7 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
+  background-color: white;
   overflow:hidden;
 }
 
@@ -13,6 +13,11 @@ body {
   padding: 18px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
 
 input[type=text], input[type=password] {
@@ -20,12 +25,13 @@ input[type=text], input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
 button {
-  background-color: rgba(36, 130, 67, 0.9);
+  background-color: rgba(14, 112, 47, 0.9);;
   color: white;
   padding: none;
   border: none;    
@@ -49,13 +55,13 @@ button:hover, #hb:hover {
 }
 
 #hb {
+  background-color: rgba(14, 112, 47, 0.9);
   position: fixed;
   top: 20px;
   right: 20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(36, 130, 67, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,14 +79,15 @@ button:hover, #hb:hover {
   position: absolute;
   right: 25px;
   top: 0;
-  color: #000;
+  color: white;
   font-size: 35px;
   font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: red;
+  color: black;
+  opacity: 0.9;
   cursor: pointer;
 }
 
@@ -200,7 +207,7 @@ input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
   z-index: 999;
   top: 0;
   left: 0;
-  background: linear-gradient(180deg, rgba(14, 112, 47, 0.7), rgb(203, 119, 174, 0.7));
+  background: linear-gradient(180deg, rgba(14, 112, 47, 0.9), rgba(203, 119, 174, 0.9));
   overflow-x: hidden;
   transition: 0.2s;
   padding-top: 80px;
@@ -216,7 +223,7 @@ input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
 }
 
 .side_nav a:hover {
-  color: rgba(12, 49, 24, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .x_container {
@@ -227,7 +234,7 @@ input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
 
 span.psw {
   float: right;
-  padding-top: 16px;
+  padding-top: 30px;
 }
 
 /* The Modal (background) */
@@ -240,14 +247,14 @@ span.psw {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #faf9f9;
+  background-color: rgba(203, 119, 174, 0.7);
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   width: 80%; /* Could be more or less, depending on screen size */
   border-radius: 10px;
@@ -274,7 +281,12 @@ span.psw {
    display: block;
    float: none;
 }
-.cancel_btn {
-   width: 100%;
 }
+
+#register {
+  color: white;
+}
+
+#register:hover {
+  color:black;
 }

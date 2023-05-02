@@ -17,6 +17,7 @@
   <div class="loader"></div>
 
   <div class="ui_bar">
+    <!-- button  -->
     <div class="hamburger_wrapper">
       <input type="checkbox" class="hamburger" id="hamburger">
       <label for="hamburger" class="hamburger_toggle">
@@ -25,6 +26,7 @@
         <div class="spinner diagonal part_2"></div>
       </label>
     </div>
+    <!--  -->
     <button id = "sb" class="button" onclick="document.getElementById('login_form').style.display='block'" style="width:auto;">Sign in</button>
     <a href="#" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
@@ -44,21 +46,19 @@
       </div>
   
       <div class="container">
+        <br>
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
-  
+        <br>
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
-          
+        <br> 
         <button type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
-      </div>
-  
-      <div class="container" style="background-color:rgba(36, 130, 67, 0.8)">
-        <button type="button" onclick="document.getElementById('login_form').style.display='none'" class="cancel_btn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+        <br>
+        <a href="#" id="register">Register</a>
       </div>
     </form>
   </div>

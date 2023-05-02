@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(203, 119, 174, 0.8);
+  background-color: rgb(203, 119, 174, 0.9);
   color: white;
   padding: none;
   cursor: pointer;
@@ -14,7 +14,7 @@
 }
 
 #start_button:hover {
-  background-color: rgb(203, 119, 174, 0.7);
+  background-color: rgb(203, 119, 174, 0.9);
 }
 
 /*loader*/
