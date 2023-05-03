@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
-  <link rel="stylesheet" href= "/css/default.css">
-  <link rel="stylesheet" href= "/css/start_screen.css">
+  <link rel="stylesheet" href= "css/default.css">
+  <link rel="stylesheet" href= "css/start_screen.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
@@ -16,18 +16,17 @@
   <button id = "start_button">Start</button>
 
   <div class="loader"></div>
-
+  <div class="hamburger_wrapper">
+    <input type="checkbox" class="hamburger" id="hamburger">
+    <label for="hamburger" class="hamburger_toggle">
+      <div class="spinner diagonal part_1"></div>
+      <div class="spinner horizontal"></div>
+      <div class="spinner diagonal part_2"></div>
+    </label>
+  </div>
   <div class="ui_bar">
-    <div class="hamburger_wrapper">
-      <input type="checkbox" class="hamburger" id="hamburger">
-      <label for="hamburger" class="hamburger_toggle">
-        <div class="spinner diagonal part_1"></div>
-        <div class="spinner horizontal"></div>
-        <div class="spinner diagonal part_2"></div>
-      </label>
-    </div>
     <button id = "sb" class="button" onclick="document.getElementById('login_form').style.display='block'" style="width:auto;">Sign in</button>
-    <a href="#" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
+    <a href="#" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
   <div class="side_nav">
@@ -62,7 +61,7 @@
     </form>
   </div>
 
-  <script src="/js/default.js"></script>
-  <script src="/js/start_screen.js"></script>
+  <script src="js/default.js"></script>
+  <script src="js/start_screen.js"></script>
 </body>
 </html>

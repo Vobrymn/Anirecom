@@ -17,6 +17,11 @@
   background-color: rgb(203, 119, 174, 0.9);
 }
 
+.ui_bar {
+  background-color: transparent !important;
+  border: none !important;
+}
+
 /*loader*/
 .loader {
 position: absolute;

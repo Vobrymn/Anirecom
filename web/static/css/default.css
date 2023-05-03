@@ -1,6 +1,6 @@
 html * {
-  font-weight: bold !important;
   font-family: 'Quicksand', sans-serif !important;
+  font-weight: bold !important;
 }
 
 body {
@@ -16,13 +16,13 @@ body {
 /* Sign in container */
 .container {
   padding: 18px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: rgba(65, 42, 19);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 label[for="uname"], label[for="psw"] {
@@ -35,8 +35,8 @@ input[type=text], input[type=password] {
   margin: 8px 0;
   display: inline-block;
   border: 3px solid #ae947a;
-  box-sizing: border-box;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 button {
@@ -115,8 +115,9 @@ button:hover, #hb:hover {
 
 .background {
   display: block;
-  width: auto;
   height: 100vh;
+  width: auto;
+  z-index: 0;
 }
 
 .ui_bar {
@@ -126,18 +127,27 @@ button:hover, #hb:hover {
   padding: 0px;
   top: 0;
   left: 0;
-  z-index: 1000;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: none;
+  background-color: rgba(150, 70, 46, 0.9);
+  height: 80px;
+  overflow: hidden;
+  border-bottom: 3px solid;
+  border-color: rgba(65, 42, 19);
+  z-index: 2;
 }
 
 /* Hamburger */
 .hamburger_wrapper {
   position: absolute;
-  z-index: 99;
   top: 20px;
   left: 15px;
   width: 40px;
   height: 40px;
   pointer-events: none;
+  z-index: 1000;
 }
 
 .hamburger_wrapper label {
@@ -152,6 +162,10 @@ button:hover, #hb:hover {
 
 .hamburger_toggle {
   cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1001;
 }
 
 .hamburger_wrapper input[type=checkbox],
@@ -166,12 +180,12 @@ button:hover, #hb:hover {
   box-sizing: border-box;
   cursor: pointer;
   position: absolute;
-  z-index: 99;
   top: 16px;
   left: 15px;
   height: 40px;
   width: 40px;
   display: none;
+  z-index: 100;
 }
   
 .spinner{
@@ -222,12 +236,12 @@ input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
 
 /* Side navigation menu */
 .side_nav {
-  height: 100%;
-  width: 0;
   position: fixed;
-  z-index: 999;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 0;
+  z-index: 10;
   background: linear-gradient(180deg, rgba(14, 112, 47, 0.9), rgba(203, 119, 174, 0.9));
   overflow-x: hidden;
   transition: 0.2s;
