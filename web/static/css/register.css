@@ -7,22 +7,11 @@ body {
     background-color: rgba(221, 213, 190, 0.9);
     color: rgba(65, 42, 19);
 }
-
-.ui_bar {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    background-color: rgba(150, 70, 46, 0.9);
-    position: fixed; 
-    height: 80px !important;
-    overflow: hidden;
-    z-index: 10;
-    border-bottom: 3px solid;
-    border-color: rgba(65, 42, 19);
+h1 {
+    font-size: 250%;
+    padding-top: 40px;
+    padding-bottom: 20px;
 }
-
 .btn {
     background-color: rgba(14, 112, 47, 0.9);;
     color: white;
