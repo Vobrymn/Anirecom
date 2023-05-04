@@ -16,31 +16,31 @@
   <button id = "start_button">Start</button>
 
   <div class="loader"></div>
-  <div class="hamburger_wrapper">
-    <input type="checkbox" class="hamburger" id="hamburger">
-    <label for="hamburger" class="hamburger_toggle">
-      <div class="spinner diagonal part_1"></div>
-      <div class="spinner horizontal"></div>
-      <div class="spinner diagonal part_2"></div>
-    </label>
+  <div class="hamburger">
+    <div class="spinner diagonal part_1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part_2"></div>
   </div>
+  
   <div class="ui_bar">
-    <button id = "sb" class="button" onclick="document.getElementById('login_form').style.display='block'" style="width:auto;">Sign in</button>
-    <a href="#" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
+    <button id = "sb" class="button">Sign in</button>
+    <a href="{{url_for('home')}}" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
-  <div class="side_nav">
-    <a href="register" class="register">Register</a>
-    <a href="#" class="settings">Settings</a>
-    <a href="#" class="history">History</a>
-    <a href="#" class="logout">Log out</a>
+  <div id = "sn" class="modal"></div>
+    <div class="side_nav">
+      <a href="register" class="register">Register</a>
+      <a href="{{url_for('home')}}" class="settings">Settings</a>
+      <a href="{{url_for('home')}}" class="history">History</a>
+      <a href="{{url_for('home')}}" class="logout">Log out</a>
+    </div> 
   </div> 
 
   <div id="login_form" class="modal">
   
     <form id = "login_form" class="modal_content animate" action="/login" method="post">
       <div class="x_container">
-        <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <span class="close" title="Close Modal">&times;</span>
       </div>
   
       <div class="container">

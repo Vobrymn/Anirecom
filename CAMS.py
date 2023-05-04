@@ -68,7 +68,7 @@ def login():
                return "Login successful"
          error_message = "Incorrect username / password"
          return error_message, 400
-   return redirect(url_for("/"))
+   return redirect(url_for("home"))
 
  
 @app.route('/logout')
