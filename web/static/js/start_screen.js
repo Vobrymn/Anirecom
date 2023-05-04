@@ -28,4 +28,3 @@ $(document).ready(function() {
 $( window ).on( "resize", function(){
   resize_sb();
 });
-

@@ -92,3 +92,53 @@ document.onclick = function(event) {
     }
 }
 
+document.getElementById("login_form").addEventListener("submit", async function(event) {
+  event.preventDefault(); // prevent the form from submitting
+
+  // get the form data
+  const formData = new FormData(event.target);
+
+  // send a POST request to the server
+  const response = await fetch('/login', {
+    method: 'POST',
+    body: formData
+  });
+
+  // handle the server response
+  if (response.ok) {
+    // success, redirect to the home page
+    window.location.href = "/";
+  } else {
+    // error, update the form with the error message
+    const errorMessage = await response.text();
+    const errorElement = document.createElement("p");
+    errorElement.textContent = errorMessage;
+    event.target.prepend(errorElement);
+  }
+});
+
+document.getElementById("register_form").addEventListener("submit", async function(event) {
+  event.preventDefault(); // prevent the form from submitting
+
+  // get the form data
+  const formData = new FormData(event.target);
+
+  // send a POST request to the server
+  const response = await fetch('/register', {
+    method: 'POST',
+    body: formData
+  });
+
+  // handle the server response
+  if (response.ok) {
+    // success, redirect to the home page
+    window.location.href = "/";
+  } else {
+    // error, update the form with the error message
+    const errorMessage = await response.text();
+    const errorElement = document.createElement("p");
+    errorElement.textContent = errorMessage;
+    event.target.prepend(errorElement);
+  }
+});
+

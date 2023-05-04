@@ -31,18 +31,17 @@
 
   <div id="login_form" class="modal">
   
-    <form class="modal_content animate" action="/login" method="post">
+    <form id = "login_form" class="modal_content animate" action="/login" method="post">
       <div class="x_container">
         <span onclick="document.getElementById('login_form').style.display='none'" class="close" title="Close Modal">&times;</span>
       </div>
   
       <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" name="username" required>
   
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-          
+        <input type="password" placeholder="Enter Password" name="password" required>   
         <button type="submit">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
