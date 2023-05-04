@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, session, g
+from flask import Flask, render_template, url_for, redirect, make_response, request, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager
 import sqlite3 as sql
@@ -43,7 +43,7 @@ def close_db():
 
 @app.route('/')
 def home():
-   r = app.make_response(render_template('index.html'))
+   r = make_response(render_template('index.html'))
 
    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
    r.headers["Pragma"] = "no-cache"
@@ -56,6 +56,7 @@ def login():
    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
          username = request.form['username']
          password = request.form['password']
+         error_message = "fail"
          db = get_db("users")
          cursor = db.cursor()
          cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
@@ -67,7 +68,7 @@ def login():
                session['colour_2'] = account[4]
                return "Login successful"
          error_message = "Incorrect username / password"
-         return error_message, 400
+         return (make_response(error_message, 400))
    return redirect(url_for("home"))
 
  
@@ -89,16 +90,16 @@ def register():
       cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
       account = cursor.fetchone()
       if account:
-         error_message = 'Account already exists !'
-         return error_message, 400
-      elif not re.match(r'[A-Za-z0-9]+', username): #can be done in js
-         msg = 'Username must contain only characters and numbers !'
+         error_message = 'Username taken'
+         return (make_response(error_message, 400))
+      # elif not re.match(r'[A-Za-z0-9]+', username): #can be done in js
+      #    msg = 'Username must contain only characters and numbers !'
       else:
          cursor.execute('INSERT INTO accounts (username,password) VALUES (?,?)', (username, generate_password_hash(password),))
          db.commit()
          session['logged_in'] = True
-         session['username'] = account[1]
-         return "Login successful"
+         session['username'] = username
+         return "Registration successful"
    return render_template('register.html')
 
 

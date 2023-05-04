@@ -135,8 +135,7 @@ $("#login_form").submit(async function(event) {
   if (response.ok) {
     // success, redirect to the home page
     window.location.href = "/";
-  } 
-  else {
+  } else {
     // error, update the form with the error message
     const errorMessage = await response.text();
     const errorElement = document.createElement("p");
