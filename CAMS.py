@@ -12,9 +12,6 @@ app = Flask(__name__,
 def before_request():
    session.setdefault('colour_1', "rgba(14, 112, 47, 0.9)")
    session.setdefault('colour_2', "rgba(203, 119, 174, 0.9)")
-   print(session['colour_1'])
-   print(session['colour_2'])
-
 
 app.secret_key = 'my-secret-key'
 app.config['DATABASES'] = {
