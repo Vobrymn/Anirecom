@@ -1,0 +1,56 @@
+html {
+  overflow: hidden;
+}
+
+#typing {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.blinking-cursor {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: black;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+#question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+input[type="text"] {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+#error-message {
+  margin-top: 1rem;
+  color: red;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
