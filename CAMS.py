@@ -64,7 +64,6 @@ def login():
    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
          username = request.form['username']
          password = request.form['password']
-         error_message = "fail"
          db = get_db("users")
          cursor = db.cursor()
          cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
@@ -90,9 +89,10 @@ def logout():
  
 @app.route('/register', methods =['GET', 'POST'])
 def register():
-   if request.method == 'POST' and 'username' in request.form and 'password' in request.form :
+   if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'password_2' in request.form:
       username = request.form['username']
       password = request.form['password']
+      password_2 = request.form['password_2']
       db = get_db("users")
       cursor = db.cursor()
       cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
@@ -103,7 +103,10 @@ def register():
       elif not re.match(r'[A-Za-z0-9]+', username):
          error_message = 'Username must contain only characters and numbers'
          return (make_response(error_message, 400))
-      elif len(password) < 8:
+      elif (password != password_2):
+         error_message = 'Passwords must match'
+         return (make_response(error_message, 400))
+      elif (len(password) < 8 or len(password_2) < 8):
          error_message = 'Password must be at least 8 characters'
          return (make_response(error_message, 400))
       else:
@@ -111,16 +114,47 @@ def register():
          db.commit()
          session['logged_in'] = True
          session['username'] = username
+         session['colour_1'] = "rgba(14, 112, 47, 0.9)"
+         session['colour_2'] = "rgba(203, 119, 174, 0.9)"
          return "Registration successful"
    return render_template('register.html')
+
+@app.route('/change_pwd', methods=['GET', 'POST'])
+def change_pwd():
+   if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'new_password' in request.form:
+         username = request.form['username']
+         password = request.form['password']
+         new_password = request.form['new_password']
+         db = get_db("users")
+         cursor = db.cursor()
+         cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
+         while (account := cursor.fetchone()):
+            if check_password_hash(account[2], password):
+               cursor.execute("UPDATE accounts set password = ?", generate_password_hash(new_password))
+               return "Update successful"
+         error_message = "Incorrect password"
+         return (make_response(error_message, 400))
+   return redirect(url_for("home"))
+
+@app.route('/change_colour', methods=['GET', 'POST'])
+def change_colour():
+   if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session["logged_in"]:
+      colour_1 = request.form['colour_1']
+      colour_2 = request.form['colour_2']
+      session['colour_1'] = colour_1
+      session['colour_2'] = colour_2
+      db = get_db("users")
+      cursor = db.cursor()
+      cursor.execute('SELECT * FROM accounts WHERE username = ?', (session["username"],))
+      cursor.execute("UPDATE accounts set colour_1 = ?, colour_2 = ?", (colour_1, colour_2))
+   return redirect(url_for("home"))
+      
 
 
 @app.route('/quiz')
 def quiz():
 
    return render_template('quiz.html')
-
-
 
 @app.route('/suggestions')
 def suggestions():

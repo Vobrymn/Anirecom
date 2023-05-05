@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   background-color: white;
   overflow:hidden;
 }
@@ -44,7 +44,7 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-button {
+button, .button{
   background-color: var(--primary_colour);
   color: white;
   padding: none;
@@ -53,13 +53,13 @@ button {
   cursor: pointer;
   text-align: center;
   height: 40px;
-  width: 80px;
+  width: 90px;
   font-size: 19px;
   border: 3px solid;
   border-color: rgba(65, 42, 19);
 }
 
-button:hover, #hb:hover {
+button:hover, .button:hover #hb:hover {
   opacity: 0.8;
 }
 
@@ -121,7 +121,7 @@ button:hover, #hb:hover {
 
 .background {
   display: block;
-  height: 100vh;
+  height: 100%;
   width: auto;
   z-index: 0;
 }
@@ -267,8 +267,11 @@ span.psw {
 }
 
 #login_form{
-  width: 60%;
+  width: 80%;
+  max-width: 500px;
 }
+  
+
 
 #login_error{
   text-align: center;
