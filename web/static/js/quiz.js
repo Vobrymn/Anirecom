@@ -81,7 +81,7 @@ function indaQuiz() {
         previousAnswers[currentQuestionIndex] = answerInput.value;
         currentQuestionIndex++;
         //more q
-        console.log("Valid genres selected. Proceed with suggestions.");
+        console.log("Valid genres selected. cont.");
       } else {
         let errorMsg = "";
         if (validAnswers.length === 0) {
