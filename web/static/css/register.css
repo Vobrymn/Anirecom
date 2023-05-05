@@ -4,6 +4,7 @@ html * {
 }
 
 body {
+    opacity: 1;
     background-color: rgba(221, 213, 190, 0.9);
     color: rgba(65, 42, 19);
 }

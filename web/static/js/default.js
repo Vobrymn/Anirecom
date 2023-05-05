@@ -34,7 +34,7 @@ function resize_bg(){
   if(window_skinny()){
 
     $(".side_nav a").css({"text-align": "center", "font-size": "40px"});
-    if (side_nav.style.width != 0) {
+    if (side_nav.style.width == nav_width) {
       $(".side_nav").width("100vw");
       $("#start_button").fadeOut(50);
     }
@@ -43,7 +43,7 @@ function resize_bg(){
 
   else{
     $(".side_nav a").css({"text-align": "left", "font-size": "30px"});
-    if (side_nav.style.width != 0) {
+    if (side_nav.style.width == nav_width) {
       $(".side_nav").width("250px");
       $("#start_button").fadeIn(50);
     }
@@ -82,6 +82,7 @@ function active_sn(){
 
 $(document).ready(function() {
   resize_bg();
+  $("body").css("opacity", "1");
 });
 
 $( window ).on( "resize", function(){
