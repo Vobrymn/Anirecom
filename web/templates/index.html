@@ -8,6 +8,10 @@
   <link rel="stylesheet" href= "/css/start_screen.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    var colour_1 = '{{colour_1}}';
+    var colour_2 = '{{colour_2}}';
+  </script>
 </head>
 <body>
 
@@ -29,14 +33,14 @@
 
   <div id = "sn" class="modal"></div>
     <div class="side_nav">
-      <a href="register" class="register">Register</a>
+      <a href="{{url_for('register')}}" class="register">Register</a>
       <a href="{{url_for('home')}}" class="settings">Settings</a>
       <a href="{{url_for('home')}}" class="history">History</a>
-      <a href="{{url_for('home')}}" class="logout">Log out</a>
+      <a href="{{url_for('logout')}}" class="logout">Log out</a>
     </div> 
   </div> 
 
-  <div id="login_form" class="modal">
+  <div id="login_form_box" class="modal">
   
     <form id = "login_form" class="modal_content animate" action="/login" method="post">
       <div class="x_container">
@@ -45,18 +49,15 @@
   
       <div class="container">
         <br>
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+        <label for="username"><b>Username</b></label>
+        <input id = "username" type="text" placeholder="Enter Username" name="username" required>
         <br>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <br> 
+        <label for="password"><b>Password</b></label>
+        <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+        <div id="login_error"><br></div>
         <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-        <br>
-        <a href="#" id="register">Register</a>
+  
+        <a href="{{url_for('register')}}" id="register">Register</a>
       </div>
     </form>
   </div>

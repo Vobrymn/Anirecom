@@ -1,7 +1,7 @@
 var side_nav = document.querySelector('.side_nav');
 var nav_width = $(".side_nav").width();
 
-var login_form = document.getElementById('login_form');
+var login_form_box = document.getElementById('login_form_box');
 var sn = document.getElementById('sn');
 
 
@@ -22,8 +22,6 @@ function window_skinny(){
     return false;
   }
 }
-
-
 
 function resize_bg(){
   if(window_ratio()){
@@ -80,6 +78,9 @@ function active_sn(){
 
 $(document).ready(function() {
   resize_bg();
+  $(':root').css('--primary_colour', colour_1);
+  $(':root').css('--secondary_colour', colour_2);
+
 });
 
 $( window ).on( "resize", function(){
@@ -91,7 +92,7 @@ $('.hamburger').click(function() {
 });
 
 $('#sb').click(function() {
-  $('#login_form').css({"display":"block"});
+  $('#login_form_box').css({"display":"block"});
   $('.modal').css({"z-index":"12"});
 });
 
@@ -102,8 +103,8 @@ $('.home_button').click(function() {
 // When the user clicks anywhere outside of the modal, close it
 
 $(document).click(function(event) {
-  if (event.target == login_form) {
-    $('#login_form').css({"display":"none"});
+  if (event.target == login_form_box) {
+    $('#login_form_box').css({"display":"none"});
     $('.modal').css({"z-index":"9"});
   }
   else if (event.target == sn){
@@ -115,13 +116,15 @@ $(document).click(function(event) {
 
 
 $('.x_container').click(function() {
-  $('#login_form').css({"display":"none"});
+  $('#login_form_box').css({"display":"none"});
   $('.modal').css({"z-index":"9"});
 });
 
+
+
 $("#login_form").submit(async function(event) {
   event.preventDefault();
-
+  $("#login_error").html("<br>")
   // get the form data
   const formData = new FormData(event.target);
 
@@ -137,35 +140,7 @@ $("#login_form").submit(async function(event) {
     window.location.href = "/";
   } else {
     // error, update the form with the error message
-    const errorMessage = await response.text();
-    const errorElement = document.createElement("p");
-    errorElement.textContent = errorMessage;
-    event.target.prepend(errorElement);
+    const error = await response.text();
+    $("#login_error").text(error)
   }
 });
-
-$("#register_form").submit(async function(event) {
-  event.preventDefault();
-
-  // get the form data
-  const formData = new FormData(event.target);
-
-  // send a POST request to the server
-  const response = await fetch('/register', {
-    method: 'POST',
-    body: formData
-  });
-
-  // handle the server response
-  if (response.ok) {
-    // success, redirect to the home page
-    window.location.href = "/";
-  } else {
-    // error, update the form with the error message
-    const errorMessage = await response.text();
-    const errorElement = document.createElement("p");
-    errorElement.textContent = errorMessage;
-    event.target.prepend(errorElement);
-  }
-});
-

@@ -1,3 +1,8 @@
+:root {
+  --primary_colour: rgba(14, 112, 47, 0.9);
+  --secondary_colour: rgba(203, 119, 174, 0.9);
+}
+
 html * {
   font-family: 'Quicksand', sans-serif !important;
   font-weight: bold !important;
@@ -40,7 +45,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background-color: rgba(14, 112, 47, 0.9);;
+  background-color: var(--primary_colour);
   color: white;
   padding: none;
   border: none;    
@@ -49,7 +54,7 @@ button {
   text-align: center;
   height: 40px;
   width: 80px;
-  font-size:20px;
+  font-size: 19px;
   border: 3px solid;
   border-color: rgba(65, 42, 19);
 }
@@ -67,8 +72,8 @@ button:hover, #hb:hover {
 }
 
 #hb {
-  background-color: rgba(14, 112, 47, 0.9);
-  position: fixed;
+  background-color: var(--primary_colour);
+  position: absolute;
   top: 20px;
   right: 20px;
   width: 40px;
@@ -106,6 +111,7 @@ button:hover, #hb:hover {
 }
 
 #register {
+  padding-top: 15px;
   color: rgba(65, 42, 19);
 }
 
@@ -141,7 +147,7 @@ button:hover, #hb:hover {
 
 /* Hamburger */
 .hamburger {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 15px;
   width: 40px;
@@ -204,7 +210,7 @@ button:hover, #hb:hover {
   height: 100%;
   width: 0;
   z-index: 10;
-  background: linear-gradient(180deg, rgba(14, 112, 47, 0.9), rgba(203, 119, 174, 0.9));
+  background: linear-gradient(180deg, var(--primary_colour), var(--secondary_colour));
   overflow-x: hidden;
   transition: 0.2s;
   padding-top: 80px;
@@ -251,13 +257,22 @@ span.psw {
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal_content {
   background-color: rgba(221, 213, 190);
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   width: 80%; /* Could be more or less, depending on screen size */
   border: 3px solid;
   border-color: rgba(65, 42, 19);
   border-radius: 10px;
+}
+
+#login_form{
+  width: 60%;
+}
+
+#login_error{
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 .animate {

@@ -12,8 +12,17 @@ h1 {
     padding-top: 40px;
     padding-bottom: 20px;
 }
+#register_form{
+    padding: 10%;
+}
+#register_error{
+    max-width: 250px;
+    word-wrap: break-word;
+    font-size: 15px;
+    padding: 10%;
+}
 .btn {
-    background-color: rgba(14, 112, 47, 0.9);;
+    background-color: rgba(14, 112, 47, 0.9);
     color: white;
     padding: none;
     border: none;    
@@ -36,5 +45,6 @@ h1 {
 }
   
 #sign_in_here:hover {
-    color: rgba(65, 42, 19);;
+    color: rgba(65, 42, 19);
 }
+

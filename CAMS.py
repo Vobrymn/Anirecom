@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, make_response, request, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_manager
 import sqlite3 as sql
 import re
 
@@ -8,6 +7,14 @@ app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
             template_folder='web/templates')
+
+@app.before_request
+def before_request():
+   session.setdefault('colour_1', "rgba(14, 112, 47, 0.9)")
+   session.setdefault('colour_2', "rgba(203, 119, 174, 0.9)")
+   print(session['colour_1'])
+   print(session['colour_2'])
+
 
 app.secret_key = 'my-secret-key'
 app.config['DATABASES'] = {
@@ -43,7 +50,11 @@ def close_db():
 
 @app.route('/')
 def home():
-   r = make_response(render_template('index.html'))
+
+   colour_1 = session['colour_1']
+   colour_2 = session['colour_2']
+
+   r = make_response(render_template('index.html', colour_1 = colour_1, colour_2 = colour_2))
 
    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
    r.headers["Pragma"] = "no-cache"
@@ -78,7 +89,7 @@ def logout():
    session.pop('username', None)
    session.pop('colour_1', None)
    session.pop('colour_2', None)
-   return redirect(url_for('login'))
+   return redirect(url_for('home'))
  
 @app.route('/register', methods =['GET', 'POST'])
 def register():
@@ -92,8 +103,12 @@ def register():
       if account:
          error_message = 'Username taken'
          return (make_response(error_message, 400))
-      # elif not re.match(r'[A-Za-z0-9]+', username): #can be done in js
-      #    msg = 'Username must contain only characters and numbers !'
+      elif not re.match(r'[A-Za-z0-9]+', username):
+         error_message = 'Username must contain only characters and numbers'
+         return (make_response(error_message, 400))
+      elif len(password) < 8:
+         error_message = 'Password must be at least 8 characters'
+         return (make_response(error_message, 400))
       else:
          cursor.execute('INSERT INTO accounts (username,password) VALUES (?,?)', (username, generate_password_hash(password),))
          db.commit()
