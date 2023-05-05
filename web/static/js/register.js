@@ -9,7 +9,6 @@ function check_input(e){
     switch($(this).attr("id")){
         
         case "username":
-            console.log("username")
             if (alphanumericRegex.test(log)) {
                 valid_u = true;
                 $("#register_error").text("")
@@ -21,7 +20,6 @@ function check_input(e){
         break;
 
         case "password":
-            console.log("p1")
             if (log.length < 8) {
                 valid_p = false;
                 $("#register_error").text("Password must be at least 8 characters")
@@ -33,7 +31,6 @@ function check_input(e){
         break;
 
         case "password_2":
-            console.log("p2")
             if (log == $("#password").val()) {
                 valid_p2 = true;
                 $("#register_error").text("")
