@@ -23,6 +23,7 @@ body {
   color: rgba(65, 42, 19);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  z-index: 1;
 }
 
 label[for="uname"], label[for="psw"] {
@@ -114,10 +115,11 @@ button:hover, #hb:hover {
 }
 
 .background {
+  position: absolute;
   display: block;
-  height: 100vh;
   width: auto;
-  z-index: 0;
+  height: 100vh;
+  z-index: -1;
 }
 
 .ui_bar {
@@ -140,54 +142,16 @@ button:hover, #hb:hover {
 }
 
 /* Hamburger */
-.hamburger_wrapper {
+.hamburger {
   position: absolute;
   top: 20px;
   left: 15px;
   width: 40px;
   height: 40px;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-.hamburger_wrapper label {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
   cursor: pointer;
+  z-index: 11;
 }
 
-.hamburger_toggle {
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1001;
-}
-
-.hamburger_wrapper input[type=checkbox],
-.hamburger_wrapper label{
-  pointer-events: auto;
-  transition: all 0.3s;
-  box-sizing: border-box;
-}
-
-.hamburger {
-  transition: all 0.3s;
-  box-sizing: border-box;
-  cursor: pointer;
-  position: absolute;
-  top: 16px;
-  left: 15px;
-  height: 40px;
-  width: 40px;
-  display: none;
-  z-index: 100;
-}
-  
 .spinner{
   transition: all 0.3s;
   box-sizing: border-box;
@@ -204,35 +168,35 @@ button:hover, #hb:hover {
   position: relative;
   margin-top: 5px;
 }
+
 .diagonal.part_1{
   transition: all 0.3s;
   box-sizing: border-box;
   position: relative;
   margin-top: 5px;
 }
+
 .diagonal.part_2{
   transition: all 0.3s;
   box-sizing: border-box;
   position: relative;
   margin-top: 5px;
 }
-input[type=checkbox]:checked ~ .hamburger_toggle > .horizontal{
-  transition: all 0.3s;
-  box-sizing: border-box;
+
+.hamburger.active > .horizontal{
   opacity: 0;
 }
-input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_1{
-  transition: all 0.3s;
-  box-sizing: border-box;
+
+.hamburger.active > .diagonal.part_1{
   transform: rotate(-135deg);
   margin-top: 15px;
 }
-input[type=checkbox]:checked ~ .hamburger_toggle > .diagonal.part_2{
-  transition: all 0.3s;
-  box-sizing: border-box;
+
+.hamburger.active > .diagonal.part_2{
   transform: rotate(135deg);
   margin-top: -15px;
 }
+
 
 /* Side navigation menu */
 .side_nav {
@@ -285,10 +249,11 @@ span.psw {
   background-color: rgba(65, 42, 19); /* Fallback color */
   background-color: rgba(65, 42, 19, 0.4); /* Black w/ opacity */
   padding-top: 80px;
+  z-index: 9;
 }
 
 /* Modal Content/Box */
-.modal-content {
+.modal_content {
   background-color: rgba(221, 213, 190);
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   width: 80%; /* Could be more or less, depending on screen size */
@@ -318,4 +283,9 @@ span.psw {
    display: block;
    float: none;
 }
+}
+
+/* Password getting incorrect */
+#password_error {
+  color: rgba(218, 78, 69, 0.9);
 }

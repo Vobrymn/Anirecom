@@ -2,29 +2,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title> Register </title>
-	<link rel="stylesheet" href= "css/default.css">	
-	<link rel="stylesheet" href= "css/register.css">
+	<link rel="stylesheet" href= "/css/default.css">	
+	<link rel="stylesheet" href= "/css/register.css">
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>		
 </head>
 <body>
-	<div class="hamburger_wrapper">
-		<input type="checkbox" class="hamburger" id="hamburger">
-		<label for="hamburger" class="hamburger_toggle">
-			<div class="spinner diagonal part_1"></div>
-			<div class="spinner horizontal"></div>
-			<div class="spinner diagonal part_2"></div>
-		</label>
+	<div class="hamburger">
+		<div class="spinner diagonal part_1"></div>
+		<div class="spinner horizontal"></div>
+		<div class="spinner diagonal part_2"></div>
 	</div>
 	<div class="ui_bar">
-		<a href="#" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
+		<a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
 	</div>
-	<div class="side_nav">
-		<br>
-		<a href="#" class="settings">Settings</a>
-		<a href="#" class="history">History</a>
-		<a href="#" class="logout">Log out</a>
-	</div> 
+	<div id = "sn" class="modal"></div>
+    <div class="side_nav">
+      <a href="{{url_for('home')}}" class="settings">Settings</a>
+      <a href="{{url_for('home')}}" class="history">History</a>
+      <a href="{{url_for('home')}}" class="logout">Log out</a>
+    </div> 
 	<div align="center" class="border">
 		<div class="header">
 			<h1 class="word">Register</h1>
@@ -34,14 +31,15 @@
 			<label for="username"><b>Username</b></label>
 			<input id="username" name="username" type="text" placeholder="Enter Username" class="textbox" required/></br></br>
 			<label for="password"><b>Password</b></label>
-			<input id="password" name="password" type="password" placeholder="Enter Password" class="textbox" required/></br></br>
-			<label for="email"><b>Email</b></label>
-			<input id="email" name="email" type="text" placeholder="Enter Email ID" class="textbox" required/></br></br>
+			<input id="password" name="password" type="password" placeholder="Enter Password" class="textbox" required/>
+			<div id="password_error"></div>
+        	<br>
 			<input type="submit" class="btn" value="Sign Up"></br>
 		</form>
 		</h2>
 		<p class="bottom">Already have an account? <a class="bottom" id="sign_in_here" href="{{url_for('login')}}"> Sign In here</a></p>
 	</div>
-	<script src="js/default.js"></script>
+	<img src="/images/register_screen_bg.png" alt="Your Image" id="register_screen_bg" class="background">
+	<script src="/js/default.js"></script>
 </body>
 </html>

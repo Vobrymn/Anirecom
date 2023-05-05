@@ -38,3 +38,8 @@ h1 {
 #sign_in_here:hover {
     color: rgba(65, 42, 19);;
 }
+
+/* Password getting incorrect */
+#password_error {
+    font-size: 80%;
+}
