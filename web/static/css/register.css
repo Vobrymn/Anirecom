@@ -39,7 +39,7 @@ h1 {
     color: rgba(65, 42, 19);;
 }
 
-/* Password getting incorrect */
+/* Incorrect Password */
 #password_error {
     font-size: 80%;
 }

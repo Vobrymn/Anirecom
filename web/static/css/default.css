@@ -236,7 +236,7 @@ span.psw {
   padding-top: 30px;
 }
 
-/* The Modal (background) */
+/* The Modal (bg) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -285,7 +285,7 @@ span.psw {
 }
 }
 
-/* Password getting incorrect */
+/* Incorrect password */
 #password_error {
   color: rgba(218, 78, 69, 0.9);
 }
