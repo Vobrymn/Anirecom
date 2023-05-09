@@ -2,16 +2,12 @@ from flask import Flask, render_template, url_for, redirect, make_response, requ
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3 as sql
 import re
+import urllib
 
 app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
             template_folder='web/templates')
-
-@app.before_request
-def before_request():
-   session.setdefault('colour_1', "rgba(14, 112, 47, 0.9)")
-   session.setdefault('colour_2', "rgba(203, 119, 174, 0.9)")
 
 app.secret_key = 'my-secret-key'
 app.config['DATABASES'] = {
@@ -48,16 +44,16 @@ def close_db():
 @app.route('/')
 def home():
 
-   colour_1 = session['colour_1']
-   colour_2 = session['colour_2']
+   # colour_1 = session['colour_1']
+   # colour_2 = session['colour_2']
 
-   r = make_response(render_template('index.html', colour_1 = colour_1, colour_2 = colour_2))
+   response = make_response(render_template('index.html'))
 
-   r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-   r.headers["Pragma"] = "no-cache"
-   r.headers["Expires"] = "0"
+   response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+   response.headers["Pragma"] = "no-cache"
+   response.headers["Expires"] = "0"
    
-   return r
+   return response
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -73,7 +69,13 @@ def login():
                session['username'] = account[1]
                session['colour_1'] = account[3]
                session['colour_2'] = account[4]
-               return "Login successful"
+
+               response = make_response('Session set')
+               for key, value in session.items():
+                  response.set_cookie(key, urllib.parse.quote(str(value)))
+               
+               return response
+            
          error_message = "Incorrect username / password"
          return (make_response(error_message, 400))
    return redirect(url_for("home"))
@@ -85,7 +87,12 @@ def logout():
    session.pop('username', None)
    session.pop('colour_1', None)
    session.pop('colour_2', None)
-   return redirect(url_for('home'))
+   response = make_response(redirect(url_for('home')))
+   response.delete_cookie('logged_in')
+   response.delete_cookie('username')
+   response.delete_cookie('colour_1')
+   response.delete_cookie('colour_2')
+   return response
  
 @app.route('/register', methods =['GET', 'POST'])
 def register():
