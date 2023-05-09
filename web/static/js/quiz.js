@@ -1,7 +1,3 @@
-/*makes sure html loads b4 js*/
-document.addEventListener("DOMContentLoaded", function () {
-  indaQuiz();
-});
 
 /*stole this off w3schools. like i modified it to be ours though, like excluding already typed in answers etc*/
 function autocomplete(inp, arr) {
@@ -92,9 +88,7 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
-
-/*actual quiz stuff*/
-function indaQuiz() {
+ 
   const questions = [
     {
       question: "Would you like an anime or a manga?",
@@ -295,4 +289,3 @@ function indaQuiz() {
   
 
   displayQuestion(questions[currentQuestionIndex].question);
-}

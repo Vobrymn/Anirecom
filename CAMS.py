@@ -67,7 +67,7 @@ def login():
                session['colour_1'] = account[3]
                session['colour_2'] = account[4]
 
-               response = make_response('Session set')
+               response = make_response('Login successful')
                for key, value in session.items():
                   response.set_cookie(key, urllib.parse.quote(str(value)))
                
@@ -120,7 +120,12 @@ def register():
          session['username'] = username
          session['colour_1'] = "rgba(14, 112, 47, 0.9)"
          session['colour_2'] = "rgba(203, 119, 174, 0.9)"
-         return "Registration successful"
+
+         response = make_response('Registration successful')
+         for key, value in session.items():
+            response.set_cookie(key, urllib.parse.quote(str(value)))
+               
+            return response
    return render_template('register.html')
 
 @app.route('/change_pwd', methods=['GET', 'POST'])

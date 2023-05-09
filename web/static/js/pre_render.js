@@ -31,14 +31,14 @@ function parse_cookie(){
         var colour_1 = sessionVars['colour_1']
     }
     else{
-        var colour_1 = "red"
+        var colour_1 = "rgba(14, 112, 47, 0.9)"
     }
     if ('colour_2' in sessionVars) {
         // `colour_2` exists, so we can access its value
         var colour_2 = sessionVars['colour_2']
     }
     else{
-        var colour_2 = "blue"
+        var colour_2 = "rgba(203, 119, 174, 0.9)"
     }
 
     let root = document.documentElement;
