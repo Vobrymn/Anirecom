@@ -30,6 +30,7 @@ body {
   color: rgba(65, 42, 19);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  z-index: 1;
 }
 
 label[for="uname"], label[for="psw"] {
@@ -122,6 +123,7 @@ button:hover, .button:hover #hb:hover {
 }
 
 .background {
+  position: absolute;
   display: block;
   height: 100%;
   width: auto;
@@ -242,7 +244,7 @@ span.psw {
   padding-top: 30px;
 }
 
-/* The Modal (background) */
+/* The Modal (bg) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

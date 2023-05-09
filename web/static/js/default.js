@@ -148,3 +148,4 @@ $("#login_form").submit(async function(event) {
     $("#login_error").text(error)
   }
 });
+
