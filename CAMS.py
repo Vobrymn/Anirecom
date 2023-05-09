@@ -44,9 +44,6 @@ def close_db():
 @app.route('/')
 def home():
 
-   # colour_1 = session['colour_1']
-   # colour_2 = session['colour_2']
-
    response = make_response(render_template('index.html'))
 
    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
