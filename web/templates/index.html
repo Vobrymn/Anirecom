@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
+  <script src= "/js/pre_render.js"></script>
   <link rel="stylesheet" href= "/css/default.css">
   <link rel="stylesheet" href= "/css/start_screen.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
@@ -28,39 +29,35 @@
 
   <div id = "sn" class="modal"></div>
     <div class="side_nav">
-      <a href="register" class="register">Register</a>
+      <a href="{{url_for('register')}}" class="register">Register</a>
       <a href="{{url_for('home')}}" class="settings">Settings</a>
       <a href="{{url_for('home')}}" class="history">History</a>
-      <a href="{{url_for('home')}}" class="logout">Log out</a>
+      <a href="{{url_for('logout')}}" class="logout">Log out</a>
     </div> 
   </div> 
 
-  <div id="login_form" class="modal">
+  <div id="login_form_box" class="modal">
   
-    <form id = "login_form" class="modal_content animate" action="/login" method="post">
+    <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
       <div class="x_container">
         <span class="close" title="Close Modal">&times;</span>
       </div>
   
       <div class="container">
         <br>
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+        <label for="username"><b>Username</b></label>
+        <input id = "username" type="text" placeholder="Enter Username" name="username" required>
         <br>
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <div id="password_error"></div>
-        <br> 
+        <label for="password"><b>Password</b></label>
+        <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+        <div id="login_error"><br></div>
         <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-        <a href="register" id="register">Register</a>
+  
+        <a href="{{url_for('register')}}" id="register">Register</a>
       </div>
     </form>
   </div>
-
-  <script src="/js/default.js"></script>
-  <script src="/js/start_screen.js"></script>
 </body>
+<script src="/js/default.js"></script>
+<script src="/js/start_screen.js"></script>
 </html>

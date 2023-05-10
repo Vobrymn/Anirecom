@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(203, 119, 174, 0.9);
+  background-color: var(--secondary_colour);
   color: white;
   padding: none;
   cursor: pointer;
@@ -11,10 +11,12 @@
   height: 6vh;
   width: 12vh;
   font-size:3vh;
+  border: 0.4vh solid;
+  border-color: rgba(65, 42, 19);
 }
 
 #start_button:hover {
-  background-color: rgb(203, 119, 174, 0.9);
+  background-color: var(--secondary_colour);
 }
 
 .ui_bar {

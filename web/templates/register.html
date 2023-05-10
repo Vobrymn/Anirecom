@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,39 +10,30 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>		
 </head>
 <body>
-	<div class="hamburger">
-		<div class="spinner diagonal part_1"></div>
-		<div class="spinner horizontal"></div>
-		<div class="spinner diagonal part_2"></div>
-	</div>
+	
 	<div class="ui_bar">
 		<a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
 	</div>
-	<div id = "sn" class="modal"></div>
-	<div class="side_nav">
-		<br>
-		<a href="#" class="settings">Settings</a>
-		<a href="#" class="history">History</a>
-		<a href="#" class="logout">Log out</a>
-	</div> 
 	<div align="center" class="border">
 		<div class="header">
-			<h1 class="word">Register</h1>
+		<h1 class="word">Register</h1>
 		</div>
-		<h2 class="word">
-		<form action="{{url_for('register')}}" method="post">
+		<form id = register_form autocomplete="off">
 			<label for="username"><b>Username</b></label>
 			<input id="username" name="username" type="text" placeholder="Enter Username" class="textbox" required/></br></br>
 			<label for="password"><b>Password</b></label>
-			<input id="password" name="password" type="password" placeholder="Enter Password" class="textbox" required/>
-			<div id="password_error"></div>
-        	<br>
-			<input type="submit" class="btn" value="Sign Up"></br>
+			<input id="password" name="password" type="password" placeholder="Enter Password" class="textbox" required/></br></br>
+			<label for="password_2"><b>Confirm Password</b></label>
+			<input id="password_2" name="password_2" type="password" placeholder="Enter Password" class="textbox" required/></br></br>
+			<div id="register_error"></div>
+			<input type="submit" class="button" value="Sign Up"></br>
 		</form>
 		</h2>
-		<p class="bottom">Already have an account? <a class="bottom" id="sign_in_here" href="/"> Sign In here</a></p>
+		<p class="bottom">Already have an account? <a class="bottom" id="sign_in_here" href="{{url_for('login')}}"> Sign In here</a></p>
 	</div>
 	<img src="/images/register_screen_bg.png" alt="Your Image" id="register_screen_bg" class="background">
 	<script src="/js/default.js"></script>
 </body>
+<script src="/js/default.js"></script>
+<script src="/js/register.js"></script>
 </html>
