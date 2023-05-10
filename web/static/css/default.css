@@ -113,12 +113,12 @@ button:hover, .button:hover #hb:hover {
   cursor: pointer;
 }
 
-#register {
+#register_lg {
   padding-top: 15px;
   color: rgba(65, 42, 19);
 }
 
-#register:hover {
+#register_lg:hover {
   color: white;
 }
 
@@ -227,6 +227,7 @@ button:hover, .button:hover #hb:hover {
   color: white;
   display: block;
   transition: 0.2s;
+  white-space: nowrap;
 }
 
 .side_nav a:hover {

@@ -12,8 +12,7 @@ app = Flask(__name__,
 app.secret_key = 'my-secret-key'
 app.config['DATABASES'] = {
    'users': 'databases/users.db',
-   'history': 'databases/history.db',
-   'entries': 'databases/entries.db'
+   'content': 'databases/content.db',
 }
 app.config['CURRENT_DATABASE'] = None
 
@@ -147,15 +146,14 @@ def change_pwd():
 
 @app.route('/change_colour', methods=['GET', 'POST'])
 def change_colour():
-   if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session["logged_in"]:
+   if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session.get("logged_in") and session.get("username"):
       colour_1 = request.form['colour_1']
       colour_2 = request.form['colour_2']
       session['colour_1'] = colour_1
       session['colour_2'] = colour_2
       db = get_db("users")
       cursor = db.cursor()
-      cursor.execute('SELECT * FROM accounts WHERE username = ?', (session["username"],))
-      cursor.execute("UPDATE accounts set colour_1 = ?, colour_2 = ?", (colour_1, colour_2))
+      cursor.execute("UPDATE accounts SET colour_1 = ?, colour_2 = ? WHERE username = ?", (colour_1, colour_2, session.get("username")))
    return redirect(url_for("home"))
       
 
@@ -165,15 +163,75 @@ def quiz():
 
    return render_template('quiz.html')
 
-@app.route('/suggestions')
+@app.route('/suggestions', methods=['GET'])
 def suggestions():
+      VALID_PARAMS = ['content_type', 'genres', 'themes', 'producers', 'years']
+      # Check for any invalid parameters
+      invalid_params = [param for param in request.args.keys() if param not in VALID_PARAMS]
+      if invalid_params:
+         error_message = f"Invalid parameter(s): {', '.join(invalid_params)}"
+         return (make_response(error_message, 400))
+      
+      content_type = request.args.get('content_type')
+      if (content_type is None):
+         error_message = "Invalid content type"
+         return (make_response(error_message, 400))
+      
+      columns = []
+      strings = []
+      genre = request.args.get('genres')
+      if genre:
+          columns.append("genres")
+          strings.append(genre)
+      themes = request.args.get('themes')
+      if themes:
+          columns.append("themes")
+          strings.append(themes)
+      producers = request.args.get('producers')
+      if producers:
+          columns.append("producers")
+          strings.append(producers)
+      years = request.args.get('years')
+      # if (years < 1917 or years > 2023):
+      #    error_message = "Invalid date range"
+      #    return (make_response(error_message, 400))
 
-   return render_template('suggestions.html')
+      db = get_db("content")
+      cursor = db.cursor()
+      
+      conditions = []
+      for i, column in enumerate(columns):
+         for string in strings[i]:
+            conditions.append(f"{column} LIKE '%{string}%'")
+        
+      # join the conditions using AND operator
+      condition = ' AND '.join(conditions)
+
+      # select rows with the specified conditions
+      if condition:
+         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition}")
+
+      results = cursor.fetchall()  
+      response = make_response(results)
+      return response
 
 
 
 @app.route('/history')
 def history():
+   if session.get("logged_in") and session.get("username"):
+      username = session.get("username")
+      db = get_db("users")
+      cursor = db.cursor()
+      cursor.execute('SELECT * FROM history WHERE username = ?', (username,))
+      account = cursor.fetchone()
+      if account:
+         response = make_response(account[1])
+         return response
+      else:
+         error_message = "User has no history"
+         return (make_response(error_message, 400))
+      
 
    return render_template('history.html')
 

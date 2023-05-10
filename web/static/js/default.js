@@ -62,14 +62,14 @@ function active_sn(){
       $("#sb").fadeIn(50);
       $("#hb").fadeIn(50);
       $("#start_button").fadeIn(50);
-      $('#sn').css({"display":"none"});
+      $('#sn').hide()
       $('.modal').css({"background-color":"rgba(65, 42, 19, 0.4)"});
     }
     else {
       $(".side_nav").width(nav_width);
       $("#sb").fadeOut(50);
       $("#hb").fadeOut(50);
-      $('#sn').css({"display":"block"});
+      $('#sn').show()
       $('.modal').css({"background-color":"rgba(65, 42, 19, 0.0)"});
       if(window_skinny()){
         $("#start_button").fadeOut(50);
@@ -77,13 +77,23 @@ function active_sn(){
     }
     setTimeout(function() {
       transition = false
-    }, 160);
+    }, 200);
   }
 };
 
 $(document).ready(function() {
   resize_bg();
   resize_sn();
+
+  if (logged_in){
+    $("#register_sn").hide()
+  }
+  else{
+    $("#settings_sn").hide()
+    $("#history_sn").hide()
+    $("#logout_sn").hide()
+  }
+
   $("body").css("opacity", "1");
 });
 
@@ -97,7 +107,7 @@ $('.hamburger').click(function() {
 });
 
 $('#sb').click(function() {
-  $('#login_form_box').css({"display":"block"});
+  $('#login_form_box').show()
   $('.modal').css({"z-index":"12"});
 });
 
@@ -109,8 +119,10 @@ $('.home_button').click(function() {
 
 $(document).click(function(event) {
   if (event.target == document.getElementById('login_form_box')) {
-    $('#login_form_box').css({"display":"none"});
+    $('#login_form_box').hide()
     $('.modal').css({"z-index":"9"});
+    $("#username").val("")
+    $("#password").val("")
   }
   else if (event.target == document.getElementById('sn')){
       active_sn();
@@ -119,8 +131,10 @@ $(document).click(function(event) {
 
 
 $('.x_container').click(function() {
-  $('#login_form_box').css({"display":"none"});
+  $('#login_form_box').hide()
   $('.modal').css({"z-index":"9"});
+  $("#username").val("")
+  $("#password").val("")
 });
 
 
@@ -140,8 +154,8 @@ $("#login_form").submit(async function(event) {
   // handle the server response
   if (response.ok) {
     // success, redirect to the home page
-    window.location.href = "/";
-    parse_cookie()
+    location.reload()
+
   } else {
     // error, update the form with the error message
     const error = await response.text();
