@@ -88,7 +88,12 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
- 
+
+
+  //[genre],[theme],[producer]
+  const anime_choices =[[],[],[]]; 
+  const manga_choices =[[],[],[]]; 
+
   const questions = [
     {
       question: "Would you like an anime or a manga?",
@@ -98,12 +103,18 @@ function autocomplete(inp, arr) {
         question: "What genres r u interested in? Select up to three, separating each by a comma",
         anime_choices: ["test1","test2","test3","tst4","doodoo1","dod","do"],
         manga_choices: ["test","test6","tehe","DOOO","door","tss"],
+        /*
+        anime_choices: anime_choices[0],
+        manga_choices: manga_choices[0],*/
       
     },
     {
         question: "Any themes you're interested in? Select up to three, separating each by a comma",
         anime_choices: ["test11", "test21", "test31", "tst41", "doodoo11", "dod1", "do1"],
         manga_choices: ["test1", "test61", "tehe1", "DOOO1", "door1", "tss1"],
+        /*
+        anime_choices: anime_choices[1],
+        manga_choices: manga_choices[1],*/
     },
     
     {
@@ -112,6 +123,9 @@ function autocomplete(inp, arr) {
         manga_question: "Are there any particular authors you'd like to look up? Select up to two, separating them by a comma!",
         anime_choices: ["studio1", "studio2", "studio3", "studio4", "studio5", "studio6"],
         manga_choices: ["author1", "author2", "author3", "author4", "author5", "author6"],
+        /*
+        anime_choices: anime_choices[2],
+        manga_choices: manga_choices[2],*/
     },
 
     {
@@ -129,6 +143,14 @@ function autocomplete(inp, arr) {
   const backButton = document.getElementById("back");
   const nextButton = document.getElementById("next");
   const skipButton = document.getElementById("skip");
+  //answers thing
+  let answers = {
+    type: "",
+    genres: [],
+    themes: [],
+    producers: [],
+    date: ""
+  };
 
   backButton.addEventListener("click", goBack);
   nextButton.addEventListener("click", goNext);
@@ -176,7 +198,7 @@ function autocomplete(inp, arr) {
     }
   }
   
-  /*typing effect*/
+  //typing effect
   function addBlinkingCursor() {
     const cursor = document.createElement("span");
     cursor.classList.add("blinking_cursor");
@@ -207,8 +229,17 @@ function autocomplete(inp, arr) {
         //reset answers if the selected option has changed (anime/manga)
         if (shouldResetAnswers) {
           previousAnswers = ["", "", "", "", ""];
+          answers = { //reset answers too
+            type: "",
+            genres: [],
+            themes: [],
+            producers: [],
+            date: ""
+          };
         }
+        
         previousAnswers[currentQuestionIndex] = answer;
+        answers.type = answer;
         currentQuestionIndex++;
         displayQuestion();
 
@@ -227,11 +258,19 @@ function autocomplete(inp, arr) {
 
     let maxChoicesAllowed = 3;
     if (currentQuestionIndex === 3) {
-      maxChoicesAllowed = 2; // Limit to 2 choices for authors/studios question
+      maxChoicesAllowed = 2; //limit to 2 choices for authors/studios question
     }
 
     if (choices.length >= 1 && choices.length <= maxChoicesAllowed && areAllChoicesValid) {
       previousAnswers[currentQuestionIndex] = answerInput.value;
+      //modified this for the answers thing
+      if (currentQuestionIndex === 1) {
+        answers.genres = choices;
+      } else if (currentQuestionIndex === 2) {
+        answers.themes = choices;
+      } else if (currentQuestionIndex === 3) {
+        answers.producers = choices;
+      }
       currentQuestionIndex++;
       displayQuestion();
     } else {
@@ -268,7 +307,7 @@ function autocomplete(inp, arr) {
         if (currentQuestionIndex < questions.length) {
           displayQuestion();
         } else {
-          console.log("Quiz completed. flasktime:)");
+          console.log(answers);
         }
         console.log('Years are valid, nice!');
       } else {
