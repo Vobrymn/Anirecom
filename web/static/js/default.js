@@ -95,9 +95,9 @@ $('#sb').click(function() {
   $('.modal').css({"z-index":"12"});
 });
 
-$('.home_button').click(function() {
-  window.location.href = "/";
-});
+// $('.home_button').click(function() {
+//   window.location.href = "/";
+// });
 
 // When the user clicks anywhere outside of the modal, close it
 

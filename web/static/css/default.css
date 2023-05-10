@@ -11,6 +11,8 @@ body {
   height: 100vh;
   background-color: white;
   overflow:hidden;
+  background-color: rgba(221, 213, 190, 0.9);
+  color: rgba(65, 42, 19);
 }
 
 /* Sign in container */
@@ -62,7 +64,7 @@ button:hover, #hb:hover {
 #sb {  
   position: absolute;
   top: 20px;
-  left: 80px;
+  right: 15px;
   border: 3px solid;
   border-color: rgba(65, 42, 19);
 }
@@ -133,7 +135,7 @@ button:hover, #hb:hover {
   width: 100%;
   max-width: 100%;
   box-shadow: none;
-  background-color: rgba(150, 70, 46, 0.9);
+  background-color: rgb(129, 66, 45);
   height: 80px;
   overflow: hidden;
   border-bottom: 3px solid;
