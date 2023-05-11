@@ -101,8 +101,8 @@ function autocomplete(inp, arr) {
     },
     {
         question: "What genres r u interested in? Select up to three, separating each by a comma",
-        anime_choices: ["test1","test2","test3","tst4","doodoo1","dod","do"],
-        manga_choices: ["test","test6","tehe","DOOO","door","tss"],
+        anime_choices: ["Action","Adventure","Drama","Comedy"],
+        manga_choices: ["Action","Adventure","Drama","Comedy"],
         /*
         anime_choices: anime_choices[0],
         manga_choices: manga_choices[0],*/
@@ -145,11 +145,11 @@ function autocomplete(inp, arr) {
   const skipButton = document.getElementById("skip");
   //answers thing
   let answers = {
-    type: "",
+    content_type: "",
     genres: [],
     themes: [],
     producers: [],
-    date: ""
+    dates: ""
   };
 
   backButton.addEventListener("click", goBack);
@@ -192,9 +192,30 @@ function autocomplete(inp, arr) {
     if (currentQuestionIndex === 0) {
       backButton.disabled = true;
       backButton.style.opacity = "0.9";
+      backButton.style.cursor = "default"
+
+      skipButton.disabled = true;
+      skipButton.style.opacity = "0.9";
+      skipButton.style.cursor = "default"
+
+
     } else {
       backButton.disabled = false;
       backButton.style.opacity = "1";
+      backButton.style.cursor = "pointer"
+
+      skipButton.disabled = false;
+      skipButton.style.opacity = "1";
+      skipButton.style.cursor = "pointer"
+
+    }
+    if (currentQuestionIndex === 4) {
+      skipButton.style.display = "none"
+      nextButton.innerHTML = "Submit"
+
+    } else {
+      skipButton.style.display = "block"
+      nextButton.innerHTML = "Next"
     }
   }
   
@@ -230,16 +251,16 @@ function autocomplete(inp, arr) {
         if (shouldResetAnswers) {
           previousAnswers = ["", "", "", "", ""];
           answers = { //reset answers too
-            type: "",
+            content_type: "",
             genres: [],
             themes: [],
             producers: [],
-            date: ""
+            dates: ""
           };
         }
         
         previousAnswers[currentQuestionIndex] = answer;
-        answers.type = answer;
+        answers.content_type = answer;
         currentQuestionIndex++;
         displayQuestion();
 
@@ -296,26 +317,35 @@ function autocomplete(inp, arr) {
     const yearPattern = /^(\d{4})-(\d{4})$/;
     const match = answer.match(yearPattern);
 
-    if (match) {
-      const startYear = parseInt(match[1]);
-      const endYear = parseInt(match[2]);
+    console.log(answer)
+   
+      if (match) {
+        const startYear = parseInt(match[1]);
+        const endYear = parseInt(match[2]);
 
-      if (startYear <= endYear && startYear > 1900 && endYear <= new Date().getFullYear()) {
-        previousAnswers[currentQuestionIndex] = answer;
-        currentQuestionIndex++;
+        if (startYear <= endYear && startYear > 1900 && endYear <= new Date().getFullYear()) {
 
-        if (currentQuestionIndex < questions.length) {
-          displayQuestion();
-        } else {
-          console.log(answers);
+          answers.dates = [startYear,endYear]
+
+          var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
+
+          window.location.href = url;
+          
+        } 
+        else {
+          errorMessage.textContent = "Invalid year range. Please enter a valid year range (e.g., 2008-2010).";
         }
-        console.log('Years are valid, nice!');
-      } else {
-        errorMessage.textContent = "Invalid year range. Please enter a valid year range (e.g., 2008-2010).";
+      } 
+      else {
+        if (answer != ""){
+          errorMessage.textContent = "Invalid input. Please use the format YYYY-YYYY (e.g. 2008-2010).";
+        }
+        else{
+          var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
+
+          window.location.href = url;
+        }
       }
-    } else {
-      errorMessage.textContent = "Invalid input. Please use the format YYYY-YYYY (e.g. 2008-2010).";
-    }
   }
 }
 
@@ -324,6 +354,7 @@ function autocomplete(inp, arr) {
       currentQuestionIndex++;
       displayQuestion(questions[currentQuestionIndex].question);
     }
+
   }
   
 

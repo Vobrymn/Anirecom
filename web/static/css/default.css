@@ -69,7 +69,7 @@ button:hover, .button:hover #hb:hover {
 #sb {  
   position: absolute;
   top: 20px;
-  right: 15px;
+  left: 75px;
   border: 3px solid;
   border-color: rgba(65, 42, 19);
 }

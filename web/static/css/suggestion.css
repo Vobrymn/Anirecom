@@ -1,7 +1,21 @@
+body{
+    overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.border{
+    height: 100%;
+    width: 100%;
+}
+
+
+
 h1 {
     font-size: 250%;
-    padding-top: 260px;
-    padding-bottom: 10px;
+    padding-top: 150px;
+    padding-bottom: 20px;
 }
 
 a {
@@ -49,18 +63,14 @@ a {
 }
 
 .card_wrapper {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 50px;
     margin: 40px 40px 40px 40px;
     justify-content: center;
-    max-height: 80vh;
-    overflow-y: scroll;
-}
-
-.card_wrapper::-webkit-scrollbar {
-    display: none;
+    padding-bottom: 50px;
 }
 
 /* The transparent thing in front */

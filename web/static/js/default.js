@@ -1,6 +1,16 @@
 var nav_width = "0"
 var transition = false
 
+if (logged_in){
+  $("#register_sn").remove()
+}
+else{
+  $(".ui_bar").append('<button id="sb" class="button">Sign in</button>');
+  $("#settings_sn").remove()
+  $("#history_sn").remove()
+  $("#logout_sn").remove()
+}
+
 function window_ratio(){
   if(window.innerHeight / window.innerWidth > 2160 /3840){
     return true;
@@ -84,16 +94,6 @@ function active_sn(){
 $(document).ready(function() {
   resize_bg();
   resize_sn();
-
-  if (logged_in){
-    $("#register_sn").hide()
-  }
-  else{
-    $("#settings_sn").hide()
-    $("#history_sn").hide()
-    $("#logout_sn").hide()
-  }
-
   $("body").css("opacity", "1");
 });
 
@@ -110,12 +110,6 @@ $('#sb').click(function() {
   $('#login_form_box').show()
   $('.modal').css({"z-index":"12"});
 });
-
-// $('.home_button').click(function() {
-//   window.location.href = "/";
-// });
-
-// When the user clicks anywhere outside of the modal, close it
 
 $(document).click(function(event) {
   if (event.target == document.getElementById('login_form_box')) {

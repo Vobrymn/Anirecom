@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, make_response, request, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
+from selenium import webdriver
 import sqlite3 as sql
 import re
 import urllib
@@ -68,7 +69,8 @@ def login():
 
                response = make_response('Login successful')
                for key, value in session.items():
-                  response.set_cookie(key, urllib.parse.quote(str(value)))
+                  if key in ["logged_in", "username", "colour_1", "colour_2"]:
+                     response.set_cookie(key, urllib.parse.quote(str(value)))
                
                return response
             
@@ -121,8 +123,14 @@ def register():
          session['colour_2'] = "rgba(203, 119, 174, 0.9)"
 
          response = make_response('Registration successful')
+
+         response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+         response.headers["Pragma"] = "no-cache"
+         response.headers["Expires"] = "0"
+
          for key, value in session.items():
-            response.set_cookie(key, urllib.parse.quote(str(value)))
+            if key in ["logged_in", "username", "colour_1", "colour_2"]:
+               response.set_cookie(key, urllib.parse.quote(str(value)))
                
             return response
    return render_template('register.html')
@@ -161,11 +169,18 @@ def change_colour():
 @app.route('/quiz')
 def quiz():
 
-   return render_template('quiz.html')
+
+   response = make_response(render_template('quiz.html'))
+
+   response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+   response.headers["Pragma"] = "no-cache"
+   response.headers["Expires"] = "0"
+   
+   return response
 
 @app.route('/suggestions', methods=['GET'])
 def suggestions():
-      VALID_PARAMS = ['content_type', 'genres', 'themes', 'producers', 'years']
+      VALID_PARAMS = ['content_type', 'genres', 'themes', 'producers', 'dates']
       # Check for any invalid parameters
       invalid_params = [param for param in request.args.keys() if param not in VALID_PARAMS]
       if invalid_params:
@@ -173,47 +188,87 @@ def suggestions():
          return (make_response(error_message, 400))
       
       content_type = request.args.get('content_type')
-      if (content_type is None):
+      if (content_type is None or (content_type != "anime" and content_type != "manga")):
          error_message = "Invalid content type"
          return (make_response(error_message, 400))
       
-      columns = []
-      strings = []
-      genre = request.args.get('genres')
-      if genre:
-          columns.append("genres")
-          strings.append(genre)
-      themes = request.args.get('themes')
-      if themes:
-          columns.append("themes")
-          strings.append(themes)
-      producers = request.args.get('producers')
-      if producers:
-          columns.append("producers")
-          strings.append(producers)
-      years = request.args.get('years')
-      # if (years < 1917 or years > 2023):
-      #    error_message = "Invalid date range"
-      #    return (make_response(error_message, 400))
-
-      db = get_db("content")
-      cursor = db.cursor()
+      query = {}
+      query_error = False
       
+      genre = request.args.get('genres')
+
+      if genre != '[]' and genre:
+         try:
+            genre = eval(genre)
+            query["genres"] = genre
+         except:
+            query_error = True
+         
+      themes = request.args.get('themes')
+      if themes != '[]' and themes:
+         try:
+            themes = eval(themes)
+            query["themes"] = themes
+         except:
+            query_error = True
+      producers = request.args.get('producers')
+      if producers != '[]' and producers:
+         try:
+            producers = eval(producers)
+            query["producers"] = producers
+         except:
+            query_error = True
+
       conditions = []
-      for i, column in enumerate(columns):
-         for string in strings[i]:
-            conditions.append(f"{column} LIKE '%{string}%'")
+
+      dates = request.args.get('dates')      
+      if dates != '[]' and dates:
+         try:
+            dates = eval(dates)
+
+            try:
+               if (dates[0] < 1917 or dates[1] > 2023):
+                  error_message = "Invalid date range"
+                  return (make_response(error_message, 400))
+               
+               query["dates"] = dates
+               conditions.append(f"year > {dates[0]} AND year < {dates[1]}")
+            except:
+               error_message = "Invalid date"
+               return (make_response(error_message, 400))
+
+         except:
+            query_error = True
+
+      if query_error:
+         error_message = "Invalid query"
+         return (make_response(error_message, 400))   
+      
+      for key in query:
+         for value in query[key]:
+            if isinstance(value, str):
+               conditions.append(f"{key} LIKE '%{value}%'")
+            else:
+               error_message = "Invalid query"
+               return (make_response(error_message, 400)) 
         
-      # join the conditions using AND operator
-      condition = ' AND '.join(conditions)
+      # join the conditions using AND operator      
+
+      condition = ' AND '.join(conditions)     
 
       # select rows with the specified conditions
-      if condition:
-         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition}")
+      db = get_db("content")
+      cursor = db.cursor()
 
-      results = cursor.fetchall()  
+      if condition:
+         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 12")
+      else:
+         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 12")
+
+      results = cursor.fetchall()
       response = make_response(results)
-      return response
+
+      return render_template("suggestions.html", suggestions = results)
 
 
 
