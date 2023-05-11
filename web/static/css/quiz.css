@@ -1,3 +1,29 @@
+
+h1 {
+  font-size: 250%;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+#quiz_screen_bg {
+  z-index: -1;
+}
+
+.btn {
+  background-color: rgba(14, 112, 47, 0.9);;
+  color: white;
+  padding: none;
+  border: none;    
+  border-radius: 4px;  
+  cursor: pointer;
+  text-align: center;
+  height: 40px;
+  width: 90px;
+  font-size:20px;
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
+}
+
 html {
   overflow: hidden; /*so users cannot scroll if questions too long*/
 }
@@ -35,6 +61,7 @@ html {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  top: 100%;
 }
 
 input[type="text"] {
@@ -45,11 +72,12 @@ input[type="text"] {
 
 #error_message {
   position: absolute;
-  top: 0;
+  top: 60%;
   left: 50%;
   transform: translateX(-50%);
   color: red;
 }
+
 /*the next skip bk buttons stuff*/
 button {
   padding: 0.5rem 1rem;
@@ -95,7 +123,6 @@ button:last-child {
   margin-top: 1rem;
   justify-content: center;
 }
-
 
 .input_container {
   display: flex;
