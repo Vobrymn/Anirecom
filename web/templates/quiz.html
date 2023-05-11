@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/quiz.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Main page</title>
+  <link rel="stylesheet" href= "css/default.css">
+  <link rel="stylesheet" href= "css/quiz.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
+    <div class="hamburger">
+		<div class="spinner diagonal part_1"></div>
+		<div class="spinner horizontal"></div>
+		<div class="spinner diagonal part_2"></div>
+	</div>
+	<div class="ui_bar">
+		<a href="/" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
+	</div>
+	<div id = "sn" class="modal"></div>
+	<div class="side_nav">
+		<br>
+		<a href="#" class="settings">Settings</a>
+		<a href="#" class="history">History</a>
+		<a href="#" class="logout">Log out</a>
+	</div> 
     <div id="question_container">
         <div id="typing">
         </div>
         <div id="error_message">
         </div>
         <div class="input_container">
-            <input type="text" id="answer" placeholder="ans." autocomplete="off" >
-            <div id="button_container">
-                <button id="back">Back</button>
-                <button id="next">Next</button>
-                <button id="skip">Skip</button>
-            </div>
+            <input type="text" id="answer" placeholder="ans.">
+        </div>
+        <div id="button_container">
+            <button id="back">Back</button>
+            <button id="next">Next</button>
+            <button id="skip">Skip</button>
         </div>
     </div>
-    <script src="/js/quiz.js"></script>
+    <script src="js/default.js"></script>
+    <script src="js/quiz.js"></script>
+    <img src="/images/anime_manga_bg.png" alt="Your Image" id="quiz_screen_bg" class="background">
 </body>
 </html>
