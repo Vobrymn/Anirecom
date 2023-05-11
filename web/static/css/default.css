@@ -157,7 +157,7 @@ button:hover, .button:hover #hb:hover {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 11;
+  z-index: 13;
 }
 
 .spinner{
@@ -233,6 +233,19 @@ button:hover, .button:hover #hb:hover {
   color: rgb(65, 42, 19, 0.9);
 }
 
+.side_nav .settings-menu {
+  display: none;
+}
+
+.side_nav.settings-expanded .settings-menu {
+  display: block;
+}
+
+.side_nav.settings-expanded a:not(.settings-option) {
+  display: none;
+}
+
+
 .x_container {
   text-align: center;
   margin: 10px 0 10px 0;
@@ -304,3 +317,39 @@ span.psw {
    float: none;
 }
 }
+
+#settings_popup {
+  display: none;
+  z-index:1;
+}
+
+#settings_popup .modal_content {
+  background-color: rgba(221, 213, 190);
+  margin: 15% auto;
+  width: 80%;
+  max-width: 600px; 
+  padding: 20px;
+  border: 3px solid;
+  border-color: rgba(65, 42, 19);
+  border-radius: 10px;
+}
+
+#settings_popup .close {
+  display: none; 
+}
+
+
+#settings_popup h2 {
+  text-align: center;
+}
+
+#settings_popup input[type="color"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#settings_popup #save_button {
+  display: block;
+  margin: 0 auto;
+}
+

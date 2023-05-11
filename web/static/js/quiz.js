@@ -101,7 +101,7 @@ function autocomplete(inp, arr) {
     },
     {
         question: "What genres r u interested in? Select up to three, separating each by a comma",
-        anime_choices: ["test1","test2","test3","tst4","doodoo1","dod","do"],
+        anime_choices: ["test 1","test2","test3","tst4","doodoo1","dod","do"],
         manga_choices: ["test","test6","tehe","DOOO","door","tss"],
         /*
         anime_choices: anime_choices[0],

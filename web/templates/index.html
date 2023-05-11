@@ -14,7 +14,7 @@
 
   <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
 
-  <button id = "start_button">Start</button>
+  <button id="start_button">Start</button>
 
   <div class="loader"></div>
   <div class="hamburger">
@@ -24,21 +24,36 @@
   </div>
   
   <div class="ui_bar">
-    <button id = "sb" class="button">Sign in</button>
+    <button id="sb" class="button">Sign in</button>
   </div>
 
-  <div id = "sn" class="modal"></div>
-    <div class="side_nav">
-      <a href="{{url_for('register')}}" class="register">Register</a>
-      <a href="{{url_for('home')}}" class="settings">Settings</a>
-      <a href="{{url_for('home')}}" class="history">History</a>
-      <a href="{{url_for('logout')}}" class="logout">Log out</a>
-    </div> 
-  </div> 
+  <div id="sn" class="modal"></div>
+  <div id="settings_popup" class="modal">
+    <div class="modal_content">
+      <span class="close" title="Close Modal">&times;</span>
+      <h2>Change Color</h2>
+      <input type="color" id="color1" name="color1" value="#000000">
+      <input type="color" id="color2" name="color2" value="#ffffff">
+      <button id="save_button">Save</button>
+    </div>
+  </div>
+  
+  <div class="side_nav">
+    <a href="{{url_for('register')}}" class="register">Register</a>
+    <a href="#" class="settings" data-target="settings_popup">Settings</a>
+    <a href="{{url_for('home')}}" class="history">History</a>
+    <a href="{{url_for('logout')}}" class="logout">Log out</a>
+  
+    <div class="settings-menu">
+      <a href="#" class="settings-option">Change Color</a>
+      <a href="#" class="settings-option">Change Password</a>
+      <a href="#" class="settings-option back-button">Back</a>
+    </div>
+  </div>
+  
 
   <div id="login_form_box" class="modal">
-  
-    <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
+    <form id="login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
       <div class="x_container">
         <span class="close" title="Close Modal">&times;</span>
       </div>
@@ -46,10 +61,10 @@
       <div class="container">
         <br>
         <label for="username"><b>Username</b></label>
-        <input id = "username" type="text" placeholder="Enter Username" name="username" required>
+        <input id="username" type="text" placeholder="Enter Username" name="username" required>
         <br>
         <label for="password"><b>Password</b></label>
-        <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+        <input id="password" type="password" placeholder="Enter Password" name="password" required>
         <div id="login_error"><br></div>
         <button type="submit">Login</button>
   
@@ -57,6 +72,7 @@
       </div>
     </form>
   </div>
+  
 </body>
 <script src="/js/default.js"></script>
 <script src="/js/start_screen.js"></script>
