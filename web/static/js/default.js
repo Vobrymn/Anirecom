@@ -1,8 +1,18 @@
 var nav_width = "0";
 var transition = false;
 
-function window_ratio() {
-  if (window.innerHeight / window.innerWidth > 2160 / 3840) {
+if (logged_in){
+  $("#register_sn").remove()
+}
+else{
+  $(".ui_bar").append('<button id="sb" class="button">Sign in</button>');
+  $("#settings_sn").remove()
+  $("#history_sn").remove()
+  $("#logout_sn").remove()
+}
+
+function window_ratio(){
+  if(window.innerHeight / window.innerWidth > 2160 /3840){
     return true;
   } else {
     return false;
@@ -34,6 +44,7 @@ function resize_sn() {
     if ($(".side_nav").width() != 0) {
       $(".side_nav").width(nav_width);
       $("#start_button").fadeOut(50);
+      $("#hb").fadeOut(50);
     }
   } else {
     nav_width = "250px";
@@ -41,6 +52,7 @@ function resize_sn() {
     if ($(".side_nav").width() != 0) {
       $(".side_nav").width(nav_width);
       $("#start_button").fadeIn(50);
+      $("#hb").fadeIn(50);
     }
   }
 }
@@ -52,30 +64,31 @@ function active_sn() {
     if ($(".side_nav").width() != 0) {
       $(".side_nav").width("0");
       $("#sb").fadeIn(50);
-      $("#hb").fadeIn(50);
       $("#start_button").fadeIn(50);
-      $("#sn").css({ display: "none" });
-      $(".modal").css({ "background-color": "rgba(65, 42, 19, 0.4)" });
-    } else {
+      $('#sn').hide()
+      $('.modal').css({"background-color":"rgba(65, 42, 19, 0.4)"});
+      $("#hb").fadeIn(50);
+    }
+    else {
       $(".side_nav").width(nav_width);
       $("#sb").fadeOut(50);
-      $("#hb").fadeOut(50);
-      $("#sn").css({ display: "block" });
-      $(".modal").css({ "background-color": "rgba(65, 42, 19, 0.0)" });
-      if (window_skinny()) {
+      
+      $('#sn').show()
+      $('.modal').css({"background-color":"rgba(65, 42, 19, 0.0)"});
+      if(window_skinny()){
         $("#start_button").fadeOut(50);
+        $("#hb").fadeOut(50);
       }
     }
-    setTimeout(function () {
-      transition = false;
-    }, 160);
+    setTimeout(function() {
+      transition = false
+    }, 200);
   }
 }
 
 $(document).ready(function () {
   resize_bg();
   resize_sn();
-  $("body").css("opacity", "1");
 });
 
 $(window).on("resize", function () {
@@ -87,29 +100,29 @@ $(".hamburger").click(function () {
   active_sn();
 });
 
-$("#sb").click(function () {
-  $("#login_form_box").css({ display: "block" });
-  $(".modal").css({ "z-index": "12" });
+$('#sb').click(function() {
+  $('#login_form_box').show()
+  $('.modal').css({"z-index":"12"});
 });
 
-$(".home_button").click(function () {
-  window.location.href = "/";
-});
-
-// When the user clicks anywhere outside of the modal, close it
-$(document).click(function (event) {
-  if (event.target == document.getElementById("login_form_box")) {
-    $("#login_form_box").css({ display: "none" });
-    $(".modal").css({ "z-index": "9" });
-  } else if (event.target == document.getElementById("sn")) {
-    active_sn();
+$(document).click(function(event) {
+  if (event.target == document.getElementById('login_form_box')) {
+    $('#login_form_box').hide()
+    $('.modal').css({"z-index":"9"});
+    $("#username").val("")
+    $("#password").val("")
+  }
+  else if (event.target == document.getElementById('sn')){
+      active_sn();
   }
 });
 
 $('.x_container').click(function() {
-  $('#login_form_box').css({"display":"none"});
+  $('#login_form_box').hide()
   $('#settings_popup').css({"display":"none"});
   $('.modal').css({"z-index":"9"});
+  $("#username").val("")
+  $("#password").val("")
 });
 
 
@@ -129,8 +142,8 @@ $("#login_form").submit(async function(event) {
   // handle the server response
   if (response.ok) {
     // success, redirect to the home page
-    window.location.href = "/";
-    parse_cookie();
+    location.reload()
+
   } else {
     // error, update the form with the error message
     const error = await response.text();

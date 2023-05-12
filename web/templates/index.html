@@ -36,7 +36,17 @@
       <input type="color" id="color2" name="color2" value="#ffffff">
       <button id="save_button">Save</button>
     </div>
+    <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
+
+  <div id = "sn" class="modal"></div>
+  <div class="side_nav">
+      <a href="/register" id="register_sn">Register</a>
+      <a href="/home" id="settings_sn">Settings</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/logout" id="logout_sn">Log out</a>
+  </div> 
+
   
   <div class="side_nav">
     <a href="{{url_for('register')}}" class="register">Register</a>
@@ -68,12 +78,11 @@
         <div id="login_error"><br></div>
         <button type="submit">Login</button>
   
-        <a href="{{url_for('register')}}" id="register">Register</a>
+        <a href="/register" id="register_lg">Register</a>
       </div>
     </form>
   </div>
-  
-</body>
 <script src="/js/default.js"></script>
 <script src="/js/start_screen.js"></script>
+</body>
 </html>

@@ -23,6 +23,7 @@ function resize_sb(){
 
 $(document).ready(function() {
   resize_sb();
+  $("body").css("opacity", "1");
 });
 
 $( window ).on( "resize", function(){

@@ -1,30 +1,26 @@
-html * {
-    font-weight: bold !important;
-    font-family: 'Quicksand', sans-serif !important;
-}
-
-body {
-    opacity: 1;
-    background-color: rgba(221, 213, 190, 0.9);
-    color: rgba(65, 42, 19);
-}
 h1 {
     font-size: 250%;
-    padding-top: 40px;
-    padding-bottom: 20px;
 }
 
 #register_form{
     width: 90vw;
-    max-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    z-index: 1;
 }
 
 #register_error{
     word-wrap: break-word;
     font-size: 15px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    opacity: 0;
 }
 
-.border{
-    z-index: 1;
+.textbox{
+    max-width: 300px;
 }

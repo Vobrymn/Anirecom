@@ -1,0 +1,82 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Result </title>
+    <script src= "/js/pre_render.js"></script>
+	<link rel="stylesheet" href= "css/default.css">	
+	<link rel="stylesheet" href= "css/suggestion.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>	
+    
+    <script> 
+        var suggestions = {{ suggestions | tojson}};
+    </script>
+</head>
+<body>
+	<div class="hamburger">
+		<div class="spinner diagonal part_1"></div>
+		<div class="spinner horizontal"></div>
+		<div class="spinner diagonal part_2"></div>
+	</div>
+	<div class="ui_bar">
+        <a href="/" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
+	</div>
+    <div id = "sn" class="modal"></div>
+  <div class="side_nav">
+      <a href="/register" id="register_sn">Register</a>
+      <a href="/home" id="settings_sn">Settings</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/logout" id="logout_sn">Log out</a>
+  </div> 
+
+    <div id="login_form_box" class="modal">
+  
+        <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
+            <div class="x_container">
+                <span class="close" title="Close Modal">&times;</span>
+            </div>
+          
+            <div class="container">
+                <br>
+                <label for="username"><b>Username</b></label>
+                <input id = "username" type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password"><b>Password</b></label>
+                <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+                <div id="login_error"><br></div>
+                <button type="submit">Login</button>
+          
+                <a href="/register" id="register_lg">Register</a>
+            </div>
+        </form>
+    </div>
+
+	<div align="center" class="border">
+		<div class="header">
+			<h1 class="word">Found <span id="total_results">1</span> Result(s)</h1>
+		</div>
+        <div class = "card_wrapper">
+            <!-- <div class="card">
+                <a href="https://www.imdb.com/title/tt1630029/">
+                    <div class="poster">
+                        <img src="poster.jpg" alt="">
+                    </div>
+                    <div class="details">
+                        <h1 class="logo">Avatar</h1>
+                        <h3>Directed by James Cameron</h3>
+                        <div class="rating">
+                            <span>8/10</span>
+                        </div>
+                        <div class="tags">
+                            <span>Sci-fi</span>
+                        </div>
+                        <div></div>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+    </div>
+	<script src="/js/default.js"></script>
+    <script src="/js/suggestions.js"></script>
+</body>
+</html>

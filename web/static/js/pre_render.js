@@ -1,3 +1,9 @@
+var logged_in = false
+var username = null
+var colour_1 = "rgba(14, 112, 47, 0.9)"
+var colour_2 = "rgba(203, 119, 174, 0.9)"
+
+
 function parse_cookie(){
 
     var cookies = document.cookie.split(';');  // Get all cookies as an array of strings
@@ -16,29 +22,17 @@ function parse_cookie(){
 
     // Access individual session variables
     if ('logged_in' in sessionVars) {
-        var logged_in = sessionVars['logged_in']
-    }
-    else{
-        var logged_in = false
+        logged_in = sessionVars['logged_in']
     }
     if ('username' in sessionVars) {
-        var username = sessionVars['username']
-    }
-    else{
-        var username = null
+        username = sessionVars['username']
     }
     if ('colour_1' in sessionVars) {
-        var colour_1 = sessionVars['colour_1']
-    }
-    else{
-        var colour_1 = "rgba(14, 112, 47, 0.9)"
+        colour_1 = sessionVars['colour_1']
     }
     if ('colour_2' in sessionVars) {
         // `colour_2` exists, so we can access its value
-        var colour_2 = sessionVars['colour_2']
-    }
-    else{
-        var colour_2 = "rgba(203, 119, 174, 0.9)"
+        colour_2 = sessionVars['colour_2']
     }
 
     let root = document.documentElement;
