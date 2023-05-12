@@ -1,3 +1,9 @@
+body{
+  background-color: rgb(9, 5, 0);
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+}
+
 #start_button {
   position: absolute;
   top: 50%;

@@ -4,43 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
-  <link rel="stylesheet" href= "css/default.css">
-  <link rel="stylesheet" href= "css/quiz.css">
+  <script src= "/js/pre_render.js"></script>
+  <link rel="stylesheet" href= "/css/default.css">
+  <link rel="stylesheet" href= "/css/quiz.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-    <div class="hamburger">
-		<div class="spinner diagonal part_1"></div>
-		<div class="spinner horizontal"></div>
-		<div class="spinner diagonal part_2"></div>
-	</div>
-	<div class="ui_bar">
-		<a href="/" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
-	</div>
-	<div id = "sn" class="modal"></div>
-	<div class="side_nav">
-		<br>
-		<a href="#" class="settings">Settings</a>
-		<a href="#" class="history">History</a>
-		<a href="#" class="logout">Log out</a>
-	</div> 
+    <div class="loader"></div>
+  <div class="hamburger">
+    <div class="spinner diagonal part_1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part_2"></div>
+  </div>
+  
+  <div class="ui_bar">
+    <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
+  </div>
+
+  <div id = "sn" class="modal"></div>
+  <div class="side_nav">
+      <a href="/register" id="register_sn">Register</a>
+      <a href="/home" id="settings_sn">Settings</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/logout" id="logout_sn">Log out</a>
+  </div> 
+
+  <div id="login_form_box" class="modal">
+  
+    <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
+      <div class="x_container">
+        <span class="close" title="Close Modal">&times;</span>
+      </div>
+  
+      <div class="container">
+        <br>
+        <label for="username"><b>Username</b></label>
+        <input id = "username" type="text" placeholder="Enter Username" name="username" required>
+        <br>
+        <label for="password"><b>Password</b></label>
+        <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+        <div id="login_error"><br></div>
+        <button type="submit">Login</button>
+  
+        <a href="/register" id="register_lg">Register</a>
+      </div>
+    </form>
+  </div> 
     <div id="question_container">
         <div id="typing">
         </div>
-        <div id="error_message">
-        </div>
         <div class="input_container">
-            <input type="text" id="answer" placeholder="ans.">
+            <input type="text" id="answer" placeholder="choice, choice, choice..." autocomplete="off">
         </div>
         <div id="button_container">
             <button id="back">Back</button>
             <button id="next">Next</button>
             <button id="skip">Skip</button>
         </div>
+        <div id="error_message">
+        </div>
     </div>
-    <script src="js/default.js"></script>
-    <script src="js/quiz.js"></script>
+    
+    <script src="/js/default.js"></script>
+    <script src="/js/quiz.js"></script>
     <img src="/images/anime_manga_bg.png" alt="Your Image" id="quiz_screen_bg" class="background">
 </body>
 </html>

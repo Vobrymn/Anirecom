@@ -10,7 +10,6 @@
     
     <script> 
         var suggestions = {{ suggestions | tojson}};
-        console.log(suggestions)
     </script>
 </head>
 <body>
@@ -24,10 +23,10 @@
 	</div>
     <div id = "sn" class="modal"></div>
   <div class="side_nav">
-      <a href="{{url_for('register')}}" id="register_sn">Register</a>
-      <a href="{{url_for('home')}}" id="settings_sn">Settings</a>
-      <a href="{{url_for('home')}}" id="history_sn">History</a>
-      <a href="{{url_for('logout')}}" id="logout_sn">Log out</a>
+      <a href="/register" id="register_sn">Register</a>
+      <a href="/home" id="settings_sn">Settings</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/logout" id="logout_sn">Log out</a>
   </div> 
 
     <div id="login_form_box" class="modal">
@@ -47,7 +46,7 @@
                 <div id="login_error"><br></div>
                 <button type="submit">Login</button>
           
-                <a href="{{url_for('register')}}" id="register_lg">Register</a>
+                <a href="/register" id="register_lg">Register</a>
             </div>
         </form>
     </div>

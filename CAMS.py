@@ -4,6 +4,7 @@ from selenium import webdriver
 import sqlite3 as sql
 import re
 import urllib
+import json
 
 app = Flask(__name__,
             static_url_path='', 
@@ -66,14 +67,17 @@ def login():
                session['username'] = account[1]
                session['colour_1'] = account[3]
                session['colour_2'] = account[4]
+               
+               session.pop('history', None)
 
                response = make_response('Login successful')
                for key, value in session.items():
                   if key in ["logged_in", "username", "colour_1", "colour_2"]:
                      response.set_cookie(key, urllib.parse.quote(str(value)))
                
+               db.close()
                return response
-            
+         db.close()
          error_message = "Incorrect username / password"
          return (make_response(error_message, 400))
    return redirect(url_for("home"))
@@ -85,6 +89,7 @@ def logout():
    session.pop('username', None)
    session.pop('colour_1', None)
    session.pop('colour_2', None)
+   session.pop("history", None)
    response = make_response(redirect(url_for('home')))
    response.delete_cookie('logged_in')
    response.delete_cookie('username')
@@ -103,15 +108,19 @@ def register():
       cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
       account = cursor.fetchone()
       if account:
+         db.close()
          error_message = 'Username taken'
          return (make_response(error_message, 400))
       elif not re.match(r'[A-Za-z0-9]+', username):
+         db.close()
          error_message = 'Username must contain only characters and numbers'
          return (make_response(error_message, 400))
       elif (password != password_2):
+         db.close()
          error_message = 'Passwords must match'
          return (make_response(error_message, 400))
       elif (len(password) < 8 or len(password_2) < 8):
+         db.close()
          error_message = 'Password must be at least 8 characters'
          return (make_response(error_message, 400))
       else:
@@ -122,6 +131,8 @@ def register():
          session['colour_1'] = "rgba(14, 112, 47, 0.9)"
          session['colour_2'] = "rgba(203, 119, 174, 0.9)"
 
+         session.pop('history', None)
+
          response = make_response('Registration successful')
 
          response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -131,8 +142,10 @@ def register():
          for key, value in session.items():
             if key in ["logged_in", "username", "colour_1", "colour_2"]:
                response.set_cookie(key, urllib.parse.quote(str(value)))
-               
-            return response
+            
+         db.close()
+         return response
+      
    return render_template('register.html')
 
 @app.route('/change_pwd', methods=['GET', 'POST'])
@@ -147,7 +160,9 @@ def change_pwd():
          while (account := cursor.fetchone()):
             if check_password_hash(account[2], password):
                cursor.execute("UPDATE accounts set password = ?", generate_password_hash(new_password))
+               db.close()
                return "Update successful"
+         db.close()
          error_message = "Incorrect password"
          return (make_response(error_message, 400))
    return redirect(url_for("home"))
@@ -162,21 +177,58 @@ def change_colour():
       db = get_db("users")
       cursor = db.cursor()
       cursor.execute("UPDATE accounts SET colour_1 = ?, colour_2 = ? WHERE username = ?", (colour_1, colour_2, session.get("username")))
+      db.close()
    return redirect(url_for("home"))
       
 
 
-@app.route('/quiz')
+@app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
+   if request.method == 'GET':
+      
+      response = make_response(render_template('quiz.html'))
 
+      response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "0"
+      
+      return response
+   elif request.method == "POST" and "query" in request.form:
 
-   response = make_response(render_template('quiz.html'))
+      query = json.loads(request.form["query"])
 
-   response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-   response.headers["Pragma"] = "no-cache"
-   response.headers["Expires"] = "0"
-   
-   return response
+      if session.get("history") is None:
+         session["history"] = []
+      
+      session["history"].insert(0, query)
+      
+      max_logs = 10
+
+      if len(session["history"]) > max_logs:
+         session["history"] = session["history"][:max_logs]
+
+      if session.get("logged_in") and session.get("username"):
+         username = session.get("username")
+         db = get_db("users")
+         cursor = db.cursor()
+         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name= ?;", (username,))
+         history = cursor.fetchone()
+         if not history:
+            cursor.execute("CREATE TABLE {} (log_num INTEGER PRIMARY KEY AUTOINCREMENT, query TEXT);".format(username))
+            db.commit()
+      
+         cursor.execute("INSERT INTO {} (query) VALUES (?)".format(username), (json.dumps(query),))
+         db.commit()
+
+      db.close()
+
+      return "History updated"
+
+   else:
+
+      error_message = 'Invalid request'
+      return (make_response(error_message, 400))
+
 
 @app.route('/suggestions', methods=['GET'])
 def suggestions():
@@ -196,7 +248,6 @@ def suggestions():
       query_error = False
       
       genre = request.args.get('genres')
-
       if genre != '[]' and genre:
          try:
             genre = eval(genre)
@@ -230,8 +281,7 @@ def suggestions():
                if (dates[0] < 1917 or dates[1] > 2023):
                   error_message = "Invalid date range"
                   return (make_response(error_message, 400))
-               
-               query["dates"] = dates
+             
                conditions.append(f"year > {dates[0]} AND year < {dates[1]}")
             except:
                error_message = "Invalid date"
@@ -265,10 +315,9 @@ def suggestions():
       else:
          cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 12")
 
-      results = cursor.fetchall()
-      response = make_response(results)
+      suggestions = cursor.fetchall()
 
-      return render_template("suggestions.html", suggestions = results)
+      return render_template("suggestions.html", suggestions = suggestions)
 
 
 

@@ -91,41 +91,29 @@ function autocomplete(inp, arr) {
 
 
   //[genre],[theme],[producer]
-  const anime_choices =[[],[],[]]; 
-  const manga_choices =[[],[],[]]; 
+
 
   const questions = [
     {
       question: "Would you like an anime or a manga?",
-      choices: ["anime", "manga"],
+      choices: ["anime", "manga"]
     },
     {
-        question: "What genres r u interested in? Select up to three, separating each by a comma",
-        anime_choices: ["Action","Adventure","Drama","Comedy"],
-        manga_choices: ["Action","Adventure","Drama","Comedy"],
-        /*
-        anime_choices: anime_choices[0],
-        manga_choices: manga_choices[0],*/
+        question: "What genres r u interested in? Select up to three",
+        choices: ["Action","Adventure","Drama","Comedy"]
       
     },
     {
-        question: "Any themes you're interested in? Select up to three, separating each by a comma",
-        anime_choices: ["test11", "test21", "test31", "tst41", "doodoo11", "dod1", "do1"],
-        manga_choices: ["test1", "test61", "tehe1", "DOOO1", "door1", "tss1"],
-        /*
-        anime_choices: anime_choices[1],
-        manga_choices: manga_choices[1],*/
+        question: "Any themes you're interested in? Select up to three",
+        choices: ["test11", "test21", "test31", "tst41", "doodoo11", "dod1", "do1"]
     },
     
     {
         question: "",
-        anime_question: "Are there any particular studios you'd like to look up? Select up to two, separating them by a comma!",
-        manga_question: "Are there any particular authors you'd like to look up? Select up to two, separating them by a comma!",
+        anime_question: "Are there any particular studios you'd like to look up?",
+        manga_question: "Are there any particular authors you'd like to look up?",
         anime_choices: ["studio1", "studio2", "studio3", "studio4", "studio5", "studio6"],
-        manga_choices: ["author1", "author2", "author3", "author4", "author5", "author6"],
-        /*
-        anime_choices: anime_choices[2],
-        manga_choices: manga_choices[2],*/
+        manga_choices: ["author1", "author2", "author3", "author4", "author5", "author6"]
     },
 
     {
@@ -160,13 +148,56 @@ function autocomplete(inp, arr) {
 
   function displayQuestion() {
     let question;
-    if (currentQuestionIndex === 3) {
-      question = selectedOption === "anime" ? questions[currentQuestionIndex].anime_question : questions[currentQuestionIndex].manga_question;
-    } else {
+    var validChoices
+
+    if (currentQuestionIndex === 0){
+        question = questions[currentQuestionIndex].question;
+        backButton.disabled = true;
+        backButton.style.display = "none";
+        backButton.style.cursor = "default"
+  
+        skipButton.disabled = true;
+        skipButton.style.display = "block";
+        skipButton.style.cursor = "default"
+    }
+    else{
+      backButton.disabled = false;
+      backButton.style.display = "block";
+      backButton.style.cursor = "pointer"
+
+      skipButton.disabled = false;
+      skipButton.style.display = "none";
+      skipButton.style.cursor = "pointer"
+    }
+
+    if (currentQuestionIndex === 1){
+      validChoices = questions[currentQuestionIndex].choices
+      autocomplete(answerInput, validChoices);
       question = questions[currentQuestionIndex].question;
     }
+    else if (currentQuestionIndex === 2){
+      validChoices = questions[currentQuestionIndex].choices
+      autocomplete(answerInput, validChoices);
+      question = questions[currentQuestionIndex].question;
+    }
+    else if (currentQuestionIndex === 3){
+      question = selectedOption === "anime" ? questions[currentQuestionIndex].anime_question : questions[currentQuestionIndex].manga_question;
+      validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
+      autocomplete(answerInput, validChoices);
+    }
+    if (currentQuestionIndex === 4){
+      question = questions[currentQuestionIndex].question;
+      skipButton.style.display = "none"
+      nextButton.innerHTML = "Submit"
+    }
+    else{
+      skipButton.style.display = "block"
+      nextButton.innerHTML = "Next"
+    }
+    
     typing.innerHTML = "";
-    errorMessage.textContent = "";
+    errorMessage.textContent = "default";
+    errorMessage.style.opacity = 0
     answerInput.value = previousAnswers[currentQuestionIndex];
     const letters = question.split("");
     addBlinkingCursor();
@@ -181,41 +212,6 @@ function autocomplete(inp, arr) {
         addBlinkingCursor();
       }, i * 100);
       timeoutIds.push(timeoutId);
-    }
-  
-    //initialize autocomplete for questions 2 3 4
-    if (currentQuestionIndex >= 1 && currentQuestionIndex <= 3) {
-      const validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
-      autocomplete(answerInput, validChoices);
-    }
-
-    if (currentQuestionIndex === 0) {
-      backButton.disabled = true;
-      backButton.style.opacity = "0.9";
-      backButton.style.cursor = "default"
-
-      skipButton.disabled = true;
-      skipButton.style.opacity = "0.9";
-      skipButton.style.cursor = "default"
-
-
-    } else {
-      backButton.disabled = false;
-      backButton.style.opacity = "1";
-      backButton.style.cursor = "pointer"
-
-      skipButton.disabled = false;
-      skipButton.style.opacity = "1";
-      skipButton.style.cursor = "pointer"
-
-    }
-    if (currentQuestionIndex === 4) {
-      skipButton.style.display = "none"
-      nextButton.innerHTML = "Submit"
-
-    } else {
-      skipButton.style.display = "block"
-      nextButton.innerHTML = "Next"
     }
   }
   
@@ -266,60 +262,71 @@ function autocomplete(inp, arr) {
 
       //autocomplete
       if (currentQuestionIndex === 1) {
-        const validGenres = selectedOption === "anime" ? questions[1].anime_choices : questions[1].manga_choices;
+        const validGenres = questions[1].choices
         autocomplete(answerInput, validGenres);
       }
     } else {
       errorMessage.textContent = "Invalid answer. Please choose either 'anime' or 'manga'.";
+      errorMessage.style.opacity = 1
     }
   } else if (currentQuestionIndex >= 1 && currentQuestionIndex <= 3) {
-    const choices = answerInput.value.split(",").map((choice) => choice.trim().toLowerCase());
-    const validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
-    const areAllChoicesValid = choices.every((choice) => validChoices.map(c => c.toLowerCase()).includes(choice) && choice !== "");
-
-    let maxChoicesAllowed = 3;
-    if (currentQuestionIndex === 3) {
-      maxChoicesAllowed = 2; //limit to 2 choices for authors/studios question
-    }
-
-    if (choices.length >= 1 && choices.length <= maxChoicesAllowed && areAllChoicesValid) {
-      previousAnswers[currentQuestionIndex] = answerInput.value;
-      //modified this for the answers thing
-      if (currentQuestionIndex === 1) {
-        answers.genres = choices;
-      } else if (currentQuestionIndex === 2) {
-        answers.themes = choices;
-      } else if (currentQuestionIndex === 3) {
-        answers.producers = choices;
+      const choices = answerInput.value.split(",").map((choice) => choice.trim().toLowerCase());
+      var validChoices
+      if (currentQuestionIndex === 3){
+        validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
       }
-      currentQuestionIndex++;
-      displayQuestion();
-    } else {
-      let errorMsg = "";
-      const invalidChoiceIndexes = choices.reduce((acc, choice, index) => {
-        if (!validChoices.map(c => c.toLowerCase()).includes(choice) || choice === "") {
-          acc.push(index + 1);
+      else{
+        validChoices = questions[currentQuestionIndex].choices
+      }
+      
+      const areAllChoicesValid = choices.every((choice) => validChoices.map(c => c.toLowerCase()).includes(choice) && choice !== "");
+
+      let maxChoicesAllowed = 3;
+      if (currentQuestionIndex === 3) {
+        maxChoicesAllowed = 2; //limit to 2 choices for authors/studios question
+      }
+
+      if (choices.length >= 1 && choices.length <= maxChoicesAllowed && areAllChoicesValid) {
+        previousAnswers[currentQuestionIndex] = answerInput.value;
+        //modified this for the answers thing
+        if (currentQuestionIndex === 1) {
+          answers.genres = choices;
+        } else if (currentQuestionIndex === 2) {
+          answers.themes = choices;
+        } else if (currentQuestionIndex === 3) {
+          answers.producers = choices;
         }
-        return acc;
-      }, []);
+        currentQuestionIndex++;
+        displayQuestion();
+      } else {
+        let errorMsg = "";
+        const invalidChoiceIndexes = choices.reduce((acc, choice, index) => {
+          if (!validChoices.map(c => c.toLowerCase()).includes(choice) || choice === "") {
+            acc.push(index + 1);
+          }
+          return acc;
+        }, []);
 
-      if (invalidChoiceIndexes.length > 0) {
-        errorMsg = `Input${invalidChoiceIndexes.length > 1 ? "s" : ""} #${invalidChoiceIndexes.join(", ")} ${
-          invalidChoiceIndexes.length > 1 ? "are" : "is"
-        } invalid.`;
-      } else if (choices.length > maxChoicesAllowed) {
-        errorMsg = `Please select up to ${maxChoicesAllowed} choices only.`;
+        if (invalidChoiceIndexes.length > 0) {
+          errorMsg = `Input${invalidChoiceIndexes.length > 1 ? "s" : ""} #${invalidChoiceIndexes.join(", ")} ${
+            invalidChoiceIndexes.length > 1 ? "are" : "is"
+          } invalid.`;
+        } else if (choices.length > maxChoicesAllowed) {
+          errorMsg = `Please select up to ${maxChoicesAllowed} choices only.`;
+        }
+        errorMessage.textContent = errorMsg;
+        errorMessage.style.opacity = 1
       }
-      errorMessage.textContent = errorMsg;
-    }
   } else if (currentQuestionIndex === 4) {
     const answer = answerInput.value.trim();
     const yearPattern = /^(\d{4})-(\d{4})$/;
     const match = answer.match(yearPattern);
 
-    console.log(answer)
-   
-      if (match) {
+      if (!answer){
+
+          submit()
+      }
+      else if (match) {
         const startYear = parseInt(match[1]);
         const endYear = parseInt(match[2]);
 
@@ -327,24 +334,18 @@ function autocomplete(inp, arr) {
 
           answers.dates = [startYear,endYear]
 
-          var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
-
-          window.location.href = url;
+          submit()
           
         } 
         else {
           errorMessage.textContent = "Invalid year range. Please enter a valid year range (e.g., 2008-2010).";
+          errorMessage.style.opacity = 1
         }
       } 
       else {
-        if (answer != ""){
+        
           errorMessage.textContent = "Invalid input. Please use the format YYYY-YYYY (e.g. 2008-2010).";
-        }
-        else{
-          var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
-
-          window.location.href = url;
-        }
+          errorMessage.style.opacity = 1
       }
   }
 }
@@ -355,6 +356,21 @@ function autocomplete(inp, arr) {
       displayQuestion(questions[currentQuestionIndex].question);
     }
 
+  }
+
+  async function submit(){
+
+    const formData = new FormData();
+    formData.append('query', JSON.stringify(answers));
+
+    const response = await fetch('/quiz', {
+      method: 'POST',
+      body: formData
+    });
+
+    var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
+
+    // window.location.href = url;
   }
   
 

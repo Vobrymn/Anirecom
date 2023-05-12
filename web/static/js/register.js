@@ -11,33 +11,51 @@ function check_input(e){
         case "username":
             if (alphanumericRegex.test(log)) {
                 valid_u = true;
-                $("#register_error").text("")
+                $("#register_error").text("default")
+                $("#register_error").css("opacity","0")
             } 
             else {
                 valid_u = false;
-                $("#register_error").text("Username must contain only characters and numbers")
+                if (log != ""){
+                    $("#register_error").text("Username must contain only characters and numbers")
+                    $("#register_error").css("opacity","1")
+                }
+                else{
+                    $("#register_error").text("default")
+                    $("#register_error").css("opacity","0")
+                }
             }
         break;
 
         case "password":
             if (log.length < 8) {
                 valid_p = false;
-                $("#register_error").text("Password must be at least 8 characters")
+                if (log != ""){
+                    $("#register_error").text("Password must be at least 8 characters")
+                    $("#register_error").css("opacity","1")
+                }
+                else{
+                    $("#register_error").text("default")
+                    $("#register_error").css("opacity","0")
+                }
             } 
             else {
                 valid_p = true;
-                $("#register_error").text("")
+                $("#register_error").text("default")
+                $("#register_error").css("opacity","0")
             }
         break;
 
         case "password_2":
             if (log == $("#password").val()) {
                 valid_p2 = true;
-                $("#register_error").text("")
+                $("#register_error").text("default")
+                $("#register_error").css("opacity","0")
             } 
             else {
                 valid_p2 = false;
                 $("#register_error").text("Passwords must match")
+                $("#register_error").css("opacity","1")
             }
         break;
 
