@@ -370,7 +370,7 @@ function autocomplete(inp, arr) {
 
     var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
 
-    // window.location.href = url;
+    window.location.href = url;
   }
   
 

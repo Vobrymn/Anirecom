@@ -27,7 +27,8 @@
     
     // Create the rating div element
     const rating = $("<div>").addClass("rating");
-    $("<span>").text(entry[3]).appendTo(rating);
+    // ------- Can you make it so that it becomes -/10 if there's no ratings given? ------------
+    $("<span>").text(entry[3] + "/10").appendTo(rating);
     rating.appendTo(details);
     
     // Create the tags div element
