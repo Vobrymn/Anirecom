@@ -24,36 +24,24 @@
   </div>
   
   <div class="ui_bar">
-    <button id="sb" class="button">Sign in</button>
+    <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
   <div id="sn" class="modal"></div>
-  <div id="settings_popup" class="modal">
-    <div class="modal_content">
+  <div id="settings_popup"> 
       <span class="close" title="Close Modal">&times;</span>
       <h2>Change Color</h2>
       <input type="color" id="color1" name="color1" value="#000000">
       <input type="color" id="color2" name="color2" value="#ffffff">
       <button id="save_button">Save</button>
-    </div>
-    <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
-  <div id = "sn" class="modal"></div>
+
   <div class="side_nav">
-      <a href="/register" id="register_sn">Register</a>
+    <a href="/register" id="register_sn">Register</a>
       <a href="/home" id="settings_sn">Settings</a>
       <a href="/history" id="history_sn">History</a>
       <a href="/logout" id="logout_sn">Log out</a>
-  </div> 
-
-  
-  <div class="side_nav">
-    <a href="{{url_for('register')}}" class="register">Register</a>
-    <a href="#" class="settings" data-target="settings_popup">Settings</a>
-    <a href="{{url_for('home')}}" class="history">History</a>
-    <a href="{{url_for('logout')}}" class="logout">Log out</a>
-  
     <div class="settings-menu">
       <a href="#" class="settings-option">Change Color</a>
       <a href="#" class="settings-option">Change Password</a>
