@@ -145,7 +145,7 @@ button:hover, .button:hover #hb:hover {
   overflow: hidden;
   border-bottom: 3px solid;
   border-color: rgba(65, 42, 19);
-  z-index: 2;
+  z-index: 3;
 }
 
 /* Hamburger */

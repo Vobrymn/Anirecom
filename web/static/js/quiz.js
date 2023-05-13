@@ -1,8 +1,8 @@
-
 /*stole this off w3schools. like i modified it to be ours though, like excluding already typed in answers etc*/
 function autocomplete(inp, arr) {
   let currentFocus;
-  inp.addEventListener("input", function(e) {
+
+  function inputEventListener(e) {
     let a, b, i, val = this.value;
 
     closeAllLists();
@@ -32,19 +32,13 @@ function autocomplete(inp, arr) {
         b.innerHTML = "<strong>" + arr[i].substr(0, lastGenre.length) + "</strong>";
         b.innerHTML += arr[i].substr(lastGenre.length);
         b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-        b.addEventListener("click", function(e) {
-          const genreClicked = this.getElementsByTagName("input")[0].value;
-          const inputGenres = inp.value.split(',');
-          inputGenres[inputGenres.length - 1] = genreClicked;
-          inp.value = inputGenres.join(', ').trim();
-          closeAllLists();
-        });
+        b.addEventListener("click", clickEventListener);
         a.appendChild(b);
       }
     }
-  });
+  }
 
-  inp.addEventListener("keydown", function(e) {
+  function keydownEventListener(e) {
     let x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode === 40) {
@@ -59,7 +53,15 @@ function autocomplete(inp, arr) {
         if (x) x[currentFocus].click();
       }
     }
-  });
+  }
+
+  function clickEventListener(e) {
+    const tag_clicked = this.getElementsByTagName("input")[0].value;
+    const input_tags = inp.value.split(',');
+    input_tags[input_tags.length - 1] = tag_clicked;
+    inp.value = input_tags.join(', ').trim();
+    closeAllLists();
+  }
 
   function addActive(x) {
     if (!x) return false;
@@ -84,10 +86,25 @@ function autocomplete(inp, arr) {
     }
   }
 
-  document.addEventListener("click", function (e) {
+  function documentClickListener(e) {
     closeAllLists(e.target);
-  });
+
+    
+  }
+
+  function disableAutocomplete(input) {
+    input.removeEventListener("input", inputEventListener);
+    input.removeEventListener("keydown", keydownEventListener);
+  }
+
+  inp.addEventListener("input", inputEventListener);
+  inp.addEventListener("keydown", keydownEventListener);
+  document.addEventListener("click", documentClickListener);
+
+  return { disableAutocomplete: disableAutocomplete }
+  ;
 }
+
 
 
   //[genre],[theme],[producer]
@@ -99,25 +116,26 @@ function autocomplete(inp, arr) {
       choices: ["anime", "manga"]
     },
     {
-        question: "Are there any genres you're interested in? (Select up to three)",
-        choices: ["Action","Adventure","Drama","Comedy"]
+        question: "Are there any genres you're interested in?",
+        choices: Array.from(valid_tags[0])
       
     },
     {
-        question: "Are there any themes you're interested in? (Select up to three)",
-        choices: ["test11", "test21", "test31", "tst41", "doodoo11", "dod1", "do1"]
+        question: "Are there any themes you're interested in?",
+        choices: Array.from(valid_tags[1])
+      
     },
     
     {
         question: "",
         anime_question: "Are there any particular studios you'd like to look up?",
         manga_question: "Any particular authors you'd like to look up?",
-        anime_choices: ["studio1", "studio2", "studio3", "studio4", "studio5", "studio6"],
-        manga_choices: ["author1", "author2", "author3", "author4", "author5", "author6"]
+        anime_choices: Array.from(valid_tags[2]),
+        manga_choices: Array.from(valid_tags[3])  
     },
 
     {
-        question: "Are there any year preferences? (YYYY-YYYY)",
+        question: "What about a specific date range?",
     }
   ];
 
@@ -144,54 +162,87 @@ function autocomplete(inp, arr) {
   skipButton.addEventListener("click", goSkip);
 
   let timeoutIds = []; 
+  let input_ac;
 
   function displayQuestion() {
+
     let question;
     var validChoices
 
     if (currentQuestionIndex === 0){
-        question = questions[currentQuestionIndex].question;
-        backButton.disabled = true;
-        backButton.style.display = "none";
-        backButton.style.cursor = "default"
+
+
+      if (input_ac){
+        input_ac.disableAutocomplete(answerInput)
+      }
   
-        skipButton.disabled = true;
-        skipButton.style.display = "block";
-        skipButton.style.cursor = "default"
-    }
-    else{
-      backButton.disabled = false;
-      backButton.style.display = "block";
-      backButton.style.cursor = "pointer"
-
-      skipButton.disabled = false;
-      skipButton.style.display = "none";
-      skipButton.style.cursor = "pointer"
-    }
-
-    if (currentQuestionIndex === 1){
-      validChoices = questions[currentQuestionIndex].choices
-      autocomplete(answerInput, validChoices);
       question = questions[currentQuestionIndex].question;
+      $("#back").hide()
+      $("#skip").hide()
+      $("#answer").attr("placeholder", "Anime | Manga")
+      $(".background").attr("src", "/images/anime_manga_bg.png");
+    }
+
+    else if (currentQuestionIndex === 1){
+
+      console.log(input_ac)
+      if (input_ac){
+        input_ac.disableAutocomplete(answerInput)
+      }
+
+      validChoices = questions[currentQuestionIndex].choices
+      input_ac = autocomplete(answerInput, validChoices);
+
+      question = questions[currentQuestionIndex].question;
+      $("#back").show()
+      $("#skip").show()
+      $("#next").text("next")
+      $("#answer").attr("placeholder", "___, ___, ___, | choose up to 3")
+      $(".background").attr("src", "/images/genre_bg.png");
     }
     else if (currentQuestionIndex === 2){
+
+      if (input_ac){
+        input_ac.disableAutocomplete(answerInput)
+      }
+
       validChoices = questions[currentQuestionIndex].choices
-      autocomplete(answerInput, validChoices);
+      input_ac = autocomplete(answerInput, validChoices);
+      
       question = questions[currentQuestionIndex].question;
+      $("#back").show()
+      $("#skip").show()
+      $("#next").text("next")
+      $("#answer").attr("placeholder", "___, ___, ___, | choose up to 3")
+      $(".background").attr("src", "/images/theme_bg.png");
     }
     else if (currentQuestionIndex === 3){
+
+      if (input_ac){
+        input_ac.disableAutocomplete(answerInput)
+      }
+
       question = selectedOption === "anime" ? questions[currentQuestionIndex].anime_question : questions[currentQuestionIndex].manga_question;
       validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
-      autocomplete(answerInput, validChoices);
+      input_ac = autocomplete(answerInput, validChoices);
+
+      $("#back").show()
+      $("#skip").show()
+      $("#next").text("next")
+      $("#answer").attr("placeholder", "___, ___, | choose up to 2")
+      $(".background").attr("src", "/images/author_director_bg.png");
     }
-    if (currentQuestionIndex === 4){
+    else if (currentQuestionIndex === 4){
+
+      if (input_ac){
+        input_ac.disableAutocomplete(answerInput)
+      }
+      
       question = questions[currentQuestionIndex].question;
-      skipButton.style.display = "none"
-      nextButton.innerHTML = "Submit"
-    }
-    else{
-      skipButton.style.display = "block"
-      nextButton.innerHTML = "Next"
+      $("#skip").hide()
+      $("#next").text("submit")
+      $("#answer").attr("placeholder", "YYYY-YYYY")
+      $(".background").attr("src", "/images/year_bg.png");
     }
     
     typing.innerHTML = "";
@@ -254,21 +305,18 @@ function autocomplete(inp, arr) {
           };
         }
         
-        previousAnswers[currentQuestionIndex] = answer;
-        answers.content_type = answer;
-        currentQuestionIndex++;
-        displayQuestion();
+      previousAnswers[currentQuestionIndex] = answer;
+      answers.content_type = answer;
+      currentQuestionIndex++;
+      displayQuestion();
 
-      //autocomplete
-      if (currentQuestionIndex === 1) {
-        const validGenres = questions[1].choices
-        autocomplete(answerInput, validGenres);
+      } 
+      else {
+        errorMessage.textContent = "Invalid answer. Please choose either 'anime' or 'manga'.";
+        errorMessage.style.opacity = 1
       }
-    } else {
-      errorMessage.textContent = "Invalid answer. Please choose either 'anime' or 'manga'.";
-      errorMessage.style.opacity = 1
-    }
-  } else if (currentQuestionIndex >= 1 && currentQuestionIndex <= 3) {
+    } 
+    else if (currentQuestionIndex >= 1 && currentQuestionIndex <= 3) {
       const choices = answerInput.value.split(",").map((choice) => choice.trim().toLowerCase());
       var validChoices
       if (currentQuestionIndex === 3){
@@ -297,7 +345,8 @@ function autocomplete(inp, arr) {
         }
         currentQuestionIndex++;
         displayQuestion();
-      } else {
+      } 
+      else {
         let errorMsg = "";
         const invalidChoiceIndexes = choices.reduce((acc, choice, index) => {
           if (!validChoices.map(c => c.toLowerCase()).includes(choice) || choice === "") {
@@ -316,38 +365,39 @@ function autocomplete(inp, arr) {
         errorMessage.textContent = errorMsg;
         errorMessage.style.opacity = 1
       }
-  } else if (currentQuestionIndex === 4) {
-    const answer = answerInput.value.trim();
-    const yearPattern = /^(\d{4})-(\d{4})$/;
-    const match = answer.match(yearPattern);
+    } 
+    else if (currentQuestionIndex === 4) {
+      const answer = answerInput.value.trim();
+      const yearPattern = /^(\d{4})-(\d{4})$/;
+      const match = answer.match(yearPattern);
 
-      if (!answer){
+        if (!answer){
 
-          submit()
-      }
-      else if (match) {
-        const startYear = parseInt(match[1]);
-        const endYear = parseInt(match[2]);
+            submit()
+        }
+        else if (match) {
+          const startYear = parseInt(match[1]);
+          const endYear = parseInt(match[2]);
 
-        if (startYear <= endYear && startYear > 1900 && endYear <= new Date().getFullYear()) {
+          if (startYear <= endYear && startYear > 1900 && endYear <= new Date().getFullYear()) {
 
-          answers.dates = [startYear,endYear]
+            answers.dates = [startYear,endYear]
 
-          submit()
-          
+            submit()
+            
+          } 
+          else {
+            errorMessage.textContent = "Invalid year range. Please enter a valid year range (e.g., 2008-2010).";
+            errorMessage.style.opacity = 1
+          }
         } 
         else {
-          errorMessage.textContent = "Invalid year range. Please enter a valid year range (e.g., 2008-2010).";
-          errorMessage.style.opacity = 1
+          
+            errorMessage.textContent = "Invalid input. Please use the format YYYY-YYYY (e.g. 2008-2010).";
+            errorMessage.style.opacity = 1
         }
-      } 
-      else {
-        
-          errorMessage.textContent = "Invalid input. Please use the format YYYY-YYYY (e.g. 2008-2010).";
-          errorMessage.style.opacity = 1
-      }
+    }
   }
-}
 
   function goSkip() {
     if (currentQuestionIndex < questions.length - 1) {
@@ -371,6 +421,13 @@ function autocomplete(inp, arr) {
 
     window.location.href = url;
   }
-  
 
-  displayQuestion(questions[currentQuestionIndex].question);
+$(document).ready(function () {
+    $("#question_container").css("display", "flex")
+    $("#question_container").hide()
+    $("#question_container").fadeIn(500)
+    setTimeout(() => {
+      displayQuestion(questions[currentQuestionIndex].question);  
+    }, 500);   
+})
+  

@@ -6,8 +6,6 @@ if (logged_in){
 }
 else{
   $(".ui_bar").append('<button id="sb" class="button">Sign in</button>');
-  $("#settings_sn").remove()
-  $("#history_sn").remove()
   $("#logout_sn").remove()
 }
 
@@ -65,14 +63,18 @@ function active_sn() {
       $(".side_nav").width("0");
       $("#sb").fadeIn(50);
       $("#start_button").fadeIn(50);
+      $("#hb").fadeIn(50);
+      $("#back_button").fadeIn(50);
+      $("#refresh_button").fadeIn(50);
       $('#sn').hide()
       $('.modal').css({"background-color":"rgba(65, 42, 19, 0.4)"});
-      $("#hb").fadeIn(50);
+      
     }
     else {
       $(".side_nav").width(nav_width);
       $("#sb").fadeOut(50);
-      
+      $("#back_button").fadeOut(50);
+      $("#refresh_button").fadeOut(50);
       $('#sn').show()
       $('.modal').css({"background-color":"rgba(65, 42, 19, 0.0)"});
       if(window_skinny()){
