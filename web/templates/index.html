@@ -14,7 +14,7 @@
 
   <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
 
-  <button id = "start_button">Start</button>
+  <button id="start_button">Start</button>
 
   <div class="loader"></div>
   <div class="hamburger">
@@ -27,17 +27,54 @@
     <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
-  <div id = "sn" class="modal"></div>
+  <div id="sn" class="modal"></div>
+  <div id="settings_popup"> 
+      <span class="close" title="Close Modal">&times;</span>
+      <div id="change_color" style="display: none;">
+        <h2>Change Colour</h2>
+        <div class="color-input">
+          <label for="color1">Colour 1</label>
+          <input type="color" id="color1" name="color1" value="#000000">
+        </div>
+        <div class="color-input">
+          <label for="color2">Colour 2</label>
+          <input type="color" id="color2" name="color2" value="#ffffff">
+        </div>
+        <button id="save_button">Save</button>
+      </div>
+         
+      <div id="change_password" style="display: none;">
+        <h2>Change Password</h2>
+        <form id="password_form">
+            <label for="old_password"><b>Old Password</b></label>
+            <input id="old_password" type="password" placeholder="Enter Old Password" name="old_password" required>
+    
+            <label for="new_password"><b>New Password</b></label>
+            <input id="new_password" type="password" placeholder="Enter New Password" name="new_password" required>
+    
+            <label for="confirm_password"><b>Confirm New Password</b></label>
+            <input id="confirm_password" type="password" placeholder="Confirm New Password" name="confirm_password" required>
+    
+            <button type="submit" id="save_password">Save</button>
+        </form>
+    </div>
+  </div>
+  
   <div class="side_nav">
-      <a href="/register" id="register_sn">Register</a>
-      <a href="/home" id="settings_sn">Settings</a>
+    <a href="/register" id="register_sn">Register</a>
+      <a href="#" id="settings_sn">Settings</a>
       <a href="/history" id="history_sn">History</a>
       <a href="/logout" id="logout_sn">Log out</a>
-  </div> 
+    <div class="settings-menu">
+      <a href="#" class="settings-option">Change <br> Colour</a>
+      <a href="#" class="settings-option">Change <br> Password</a>
+      <a href="#" class="settings-option back-button">Back</a>
+    </div>
+  </div>
+  
 
   <div id="login_form_box" class="modal">
-  
-    <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
+    <form id="login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
       <div class="x_container">
         <span class="close" title="Close Modal">&times;</span>
       </div>
@@ -45,10 +82,10 @@
       <div class="container">
         <br>
         <label for="username"><b>Username</b></label>
-        <input id = "username" type="text" placeholder="Enter Username" name="username" required>
+        <input id="username" type="text" placeholder="Enter Username" name="username" required>
         <br>
         <label for="password"><b>Password</b></label>
-        <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+        <input id="password" type="password" placeholder="Enter Password" name="password" required>
         <div id="login_error"><br></div>
         <button type="submit">Login</button>
   

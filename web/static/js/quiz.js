@@ -99,27 +99,26 @@ function autocomplete(inp, arr) {
       choices: ["anime", "manga"]
     },
     {
-        question: "What genres r u interested in? Select up to three",
+        question: "Are there any genres you're interested in? (Select up to three)",
         choices: ["Action","Adventure","Drama","Comedy"]
       
     },
     {
-        question: "Any themes you're interested in? Select up to three",
+        question: "Are there any themes you're interested in? (Select up to three)",
         choices: ["test11", "test21", "test31", "tst41", "doodoo11", "dod1", "do1"]
     },
     
     {
         question: "",
         anime_question: "Are there any particular studios you'd like to look up?",
-        manga_question: "Are there any particular authors you'd like to look up?",
+        manga_question: "Any particular authors you'd like to look up?",
         anime_choices: ["studio1", "studio2", "studio3", "studio4", "studio5", "studio6"],
         manga_choices: ["author1", "author2", "author3", "author4", "author5", "author6"]
     },
 
     {
-        question: "Any year preferences? Use a dash to indicate the year period you'd like",
+        question: "Are there any year preferences? (YYYY-YYYY)",
     }
-    
   ];
 
   let currentQuestionIndex = 0;
@@ -370,7 +369,7 @@ function autocomplete(inp, arr) {
 
     var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
 
-    // window.location.href = url;
+    window.location.href = url;
   }
   
 

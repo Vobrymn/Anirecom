@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, make_response, request, session, g
 from werkzeug.security import generate_password_hash, check_password_hash
-from selenium import webdriver
 import sqlite3 as sql
 import re
 import urllib

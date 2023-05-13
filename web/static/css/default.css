@@ -156,7 +156,7 @@ button:hover, .button:hover #hb:hover {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 11;
+  z-index: 13; /* from 11 */
 }
 
 .spinner{
@@ -233,6 +233,20 @@ button:hover, .button:hover #hb:hover {
   color: rgb(65, 42, 19, 0.9);
 }
 
+/* new section */
+.side_nav .settings-menu {
+  display: none;
+}
+
+.side_nav.settings-expanded .settings-menu {
+  display: block;
+}
+
+.side_nav.settings-expanded a:not(.settings-option) {
+  display: none;
+}
+/*  */
+
 .x_container {
   text-align: center;
   margin: 10px 0 10px 0;
@@ -246,13 +260,13 @@ span.psw {
 
 /* The Modal (bg) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  width: 100%;
+  height: 100%; 
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(65, 42, 19); /* Fallback color */
   background-color: rgba(65, 42, 19, 0.4); /* Black w/ opacity */
@@ -274,8 +288,6 @@ span.psw {
   width: 80%;
   max-width: 500px;
 }
-  
-
 
 #login_error{
   text-align: center;
@@ -303,4 +315,91 @@ span.psw {
    display: block;
    float: none;
 }
+}
+
+/* ------ setting stuff ------- */
+
+/*change color*/
+#change_color {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(233, 212, 158, 1);
+  display: none;
+  z-index: 1;
+}
+
+#change_color h2 {
+  color: rgba(65, 42, 19);
+  text-align: center;
+  margin-top: 100px;
+  font-size: 200%;
+  font-weight: bold;
+}
+
+#change_color input[type="color"] {
+  margin: 20px auto; /*add margin to create spacing*/
+  display: block;
+}
+
+#change_color button {
+  display: block;
+  margin: 20px auto; /*add margin to create spacing*/
+}
+
+.color-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.color-input label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+
+/*change pw*/
+#change_password {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(233, 212, 158, 1); /*change last value to change transparency*/
+  display: none;
+  z-index: 1;
+}
+
+#change_password h2 {
+  color: rgba(65, 42, 19);
+  text-align: center;
+  margin-top: 100px;
+  font-size: 250%;
+}
+
+#change_password input[type="password"] {
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  display: block;
+  border: 3px solid #ae947a;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#change_password button {
+  display: block;
+  margin: 20px auto;
+}
+
+#change_password label {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
 }

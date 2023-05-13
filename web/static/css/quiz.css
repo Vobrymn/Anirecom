@@ -33,6 +33,10 @@ html {
   display: inline-block;
   overflow: hidden;
   position: relative;
+  text-align: center;
+  font-size: 150%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .blinking_cursor {
@@ -62,6 +66,7 @@ html {
   justify-content: center;
   height: 300px;
   transform: translateY(50px);
+  margin-top: 60px;
 }
 
 #error_message {
