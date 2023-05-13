@@ -318,38 +318,85 @@ span.psw {
 }
 }
 
-#settings_popup {
-  display: none;
-  z-index:1;
-}
+/*settings stuff*/
 
-#settings_popup .modal_content {
-  background-color: rgba(221, 213, 190);
-  margin: 15% auto;
-  width: 80%;
-  max-width: 600px; 
-  padding: 20px;
-  border: 3px solid;
-  border-color: rgba(65, 42, 19);
-  border-radius: 10px;
-}
-
-#settings_popup .close {
-  display: none; 
-}
-
-
-#settings_popup h2 {
-  text-align: center;
-}
-
-#settings_popup input[type="color"] {
+/*change color*/
+#change_color {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin-bottom: 10px;
+  height: 100vh;
+  background-color: rgba(233, 212, 158, 1);
+  display: none;
+  z-index: 1;
 }
 
-#settings_popup #save_button {
+#change_color h2 {
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#change_color input[type="color"] {
+  margin: 20px auto; /*add margin to create spacing*/
   display: block;
-  margin: 0 auto;
 }
 
+#change_color button {
+  display: block;
+  margin: 20px auto; /*add margin to create spacing*/
+}
+
+.color-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.color-input label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+/*change pw*/
+#change_password {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(233, 212, 158, 1); /*change last value to change transparency*/
+  display: none;
+  z-index: 1;
+}
+
+#change_password h2 {
+  color: white;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#change_password input[type="password"] {
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  display: block;
+  border: 3px solid #ae947a;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+#change_password button {
+  display: block;
+  margin: 20px auto;
+}
+
+#change_password label {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}

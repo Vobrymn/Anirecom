@@ -118,11 +118,12 @@ $(document).click(function(event) {
 });
 
 $('.x_container').click(function() {
-  $('#login_form_box').hide()
-  $('#settings_popup').css({"display":"none"});
-  $('.modal').css({"z-index":"9"});
-  $("#username").val("")
-  $("#password").val("")
+  $('#login_form_box, #settings_popup, #change_color, #change_password').fadeOut(200);
+  $('.modal').css({ "z-index": "9" });
+  $('.side_nav').removeClass('settings-expanded');
+  $('.side_nav').width("0");
+  $("#start_button").fadeIn(50);
+  $("#hb").fadeIn(50);
 });
 
 
@@ -151,21 +152,47 @@ $("#login_form").submit(async function(event) {
   }
 });
 
-$('.settings').click(function() {
-  $('#settings_popup').css({"display": "block", "z-index": "11"});
+//settings stuff
+$('#settings_sn').click(function() {
+  $('.side_nav').addClass('settings-expanded');
+  $('#settings_popup').fadeIn(200);
   $('.modal').css({"z-index": "9"});
-  $('.side_nav').css({"z-index": "12"}).addClass('settings-expanded');
+  
+  //set the change color button as default selected option
+  $('#change_color').fadeIn(200);
+  $('#change_password').hide();
 });
 
+
 $('#settings_popup .close').click(function() {
-  $('#settings_popup').css({"display": "none"});
+  $('#settings_popup').fadeOut(200);
   $('.modal').css({"z-index": "9"});
   $('.side_nav').css({"z-index": ""}).removeClass('settings-expanded');
 });
-
 
 $('.back-button').click(function() {
   $('.side_nav').removeClass('settings-expanded');
   $('#settings_popup').fadeOut(200);
   $('.modal').css({"z-index": "1"});
 });
+
+//display the change color pop up
+$('.settings-option:nth-child(1)').click(function() {
+  $('#change_password').hide();
+  $('#change_color').fadeIn(200);
+});
+
+//display the chnage pw pop up
+$('.settings-option:nth-child(2)').click(function() {
+  $('#change_color').hide();
+  $('#change_password').fadeIn(200);
+});
+
+
+//close pop ups
+$('#change_color .close, #change_password .close').click(function() {
+  $('#change_color, #change_password').fadeOut(200);
+});
+
+
+
