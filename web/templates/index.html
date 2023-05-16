@@ -7,12 +7,107 @@
   <script src= "/js/pre_render.js"></script>
   <link rel="stylesheet" href= "/css/default.css">
   <link rel="stylesheet" href= "/css/start_screen.css">
+  <link rel="stylesheet" href= "/css/setting.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 
   <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
+
+  <!--pop up stuff-->
+  <div id="modal" class="modal">
+  <div class="mail_popup letter">
+    <span class="close_button">&times;</span>
+    <div class="letter_border"></div>
+    <div class="letter_title">CITS3404 Semester 1 Project</div>
+    <div class="letter_context">Information Page</div>
+    <p class="info_context">By: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice<br>
+      <br>
+      <span>-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈</span>
+      <span class="centered">Welcome to our anime/manga recommendation chatbot!</span><br>
+      Ever wanted to watch a new anime or manga, but had no idea where to look?<br>
+      <br>
+      Well, we've got your back!<br>
+      <br>
+      Our chatbot provides an interactive and intuitive way for users to express their preferences and interests in genres, authors and more,
+      by guiding users through a series of questions while providing suggestions as answers are typed. <br>
+      <br>
+      We believe that our chatbot not only simplifies the process of gathering user preferences, but also enhances the discovery of new content
+      by offering relevant and personalized results. It's designed to make the experience interactive, engaging, and user-friendly, 
+      ultimately helping users find their next favorite anime or manga series. <br>
+    </p>
+    <div class="letter_context">Website interface: </div>
+    <p class="info_context">Below are drop down menus containing information on each of our website's features:</p>
+    <div class="dropdown">
+      <p class="dropdown_text" onclick="toggleDropdown(event)">Hamburger icon (register, history, settings, etc)<span class="dropdown_icon"></span></p>
+      <div class="dropdown_content">
+        <p>So on the left-hand side of this screen, you'll see an icon with 3 lines (a hamburger button). In it, we have</p>
+        <div class="nested_dropdown">
+          <p class="nested_dropdown_text" onclick="toggleNestedDropdown(event)">Register<span class="nested_dropdown_icon"></span></p>
+          <div class="nested_dropdown_content">
+            <p>The register feature allows users to create accounts to save their history and user preferences from the settings button.</p>
+          </div>
+          <p class="nested_dropdown_text" onclick="toggleNestedDropdown(event)">History<span class="nested_dropdown_icon"></span></p>
+          <div class="nested_dropdown_content">
+            <p>The history feature allows users to view their past interactions and regenerate results using their past inputs.</p>
+          </div>
+          <p class="nested_dropdown_text" onclick="toggleNestedDropdown(event)">Settings<span class="nested_dropdown_icon"></span></p>
+          <div class="nested_dropdown_content">
+            <p>In our settings, users are able to change their passwords and theme to their liking, using colors of their choice.<br>
+            These features are also only available for users who are logged in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown">
+      <p class="dropdown_text" onclick="toggleDropdown(event)">Sign in<span class="dropdown_icon"></span></p>
+      <div class="dropdown_content">
+        <p>After registering users can sign into their accounts, which will then show their chosen color preferences and saved history. The sign in
+          button also disappears once users are logged in.
+        </p>
+      </div>
+    </div>
+    <div class="dropdown">
+      <p class="dropdown_text" onclick="toggleDropdown(event)">Home button<span class="dropdown_icon"></span></p>
+      <div class="dropdown_content">
+        <p>The home button returns back to the start page regardless of where you are in the website.</p>
+      </div>
+    </div>
+  <div class="dropdown">
+    <p class="dropdown_text" onclick="toggleDropdown(event)">Quiz features<span class="dropdown_icon"></span></p>
+    <div class="dropdown_content">
+      <p>Upon clicking the start button, users will be prompted with questions requiring an input. Asides from the first question, users have the ability to choose 
+        to go back to the previous question and change their answers, or even skip the questions to leave them unanswered.<br>
+        While there is an autocomplete function, clicking the next button validates the user's inputs to make sure they are valid. Clicking the skip button moves
+        onto the next question regardless of what you've typed in though!
+      </p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!--envelope, like the "button"-->
+  <div class="envelope_container" id="envelope_container">
+      <div class="letter_image">
+      <div class="animated_mail">
+        <span class="info_text">Info</span>
+        <div class="back_fold"></div>
+        <div class="letter">
+          <div class="letter_border"></div>
+          <div class="letter_title"></div>
+          <div class="letter_context"></div>
+          <div class="letter_stamp">
+            <div class="letter_stamp_inner"></div>
+          </div>
+        </div>
+        <div class="top_fold"></div>
+        <div class="body"></div>
+        <div class="left_fold"></div>
+      </div>
+      <div class="shadow"></div>
+    </div>
+    </div>
 
   <button id="start_button">Start</button>
 
@@ -28,8 +123,8 @@
   </div>
 
   <div id="sn" class="modal"></div>
+
   <div id="settings_popup"> 
-      <span class="close" title="Close Modal">&times;</span>
       <div id="change_color" style="display: none;">
         <h2>Change Colour</h2>
         <div class="color-input">
@@ -59,7 +154,7 @@
         </form>
     </div>
   </div>
-  
+
   <div class="side_nav">
     <a href="/register" id="register_sn">Register</a>
       <a href="#" id="settings_sn">Settings</a>

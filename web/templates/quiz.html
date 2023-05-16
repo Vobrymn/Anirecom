@@ -9,6 +9,11 @@
   <link rel="stylesheet" href= "/css/quiz.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <script> 
+    var valid_tags = {{ valid_tags | tojson}};
+  </script>
+
 </head>
 <body>
     <div class="loader"></div>
@@ -55,7 +60,7 @@
         <div id="typing">
         </div>
         <div class="input_container">
-            <input type="text" id="answer" placeholder="..." autocomplete="off">
+            <input type="text" id="answer" autocomplete="off">
         </div>
         <div id="button_container">
             <button id="back">Back</button>

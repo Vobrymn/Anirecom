@@ -60,7 +60,7 @@ html {
 }
 
 #question_container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -125,4 +125,8 @@ button:last-child {
 
 input[type="text"] {
   margin: 20px;
+}
+
+#back, #skip{
+  display: none;
 }
