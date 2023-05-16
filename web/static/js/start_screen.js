@@ -28,7 +28,7 @@ function resize_envelope(){
     $(".info_text").css("font-size", "1.2vh")
     $(".animated_mail .body").css("border-width", "0 0 3vh 6vh")
     $(".animated_mail .top_fold").css("border-width", "1.7vh 3vh 0 3vh")
-    $(".animated_mail .left_fold").css("border-width", "1.5vh 0 1.5vh 3vh")
+    $(".animated_mail .left_fold").css("border-width", "1.6vh 0 1.5vh 3vh")
   }
   else{
     $("#envelope_container").css({"height": "1.7vw", "width": "3.4vw", "transform": "translate(-6.6vw, -4.5vw)"});
@@ -77,10 +77,6 @@ envelopeContainer.addEventListener('click', function () {
 mailPopup.addEventListener('click', function(e) {
   e.stopPropagation();
 });
-
-
-//my attempt at screen resizing, but doesn't work when screen goes crazy small where everything else zooms out. i know there's a function like
-//that above but i just couldn't get it to work properly
 
 
 document.querySelector('.close_button').addEventListener('click', function() {
