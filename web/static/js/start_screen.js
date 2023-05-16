@@ -27,15 +27,15 @@ function resize_envelope(){
     $("#envelope_container").css({"height": "3vh", "width": "6vh", "transform": "translate(-11.8vh, -8vh)"});
     $(".info_text").css("font-size", "1.2vh")
     $(".animated_mail .body").css("border-width", "0 0 3vh 6vh")
-    $(".animated_mail .top_fold").css("border-width", "1.7vh 3vh 0 3vh")
+    $(".animated_mail .top_fold").css("border-width", "1.5vh 3vh 0 3vh")
     $(".animated_mail .left_fold").css("border-width", "1.5vh 0 1.5vh 3vh")
   }
   else{
-    $("#envelope_container").css({"height": "1.7vw", "width": "3.4vw", "transform": "translate(-6.6vw, -4.5vw)"});
+    $("#envelope_container").css({"height": "1.6875vw", "width": "3.375vw", "transform": "translate(-6.6vw, -4.5vw)"});
     $(".info_text").css("font-size", "0.675vw")
-    $(".animated_mail .body").css("border-width", "0 0 1.7vw 3.5vw")
-    $(".animated_mail .top_fold").css("border-width", "0.9vw 1.7vw 0 1.7vw")
-    $(".animated_mail .left_fold").css("border-width", "0.85vw 0 0.85vw 1.7vw")
+    $(".animated_mail .body").css("border-width", "0 0 1.6875vw 3.375vw")
+    $(".animated_mail .top_fold").css("border-width", "0.84375vw 1.6875vw 0 1.6875vw")
+    $(".animated_mail .left_fold").css("border-width", "0.84375vw 0 0.84375vw 1.6875vw")
   }
 }
 
