@@ -50,7 +50,6 @@ button, .button{
   background-color: var(--primary_colour);
   color: white;
   padding: none;
-  border: none;    
   border-radius: 4px;  
   cursor: pointer;
   text-align: center;
