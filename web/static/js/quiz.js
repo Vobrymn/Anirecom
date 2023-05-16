@@ -412,9 +412,12 @@ function autocomplete(inp, arr) {
     const formData = new FormData();
     formData.append('query', JSON.stringify(answers));
 
-    const response = await fetch('/quiz', {
-      method: 'POST',
-      body: formData
+    $.ajax({
+      url: '/quiz',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false
     });
 
     var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;

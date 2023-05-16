@@ -1,9 +1,305 @@
 body{
   background-color: rgb(9, 5, 0);
   opacity: 0;
-  transition: opacity 0.7s ease-in-out;
+  transition: opacity 3s ease-in-out;
 }
 
+/*info mail*/
+/*animated envelope design is from https://codepen.io/jakegilesphillips/pen/MveNLe*/
+.envelope_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6vh;
+  height: 3vh;
+  transform: translate(-11.8vh, -8vh);
+}
+
+.info_text {
+  position: absolute;
+  top: 40%;
+  left: 32.2%;
+  color: white;
+  font-size: 1.2vh;
+  font-weight: bold;
+  z-index:6;
+  height: 100%;
+  width: 100%;
+}
+
+.letter_image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.animated_mail {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  transition: 0.4s;
+}
+.animated_mail .body {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 3vh 6vh;
+  border-color: transparent transparent var(--primary_colour) transparent;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.6));
+  z-index: 2;
+}
+.animated_mail .top_fold {
+  position: absolute;
+  top: 0vh;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.7vh 3vh 0 3vh;
+  -webkit-transform-origin: 50% 0%;
+  -webkit-transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+  -moz-transform-origin: 50% 0%;
+  -moz-transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+  transform-origin: 50% 0%;
+  transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
+  border-color: var(--primary_colour) transparent transparent transparent;
+  z-index: 2;
+}
+.animated_mail .back_fold {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary_colour);
+  z-index: 0;
+}
+.animated_mail .left_fold {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1.5vh 0 1.5vh 3vh;
+  border-color: transparent transparent transparent var(--primary_colour);
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4));
+  z-index: 2;
+}
+.animated_mail .letter {
+  left: 5%;
+  bottom: 10%;
+  position: absolute;
+  width: 90%;
+  height: 80%;
+  background: white;
+  z-index: 1;
+  overflow: hidden;
+  -webkit-transition: 0.4s 0.2s;
+  -moz-transition: 0.4s 0.2s;
+  transition: 0.4s 0.2s;
+}
+.letter .letter_border {
+  height: 10%;
+  width: 100%;
+  background: repeating-linear-gradient(-45deg,var(--primary_colour), var(--primary_colour) 8%, transparent 8%, transparent 18%);
+}
+
+.letter .letter_title {
+  margin-top: 7.5%;
+  margin-left: 5%;
+  height: 6%;
+  width: 65%;
+  background: var(--primary_colour);
+  padding: 1%;
+}
+
+.letter .letter_context {
+  margin-top: 7.5%;
+  margin-left: 5%;
+  height: 6%;
+  width: 40%;
+  background: var(--primary_colour);
+  padding: 1%;
+}
+
+.letter .letter_stamp {
+  top: 15%;
+  right: 5%;
+  border-radius: 100%;
+  height: 10%;
+  width: 10%;
+  background: var(--primary_colour);
+  opacity: 0.3;
+  position:absolute;
+}
+
+.letter_image:hover .animated_mail {
+  transform: translateY(-1vh);
+  -webkit-transform: translateY(-1vh);
+  -moz-transform: translateY(-1vh);
+}
+.letter_image:hover .animated_mail .top_fold {
+  transition: transform 0.4s, z-index 0.2s;
+  transform: rotateX(180deg);
+  -webkit-transition: transform 0.4s, z-index 0.2s;
+  -webkit-transform: rotateX(180deg);
+  -moz-transition: transform 0.4s, z-index 0.2s;
+  -moz-transform: rotateX(180deg);
+  z-index: 0;
+}
+.letter_image:hover .animated_mail .letter {
+  height: 150%;
+}
+.letter_image:hover .shadow {
+  width: 200%;
+}
+
+/*info pop up*/
+/*the pop up design is the same as the letter from the above envelope*/
+.mail_popup {
+  display:none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0.1);
+  opacity: 0;
+  transition: transform 0.4s, opacity 1s;
+  background-color:#ffffff;
+  height: 60vh;
+  width: 55vh;
+  font-size:2vh;
+  border: 0.4vh solid;
+  z-index:99;
+  overflow-y: auto;
+  overflow-x: hidden;  
+}
+
+.mail_popup.active {
+  display: block;
+}
+
+.mail_popup.opened {
+  transform: translate(-50%,-50%) scale(1);
+  opacity: 1;
+}
+/*even though this is only for chrome, the scroll bar looks fine on firefox and edge. without these, the one on chrome just looks bad
+i learnt about scrollbars from https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
+.mail_popup::-webkit-scrollbar {
+  width: 0.7vh;
+  padding-right:0.2vh
+}
+
+.mail_popup::-webkit-scrollbar-thumb {
+  background-color: var(--primary_colour);  
+}
+
+.close_button {
+  position: fixed;
+  top: 0.5vh;
+  right: 1vh;
+  font-size: 3vh;
+  cursor: pointer;
+}
+/*extra stuff for html*/
+.info_context{
+  padding:1vh
+}
+
+.centered {
+  display: block;
+  text-align: center;
+  font-size:larger
+}
+/*dropdown texts*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding:1vh
+}
+
+.dropdown_text {
+  cursor: pointer;
+}
+
+/*i learnt how to make the triangle icon off stackoverflow
+https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of-dropdown-content-box-in-menu-bar-with-pu*/
+.dropdown_icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: 1vh 1vh 0 1vh;
+  border-color: #999 transparent transparent transparent;
+  margin-left: 1vh;
+  z-index:100
+}
+
+.dropdown_icon.active {
+  transform: rotate(180deg); /*rotate triangle when clicked (active)*/
+}
+
+
+.dropdown_content {
+  display: none;
+  position: relative;
+  z-index: 101;
+}
+
+.nested_dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.nested_dropdown_text {
+  cursor: pointer;
+}
+
+.nested_dropdown_icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #999 transparent transparent transparent;
+  margin-left: 5px;
+  z-index:100
+}
+
+.nested_dropdown_icon.active {
+  transform: rotate(180deg)
+}
+
+
+.nested_dropdown_content {
+  display: none;
+  position: relative;
+  z-index: 101;
+}
+
+/*modal modifs for the pop up
+added important just incase*/
+.fade-in {
+  opacity: 1 !important;
+  transition: opacity 1s;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 1s;
+}
+
+/*start button*/
 #start_button {
   position: absolute;
   top: 50%;
@@ -19,7 +315,9 @@ body{
   font-size:3vh;
   border: 0.4vh solid;
   border-color: rgba(65, 42, 19);
+  margin-right: 20px;
 }
+
 
 #start_button:hover {
   background-color: var(--secondary_colour);
@@ -30,7 +328,8 @@ body{
   border: none !important;
 }
 
-/*loader*/
+/*loader
+got this loader off https://www.cssportal.com/css-loader-generator/*/
 .loader {
 position: absolute;
 top: 50%;

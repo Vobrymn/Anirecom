@@ -61,4 +61,3 @@
     
     card.appendTo(cardWrapper);
   });
-  

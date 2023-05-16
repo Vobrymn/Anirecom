@@ -156,7 +156,7 @@ button:hover, .button:hover #hb:hover {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 13; /* from 11 */
+  z-index: 13;
 }
 
 .spinner{
@@ -233,7 +233,6 @@ button:hover, .button:hover #hb:hover {
   color: rgb(65, 42, 19, 0.9);
 }
 
-/* new section */
 .side_nav .settings-menu {
   display: none;
 }
@@ -245,7 +244,7 @@ button:hover, .button:hover #hb:hover {
 .side_nav.settings-expanded a:not(.settings-option) {
   display: none;
 }
-/*  */
+
 
 .x_container {
   text-align: center;
@@ -317,7 +316,7 @@ span.psw {
 }
 }
 
-/* ------ setting stuff ------- */
+/*settings stuff*/
 
 /*change color*/
 #change_color {
@@ -332,11 +331,9 @@ span.psw {
 }
 
 #change_color h2 {
-  color: rgba(65, 42, 19);
+  color: white;
   text-align: center;
   margin-top: 100px;
-  font-size: 200%;
-  font-weight: bold;
 }
 
 #change_color input[type="color"] {
@@ -359,7 +356,6 @@ span.psw {
 .color-input label {
   font-weight: bold;
   margin-bottom: 5px;
-  font-size: 20px;
 }
 
 
@@ -376,10 +372,9 @@ span.psw {
 }
 
 #change_password h2 {
-  color: rgba(65, 42, 19);
+  color: white;
   text-align: center;
   margin-top: 100px;
-  font-size: 250%;
 }
 
 #change_password input[type="password"] {
