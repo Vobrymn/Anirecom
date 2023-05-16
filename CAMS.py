@@ -184,8 +184,17 @@ def change_colour():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
    if request.method == 'GET':
-      
-      response = make_response(render_template('quiz.html'))
+
+      db = get_db("content")
+      cursor = db.cursor()
+      genres = cursor.execute("SELECT DISTINCT genres FROM tags").fetchall()
+      themes = cursor.execute("SELECT DISTINCT themes FROM tags").fetchall()
+      studios = cursor.execute("SELECT DISTINCT studios FROM tags").fetchall()
+      authors = cursor.execute("SELECT DISTINCT authors FROM tags").fetchall()
+
+      valid_tags = [[genre[0] for genre in genres], [theme[0] for theme in themes], [studio[0] for studio in studios], [author[0] for author in authors]]
+
+      response = make_response(render_template('quiz.html', valid_tags=valid_tags))
 
       response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
       response.headers["Pragma"] = "no-cache"
@@ -310,9 +319,9 @@ def suggestions():
       cursor = db.cursor()
 
       if condition:
-         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 12")
+         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 84")
       else:
-         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 12")
+         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 84")
 
       suggestions = cursor.fetchall()
 

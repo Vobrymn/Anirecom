@@ -233,7 +233,6 @@ button:hover, .button:hover #hb:hover {
   color: rgb(65, 42, 19, 0.9);
 }
 
-/* new section */
 .side_nav .settings-menu {
   display: none;
 }
@@ -245,7 +244,7 @@ button:hover, .button:hover #hb:hover {
 .side_nav.settings-expanded a:not(.settings-option) {
   display: none;
 }
-/*  */
+
 
 .x_container {
   text-align: center;

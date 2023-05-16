@@ -2,6 +2,8 @@ h1 {
     font-size: 250%;
     margin-top: 110px;
     margin-bottom: 30px;
+    margin-top: 110px;
+    margin-bottom: 30px;
 }
 
 a {
@@ -37,8 +39,6 @@ a {
     font-size: 12px;
 }
 
-
-/* reference: https://youtu.be/sx0QXhcgplU  */
 .card {
     position: relative;
     max-width: 320px;

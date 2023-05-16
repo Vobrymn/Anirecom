@@ -7,6 +7,7 @@ if (logged_in){
 else{
   $(".ui_bar").append('<button id="sb" class="button">Sign in</button>');
   $("#logout_sn").remove()
+  $("#settings_sn").remove()
 }
 
 function window_ratio(){
@@ -104,7 +105,7 @@ $(".hamburger").click(function () {
 
 $('#sb').click(function() {
   $('#login_form_box').show()
-  $('.modal').css({"z-index":"12"});
+  $('.modal').css({"z-index":"14"});
 });
 
 $(document).click(function(event) {
@@ -130,28 +131,29 @@ $('.x_container').click(function() {
 
 
 
-$("#login_form").submit(async function(event) {
+$("#login_form").submit(function(event) {
   event.preventDefault();
   $("#login_error").html("<br>");
-  // get the form data
+
+  // Get the form data
   const formData = new FormData(event.target);
 
-  // send a POST request to the server
-  const response = await fetch('/login', {
-    method: 'POST',
-    body: formData
+  // Send an AJAX POST request to the server
+  $.ajax({
+    url: '/login',
+    type: 'POST',
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function() {
+      // Success, reload the page
+      location.reload();
+    },
+    error: function(xhr, textStatus, error) {
+      // Error, update the form with the error message
+      $("#login_error").text(xhr.responseText);
+    }
   });
-
-  // handle the server response
-  if (response.ok) {
-    // success, redirect to the home page
-    location.reload()
-
-  } else {
-    // error, update the form with the error message
-    const error = await response.text();
-    $("#login_error").text(error);
-  }
 });
 
 //settings stuff
@@ -184,7 +186,7 @@ $('.settings-option:nth-child(1)').click(function() {
   $('#change_color').fadeIn(200);
 });
 
-//display the chnage pw pop up
+//display the change pw pop up
 $('.settings-option:nth-child(2)').click(function() {
   $('#change_color').hide();
   $('#change_password').fadeIn(200);
@@ -195,4 +197,6 @@ $('.settings-option:nth-child(2)').click(function() {
 $('#change_color .close, #change_password .close').click(function() {
   $('#change_color, #change_password').fadeOut(200);
 });
+
+
 
