@@ -142,9 +142,9 @@ body{
 }
 
 .letter_image:hover .animated_mail {
-  transform: translateY(-1vh);
-  -webkit-transform: translateY(-1vh);
-  -moz-transform: translateY(-1vh);
+  transform: translateY(1vh);
+  -webkit-transform: translateY(1vh);
+  -moz-transform: translateY(1vh);
 }
 .letter_image:hover .animated_mail .top_fold {
   transition: transform 0.4s, z-index 0.2s;

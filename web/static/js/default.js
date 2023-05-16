@@ -198,5 +198,3 @@ $('#change_color .close, #change_password .close').click(function() {
   $('#change_color, #change_password').fadeOut(200);
 });
 
-
-
