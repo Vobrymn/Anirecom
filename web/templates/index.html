@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
-  <script src= "/js/pre_render.js"></script>
-  <link rel="stylesheet" href= "/css/default.css">
-  <link rel="stylesheet" href= "/css/start_screen.css">
-  <link rel="stylesheet" href= "/css/setting.css">
+  <script src= "js/pre_render.js"></script>
+  <link rel="stylesheet" href= "css/default.css">
+  <link rel="stylesheet" href= "css/start_screen.css">
+  <link rel="stylesheet" href= "css/setting.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 
-  <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
+  <img src="images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
 
   <!--pop up stuff-->
   <div id="modal" class="modal">
@@ -125,7 +125,39 @@
   <div id="sn" class="modal"></div>
 
   <div id="settings_popup"> 
-      <div id="change_color" style="display: none;">
+      <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
+      <div class="maincolor">
+        Color 1:
+        <input type="color" id="color_picker1" name="color1" value="#f3f3f1">
+      </div>
+      <div class="maincolor">
+        Color 2:
+        <input type="color" id="color_picker2" name="color2" value="#1b1b17">
+      </div>
+      <script>
+        function myColor1() {
+          // Get the value returned by the first color picker
+          var color1 = document.getElementById('color_picker1').value;
+          // Set the color as background for the first .maincolor div
+          document.querySelector('.maincolor:nth-of-type(1)').style.backgroundColor = color1;
+        }
+      
+        function myColor2() {
+          // Get the value returned by the second color picker
+          var color2 = document.getElementById('color_picker2').value;
+          // Set the color as background for the second .maincolor div
+          document.querySelector('.maincolor:nth-of-type(2)').style.backgroundColor = color2;
+        }
+      
+        // When the user interacts with the first color picker, call myColor1() function
+        document.getElementById('color_picker1').addEventListener('input', myColor1);
+      
+        // When the user interacts with the second color picker, call myColor2() function
+        document.getElementById('color_picker2').addEventListener('input', myColor2);
+      </script>
+      
+      <!-- Victoria's
+        <div id="change_color" style="display: none;">
         <h2>Change Colour</h2>
         <div class="color-input">
           <label for="color1">Colour 1</label>
@@ -136,7 +168,7 @@
           <input type="color" id="color2" name="color2" value="#ffffff">
         </div>
         <button id="save_button">Save</button>
-      </div>
+      </div> -->
          
       <div id="change_password" style="display: none;">
         <h2>Change Password</h2>
@@ -188,7 +220,7 @@
       </div>
     </form>
   </div>
-<script src="/js/default.js"></script>
-<script src="/js/start_screen.js"></script>
+<script src="js/default.js"></script>
+<script src="js/start_screen.js"></script>
 </body>
 </html>
