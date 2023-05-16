@@ -131,4 +131,3 @@ function toggleNestedDropdown(event) {
     nestedIcon.classList.remove('active');
   }
 }
-
