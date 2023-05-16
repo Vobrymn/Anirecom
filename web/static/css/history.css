@@ -1,0 +1,93 @@
+h1 {
+    font-size: 250%;
+    padding-top: 250px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.border {
+    margin-bottom: 40px;
+}
+
+#sort {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card {
+    position: relative;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    flex: 33.33%;
+    overflow-y: scroll;
+    border: 3px solid;
+    border-color: rgba(65, 42, 19);
+    background-color: rgb(245, 245, 237);
+}
+
+.card_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    width: 80%; /* adjust the width as needed */
+    /* margin: 40px 40px 40px 40px; */
+    justify-content: center;
+    max-height: 80vh;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+    margin-bottom: 80px;
+}
+  
+.card_wrapper::-webkit-scrollbar,
+.card::-webkit-scrollbar {
+    display: none;
+}
+
+.dot-container {
+    display: flex;
+    justify-content: center;
+}
+  
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid rgba(65, 42, 19);
+    background-color: rgb(221, 213, 190);
+    margin: 10px 10px 0px 10px;
+}
+
+.details {
+    margin: 10px 10px 10px 10px;
+}
+
+.ans, .t_d {
+    color: var(--primary_colour);
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .card {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,151 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Result </title>
+    <script src= "js/pre_render.js"></script>
+	<link rel="stylesheet" href= "css/default.css">	
+	<link rel="stylesheet" href= "css/history.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>	
+</head>
+<body>
+	<div class="hamburger">
+		<div class="spinner diagonal part_1"></div>
+		<div class="spinner horizontal"></div>
+		<div class="spinner diagonal part_2"></div>
+	</div>
+	<div class="ui_bar">
+        <a href="/" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
+	</div>
+    <div id = "sn" class="modal"></div>
+  <div class="side_nav">
+      <a href="/register" id="register_sn">Register</a>
+      <a href="/home" id="settings_sn">Settings</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/logout" id="logout_sn">Log out</a>
+  </div> 
+
+    <div id="login_form_box" class="modal">
+  
+        <form id = "login_form" class="modal_content animate" action="/login" method="post" autocomplete="off">
+            <div class="x_container">
+                <span class="close" title="Close Modal">&times;</span>
+            </div>
+          
+            <div class="container">
+                <br>
+                <label for="username"><b>Username</b></label>
+                <input id = "username" type="text" placeholder="Enter Username" name="username" required>
+                <br>
+                <label for="password"><b>Password</b></label>
+                <input id = "password" type="password" placeholder="Enter Password" name="password" required>
+                <div id="login_error"><br></div>
+                <button type="submit">Login</button>
+          
+                <a href="/register" id="register_lg">Register</a>
+            </div>
+        </form>
+    </div>
+	<div align="center" class="border">
+		<div class="header">
+			<h1 class="word">History</h1>  
+		</div>
+        <!-- search order -->
+        <label for="sort">Sort by:</label>
+        <select id="sort" name="sort" onchange="sortResults()">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+        </select>
+        <!-- the histories -->
+        <div class = "card_wrapper">
+            <div class="card">
+                <div class="dot-container">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>                  
+                <div class="details" align="left">
+                    <p class="t_d">1 Time/Date</p>
+                    <p class="ques">Would you like an anime or a manga?</p>
+                    <p class="ans">: anime</p>
+                    <p class="ques">Are there any genres you're interested in?</p>
+                    <p class="ans">: genres</p>
+                    <p class="ques">Are there any themes you're interested in?</p>
+                    <p class="ans">: themes</p>
+                    <p class="ques">Are there any particular studios you'd like to look up?</p>
+                    <p class="ans">: studio</p>
+                    <p class="ques">Are there any year preferences?</p>
+                    <p class="ans">: YYYY-YYYY</p>
+                </div>
+                <button onclick="window.location.href='/suggestions'" id="suggests_b">Suggests</button>
+            </div>
+            <div class="card">
+                <div class="dot-container">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>                  
+                <div class="details" align="left">
+                    <p class="t_d">2 Time/Date</p>                    <p class="ques">Would you like an anime or a manga?</p>
+                    <p class="ans">: anime</p>
+                    <p class="ques">Are there any genres you're interested in?</p>
+                    <p class="ans">: genres</p>
+                    <p class="ques">Are there any themes you're interested in?</p>
+                    <p class="ans">: themes</p>
+                    <p class="ques">Are there any particular studios you'd like to look up?</p>
+                    <p class="ans">: studio</p>
+                    <p class="ques">Are there any year preferences?</p>
+                    <p class="ans">: YYYY-YYYY</p>
+                </div>
+                <button onclick="window.location.href='/suggestions'" id="suggests_b">Suggests</button>
+            </div>
+            <div class="card">
+                <div class="dot-container">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>                  
+                <div class="details" align="left">
+                    <p class="t_d">3 Time/Date</p>                    <p class="ques">Would you like an anime or a manga?</p>
+                    <p class="ans">: anime</p>
+                    <p class="ques">Are there any genres you're interested in?</p>
+                    <p class="ans">: genres</p>
+                    <p class="ques">Are there any themes you're interested in?</p>
+                    <p class="ans">: themes</p>
+                    <p class="ques">Are there any particular studios you'd like to look up?</p>
+                    <p class="ans">: studio</p>
+                    <p class="ques">Are there any year preferences?</p>
+                    <p class="ans">: YYYY-YYYY</p>
+                </div>
+                <button onclick="window.location.href='/suggestions'" id="suggests_b">Suggests</button>
+            </div>
+            <div class="card">
+                <div class="dot-container">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                  </div>                  
+                <div class="details" align="left">
+                    <p class="t_d">4 Time/Date</p>                    <p class="ques">Would you like an anime or a manga?</p>
+                    <p class="ans">: anime</p>
+                    <p class="ques">Are there any genres you're interested in?</p>
+                    <p class="ans">: genres</p>
+                    <p class="ques">Are there any themes you're interested in?</p>
+                    <p class="ans">: themes</p>
+                    <p class="ques">Are there any particular studios you'd like to look up?</p>
+                    <p class="ans">: studio</p>
+                    <p class="ques">Are there any year preferences?</p>
+                    <p class="ans">: YYYY-YYYY</p>
+                </div>
+                <button onclick="window.location.href='/suggestions'" id="suggests_b">Suggests</button>
+            </div>
+        </div>
+    </div>
+	<script src="js/default.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>

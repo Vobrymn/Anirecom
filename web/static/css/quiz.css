@@ -33,6 +33,10 @@ html {
   display: inline-block;
   overflow: hidden;
   position: relative;
+  text-align: center;
+  font-size: 150%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .blinking_cursor {
@@ -56,12 +60,13 @@ html {
 }
 
 #question_container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 300px;
   transform: translateY(50px);
+  margin-top: 60px;
 }
 
 #error_message {
@@ -120,4 +125,8 @@ button:last-child {
 
 input[type="text"] {
   margin: 20px;
+}
+
+#back, #skip{
+  display: none;
 }

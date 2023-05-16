@@ -1,41 +1,12 @@
-body{
-    overflow-y: scroll;
-}
-body::-webkit-scrollbar {
-    display: none;
-}
-
-.border{
-    height: 100%;
-    width: 100%;
-}
-
-
-
 h1 {
     font-size: 250%;
-    padding-top: 150px;
-    padding-bottom: 20px;
+    margin-top: 110px;
+    margin-bottom: 30px;
 }
 
 a {
     text-decoration: none;
     color: #fff;
-}
-
-.btn {
-    background-color: rgba(14, 112, 47, 0.9);
-    color: white;
-    padding: none;
-    border: none;    
-    border-radius: 4px;  
-    cursor: pointer;
-    text-align: center;
-    height: 40px;
-    width: 90px;
-    font-size:20px;
-    border: 3px solid;
-    border-color: rgba(65, 42, 19);
 }
 
 *{
@@ -45,6 +16,29 @@ a {
     font-family: 'PT Sans', sans-serif;
 }
 
+#back_button{
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 2;
+    height: 30px;
+    width: 70;
+    font-size: 12px;
+
+}
+
+#refresh_button{
+    position: absolute;
+    top: 137.5px;
+    left: 20px;
+    z-index: 2;
+    height: 30px;
+    width: 70;
+    font-size: 12px;
+}
+
+
+/* reference: https://youtu.be/sx0QXhcgplU  */
 .card {
     position: relative;
     max-width: 320px;
@@ -55,22 +49,43 @@ a {
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     flex: 33.33%;
+    
 }
+  
 
 .card .poster {
     position: relative;
     overflow: hidden;
 }
 
+.card .details{
+    text-align: center;
+}
+
 .card_wrapper {
-    position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 50px;
-    margin: 40px 40px 40px 40px;
+    gap: 30px;
+    width: 90%; /* adjust the width as needed */
+    /* margin: 40px 40px 40px 40px; */
     justify-content: center;
-    padding-bottom: 50px;
+    z-index: 1;
+    margin-bottom: 50px;
+}
+
+.border {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+  
+
+.card_wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 /* The transparent thing in front */
@@ -92,11 +107,11 @@ a {
 
 .card .poster img {
     position: relative;
-    width: 100%;
-    max-height: 100%;
-    height: auto;
+    width: 100%; /* set the width to 100% */
+    height: 100%; /* set the height to 100% */
+    object-fit: cover; /* scale and crop the image to fit the container */
     transition: 0.5s;
-}
+}  
 
 /* Brings the poster up upon hover */
 .card:hover .poster img {
@@ -106,30 +121,38 @@ a {
 
 .card .details {
     position: relative;
-    bottom: 350px;
+    bottom: 220px;
     left: 0;
     padding: 20px;
     width: 100%;
     z-index: 2;
     transition: 0.5s;
+    overflow: hidden; /* hide any text that overflows the element's width */
+    white-space: nowrap; /* prevent line breaks within the text */
+    text-overflow: ellipsis; /* show an ellipsis if the text overflows */
+}
+  
+.card .details h3 {
+    font-size: 0.8em;
+    color: #fff;
+    overflow: hidden; /* hide any text that overflows the element's width */
+    white-space: nowrap; /* prevent line breaks within the text */
+    text-overflow: ellipsis; /* show an ellipsis if the text overflows */
 }
 
 /* Bring words go up when hover */
 .card:hover .details {
-    bottom: 450px;
+    bottom: 340px;
 }
 
-/* logo changing */
-.card .details .logo {
-    font-size: 300%;
-    max-width: 180px;
-}
 
-/* just changing the directed by col and font */
-.card .details h3 {
-    font-size: 0.8em;
-    color: #fff;
-}
+/* makes it ... */
+.logo {
+    font-size: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 /* added padding to the 3 things */
 .card .details .rating {
@@ -139,6 +162,10 @@ a {
 }
 
 .card .details .tags {
+    white-space: break-spaces;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 0 10px;
     position: relative;
     margin-top: 5px;
 }
@@ -148,6 +175,10 @@ a {
     background-color: #fff;
     color: rgba(14, 112, 47);
     border-radius: 4px;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 @media (min-width: 1024px) {
