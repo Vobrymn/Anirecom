@@ -7,7 +7,6 @@
   <script src= "js/pre_render.js"></script>
   <link rel="stylesheet" href= "css/default.css">
   <link rel="stylesheet" href= "css/start_screen.css">
-  <link rel="stylesheet" href= "css/setting.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
@@ -126,35 +125,16 @@
 
   <div id="settings_popup"> 
       <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
-      <div class="maincolor">
-        Color 1:
-        <input type="color" id="color_picker1" name="color1" value="#f3f3f1">
+      <h1> Change Colour </h1>
+      <div class="change_color">
+        <label for="color1">Colour 1</label>
+        <input type="color" id="color1" name="color1" value="#f3f3f1">
       </div>
-      <div class="maincolor">
-        Color 2:
-        <input type="color" id="color_picker2" name="color2" value="#1b1b17">
+      <div class="change_color">
+        <label for="color2">Colour 2</label>
+        <input type="color" id="color2" name="color2" value="#1b1b17">
       </div>
-      <script>
-        function myColor1() {
-          // Get the value returned by the first color picker
-          var color1 = document.getElementById('color_picker1').value;
-          // Set the color as background for the first .maincolor div
-          document.querySelector('.maincolor:nth-of-type(1)').style.backgroundColor = color1;
-        }
-      
-        function myColor2() {
-          // Get the value returned by the second color picker
-          var color2 = document.getElementById('color_picker2').value;
-          // Set the color as background for the second .maincolor div
-          document.querySelector('.maincolor:nth-of-type(2)').style.backgroundColor = color2;
-        }
-      
-        // When the user interacts with the first color picker, call myColor1() function
-        document.getElementById('color_picker1').addEventListener('input', myColor1);
-      
-        // When the user interacts with the second color picker, call myColor2() function
-        document.getElementById('color_picker2').addEventListener('input', myColor2);
-      </script>
+      <button id="save_button">Save</button>
       
       <!-- Victoria's
         <div id="change_color" style="display: none;">

@@ -165,7 +165,6 @@ $('#settings_sn').click(function() {
   $('#change_password').hide();
 });
 
-
 $('#settings_popup .close').click(function() {
   $('#settings_popup').fadeOut(200);
   $('.modal').css({"z-index": "9"});
@@ -184,15 +183,34 @@ $('.settings-option:nth-child(1)').click(function() {
   $('#change_color').fadeIn(200);
 });
 
-//display the chnage pw pop up
+//display the change pw pop up
 $('.settings-option:nth-child(2)').click(function() {
   $('#change_color').hide();
   $('#change_password').fadeIn(200);
 });
-
 
 //close pop ups
 $('#change_color .close, #change_password .close').click(function() {
   $('#change_color, #change_password').fadeOut(200);
 });
 
+//change colour
+function myColor1() {
+  // Get the value returned by the first color picker
+  var col1 = document.getElementById('color1').value;
+  // Set the color as background for the first .maincolor div
+  document.querySelector('.change_color:nth-of-type(1)').style.backgroundColor = col1;
+}
+
+function myColor2() {
+  // Get the value returned by the second color picker
+  var col2 = document.getElementById('color2').value;
+  // Set the color as background for the second .maincolor div
+  document.querySelector('.change_color:nth-of-type(2)').style.backgroundColor = col2;
+}
+
+// When the user interacts with the first color picker, call myColor1() function
+document.getElementById('color1').addEventListener('input', myColor1);
+
+// When the user interacts with the second color picker, call myColor2() function
+document.getElementById('color2').addEventListener('input', myColor2);

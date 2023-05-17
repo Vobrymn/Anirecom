@@ -319,24 +319,45 @@ span.psw {
 
 /* ------ setting stuff ------- */
 
-/*change color*/
-#change_color {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(233, 212, 158, 1);
-  display: none;
+#settings_popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-height: 700px;
+  max-width: 600px;
+  width: 80%;
+  transform: translate(-50%, -50%);
+  border: 3px solid rgba(65, 42, 19);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: rgba(221, 213, 190, 1);  
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change_color {
+  /* top: 0;
+  left: 0; */
+  width: 80%;
+  height: 200px;
+  background: rgba(65, 42, 19);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin: 20px 20px 20px 20px;
 }
 
 #change_color h2 {
   color: rgba(65, 42, 19);
-  text-align: center;
-  margin-top: 100px;
   font-size: 200%;
   font-weight: bold;
+  margin-top: 0;
+  text-align: center;
 }
 
 #change_color input[type="color"] {
@@ -349,16 +370,16 @@ span.psw {
   margin: 20px auto; /*add margin to create spacing*/
 }
 
-.color-input {
+.change_color {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.color-input label {
+.change_color label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   font-size: 20px;
 }
 
@@ -369,8 +390,8 @@ span.psw {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: rgba(233, 212, 158, 1); /*change last value to change transparency*/
+  height: 100%;
+  background-color: rgba(221, 213, 190, 1); /*change last value to change transparency*/
   display: none;
   z-index: 1;
 }
