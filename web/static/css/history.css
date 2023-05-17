@@ -1,6 +1,7 @@
 h1 {
     font-size: 250%;
-    padding-top: 250px;
+    margin-top: 110px;
+    margin-bottom: 20px;
 }
 
 *{
@@ -11,12 +12,20 @@ h1 {
 }
 
 .border {
-    margin-bottom: 40px;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #sort {
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    border: 2px solid;
+    border-radius: 4px;  
+    border-color: rgba(65, 42, 19);
 }
 
 .card {
@@ -26,26 +35,26 @@ h1 {
     border-radius: 20px;
     overflow: hidden;
     flex: 33.33%;
-    overflow-y: scroll;
     border: 3px solid;
     border-color: rgba(65, 42, 19);
     background-color: rgb(245, 245, 237);
+    align-items:center ;
+    justify-content: center;
 }
 
 .card_wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
     width: 80%; /* adjust the width as needed */
+    max-width: 1500px;
     /* margin: 40px 40px 40px 40px; */
     justify-content: center;
-    max-height: 80vh;
-    overflow-y: scroll;
-    padding-bottom: 50px;
-    margin-bottom: 80px;
+    z-index: 1;
+    margin-bottom: 50px;
 }
-  
+
 .card_wrapper::-webkit-scrollbar,
 .card::-webkit-scrollbar {
     display: none;
@@ -74,7 +83,9 @@ h1 {
     margin-bottom: 10px;
 }
 
-button {
+#suggests_b {
+    position: relative;
+    left: 112.5px;
     font-size: 15px;
     margin-bottom: 15px;
 }

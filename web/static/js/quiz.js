@@ -129,7 +129,7 @@ function autocomplete(inp, arr) {
     {
         question: "",
         anime_question: "Are there any particular studios you'd like to look up?",
-        manga_question: "Any particular authors you'd like to look up?",
+        manga_question: "Any specific authors you'd like to look up?",
         anime_choices: Array.from(valid_tags[2]),
         manga_choices: Array.from(valid_tags[3])  
     },
@@ -417,12 +417,14 @@ function autocomplete(inp, arr) {
       type: 'POST',
       data: formData,
       processData: false,
-      contentType: false
+      contentType: false,
+      success: function() {
+        var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
+        window.location.href = url;
+      },
+      error: function(xhr, textStatus, error) {
+      }
     });
-
-    var url = `/suggestions?content_type=${encodeURIComponent(answers.content_type)}&genres=${encodeURIComponent(JSON.stringify(answers.genres))}&themes=${encodeURIComponent(JSON.stringify(answers.themes))}&producers=${encodeURIComponent(JSON.stringify(answers.producers))}&dates=${encodeURIComponent(answers.dates)}`;
-
-    window.location.href = url;
   }
 
 $(document).ready(function () {
