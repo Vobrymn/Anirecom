@@ -44,7 +44,7 @@ a {
     max-width: 320px;
     max-height: 450px;
     min-height: 250px;
-    background: #fff;
+    background: rgb(239, 226, 198);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);

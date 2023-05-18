@@ -50,7 +50,6 @@ button, .button{
   background-color: var(--primary_colour);
   color: white;
   padding: none;
-  border: none;    
   border-radius: 4px;  
   cursor: pointer;
   text-align: center;
@@ -156,7 +155,7 @@ button:hover, .button:hover #hb:hover {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  z-index: 13; /* from 11 */
+  z-index: 13;
 }
 
 .spinner{
@@ -233,7 +232,6 @@ button:hover, .button:hover #hb:hover {
   color: rgb(65, 42, 19, 0.9);
 }
 
-/* new section */
 .side_nav .settings-menu {
   display: none;
 }
@@ -245,7 +243,7 @@ button:hover, .button:hover #hb:hover {
 .side_nav.settings-expanded a:not(.settings-option) {
   display: none;
 }
-/*  */
+
 
 .x_container {
   text-align: center;
@@ -327,9 +325,9 @@ span.psw {
   max-width: 600px;
   width: 80%;
   transform: translate(-50%, -50%);
-  /* don't know why can't hide the border but others are hidden */
-  border: 3px solid rgba(65, 42, 19);
   border-radius: 5px;
+  /* it appears even when it's hidden */
+  border: 3px solid rgba(65, 42, 19);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: rgba(221, 213, 190, 1);  
   z-index: 1;

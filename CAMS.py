@@ -184,24 +184,34 @@ def change_colour():
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
    if request.method == 'GET':
-      
-      response = make_response(render_template('quiz.html'))
+
+      db = get_db("content")
+      cursor = db.cursor()
+      genres = cursor.execute("SELECT DISTINCT genres FROM tags").fetchall()
+      themes = cursor.execute("SELECT DISTINCT themes FROM tags").fetchall()
+      studios = cursor.execute("SELECT DISTINCT studios FROM tags").fetchall()
+      authors = cursor.execute("SELECT DISTINCT authors FROM tags").fetchall()
+
+      valid_tags = [[genre[0] for genre in genres], [theme[0] for theme in themes], [studio[0] for studio in studios], [author[0] for author in authors]]
+
+      response = make_response(render_template('quiz.html', valid_tags=valid_tags))
 
       response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "0"
       
       return response
-   elif request.method == "POST" and "query" in request.form:
+   elif request.method == "POST" and 'query' in request.form:
 
       query = json.loads(request.form["query"])
 
-      if session.get("history") is None:
-         session["history"] = []
+      session_history = session.get("history", [])
       
-      session["history"].insert(0, query)
+      session_history.insert(0, query)
+
+      session["history"] = session_history
       
-      max_logs = 10
+      max_logs = 5
 
       if len(session["history"]) > max_logs:
          session["history"] = session["history"][:max_logs]
@@ -219,8 +229,8 @@ def quiz():
          cursor.execute("INSERT INTO {} (query) VALUES (?)".format(username), (json.dumps(query),))
          db.commit()
 
-      db.close()
-
+         db.close()
+ 
       return "History updated"
 
    else:
@@ -310,9 +320,9 @@ def suggestions():
       cursor = db.cursor()
 
       if condition:
-         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 12")
+         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 84")
       else:
-         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 12")
+         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 84")
 
       suggestions = cursor.fetchall()
 
@@ -323,21 +333,47 @@ def suggestions():
 @app.route('/history')
 def history():
    if session.get("logged_in") and session.get("username"):
+
+      print("logged in")
       username = session.get("username")
       db = get_db("users")
       cursor = db.cursor()
-      cursor.execute('SELECT * FROM history WHERE username = ?', (username,))
-      account = cursor.fetchone()
-      if account:
-         response = make_response(account[1])
+      cursor.execute("SELECT * FROM {} ORDER BY log_num DESC LIMIT 20;".format(username))
+      history = cursor.fetchall()
+      if history:
+         
+         response = make_response(render_template('history.html', history = history))
+         response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+         response.headers["Pragma"] = "no-cache"
+         response.headers["Expires"] = "0"
+
          return response
       else:
          error_message = "User has no history"
          return (make_response(error_message, 400))
       
+   elif session.get("history"):
+      session_history = []
+      for i in range (len(session.get("history"))):
+         session_history.append([len(session.get("history")) - 1 - i, session.get("history")[i]])
 
-   return render_template('history.html')
+      response = make_response(render_template('history.html', history = session_history))
+      response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "0"
+      
+      return response
 
+   else:
+
+      response = make_response(render_template('history.html', history = "null"))
+      response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "0"
+
+      return response
+
+   
 
 
 if __name__ == '__main__':

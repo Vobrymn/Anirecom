@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title> Result </title>
@@ -9,7 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>	
     
     <script> 
-        var suggestions = {{ suggestions | tojson}};
+        var suggestions = {{ suggestions | tojson }};
     </script>
 </head>
 <body>
@@ -23,10 +24,11 @@
 	</div>
     <div id = "sn" class="modal"></div>
   <div class="side_nav">
-      <a href="/register" id="register_sn">Register</a>
-      <a href="/home" id="settings_sn">Settings</a>
-      <a href="/history" id="history_sn">History</a>
-      <a href="/logout" id="logout_sn">Log out</a>
+        <a href="/quiz" id="quiz_sn">Quiz</a>
+        <a href="/history" id="history_sn">History</a>
+        <a href="/register" id="register_sn">Register</a>
+        <a href="/#" id="settings_sn">Settings</a>
+        <a href="/logout" id="logout_sn">Log out</a>
   </div> 
 
     <div id="login_form_box" class="modal">
@@ -50,8 +52,8 @@
             </div>
         </form>
     </div>
-    <button id = "back_button">Back</button>
-    <button id = "refresh_button">Refresh</button>
+    <button id = "back_button" onclick = "window.location.href = '/quiz'">Quiz</button>
+    <button id = "refresh_button" onclick = "location.reload()">Refresh</button>
 	<div class="border">
         
 		<div class="header">
