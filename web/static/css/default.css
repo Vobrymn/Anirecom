@@ -326,7 +326,7 @@ span.psw {
   width: 80%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-  /* it appears even when it's hidden */
+  /* can't be hidden */
   border: 3px solid rgba(65, 42, 19);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: rgba(221, 213, 190, 1);  
@@ -373,7 +373,6 @@ span.psw {
 }
 
 /*change password*/
-
 #change_password input[type="password"] {
   width: 80%;
   max-width: 400px;
