@@ -199,14 +199,14 @@ function myColor1() {
   // Get the value returned by the first color picker
   var col1 = document.getElementById('color1').value;
   // Set the color as background for the first .maincolor div
-  document.querySelector('.change_color:nth-of-type(1)').style.backgroundColor = col1;
+  document.querySelector('.color_input:nth-of-type(1)').style.backgroundColor = col1;
 }
 
 function myColor2() {
   // Get the value returned by the second color picker
   var col2 = document.getElementById('color2').value;
   // Set the color as background for the second .maincolor div
-  document.querySelector('.change_color:nth-of-type(2)').style.backgroundColor = col2;
+  document.querySelector('.color_input:nth-of-type(2)').style.backgroundColor = col2;
 }
 
 // When the user interacts with the first color picker, call myColor1() function
