@@ -334,6 +334,7 @@ span.psw {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
 }
 
 #settings_popup h2 {
