@@ -1,7 +1,7 @@
 body{
   background-color: rgb(9, 5, 0);
   opacity: 0;
-  transition: opacity 3s ease-in-out;
+  transition: opacity 0.7s ease-in-out;
 }
 
 /*info mail*/
@@ -10,29 +10,28 @@ body{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 6vh;
-  height: 3vh;
-  transform: translate(-11.8vh, -8vh);
+  transform: translate(-112%, -92%) scale(0.2);
+  width: 100px;
+  height: 100px;
 }
 
 .info_text {
-  position: absolute;
-  top: 40%;
-  left: 32.2%;
+  position: relative;
+  top: 87px;
+  left: 29%;
+  transform: translateX(-50%);
   color: white;
-  font-size: 1.2vh;
+  font-size: 50px;
   font-weight: bold;
-  z-index:6;
-  height: 100%;
-  width: 100%;
+  z-index:6
 }
 
 .letter_image {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -41,8 +40,8 @@ body{
 
 .animated_mail {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: 150px;
+  width: 200px;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   transition: 0.4s;
@@ -53,18 +52,18 @@ body{
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 3vh 6vh;
+  border-width: 0 0 100px 200px;
   border-color: transparent transparent var(--primary_colour) transparent;
-  /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.6)); */
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.6));
   z-index: 2;
 }
 .animated_mail .top_fold {
   position: absolute;
-  top: 0vh;
+  top: 50px;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 1.5vh 3vh 0 3vh;
+  border-width: 50px 100px 0 100px;
   -webkit-transform-origin: 50% 0%;
   -webkit-transition: transform 0.4s 0.4s, z-index 0.2s 0.4s;
   -moz-transform-origin: 50% 0%;
@@ -77,8 +76,8 @@ body{
 .animated_mail .back_fold {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 100px;
   background: var(--primary_colour);
   z-index: 0;
 }
@@ -88,17 +87,17 @@ body{
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 1.6vh 0 1.5vh 3vh;
+  border-width: 50px 0 50px 100px;
   border-color: transparent transparent transparent var(--primary_colour);
-  /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4)); */
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4));
   z-index: 2;
 }
 .animated_mail .letter {
-  left: 5%;
-  bottom: 10%;
+  left: 20px;
+  bottom: 0px;
   position: absolute;
-  width: 90%;
-  height: 80%;
+  width: 160px;
+  height: 60px;
   background: white;
   z-index: 1;
   overflow: hidden;
@@ -107,48 +106,48 @@ body{
   transition: 0.4s 0.2s;
 }
 .letter .letter_border {
-  height: 7%;
+  height: 10px;
   width: 100%;
-  background: repeating-linear-gradient(-45deg,var(--primary_colour), var(--primary_colour) 8%, transparent 8%, transparent 18%);
+  background: repeating-linear-gradient(-45deg,var(--primary_colour), var(--primary_colour) 8px, transparent 8px, transparent 18px);
 }
 
 .letter .letter_title {
-  margin-top: 7.5%;
-  margin-left: 2%;
-  height: 6%;
-  width: 65%;
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 10px;
+  width: 57%;
+  padding-bottom:1vh;
+  padding-left:0.5vh;
   background: var(--primary_colour);
-  padding: 1%;
-  padding-top:2.5%;
-  padding-left:2.5%
+  border-radius: 3px;
 }
 
 .letter .letter_context {
-  margin-top: 7.5%;
-  margin-left: 2%;
-  height: 6%;
-  width: 40%;
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 10px;
+  width: 35%;
+  padding-bottom:1vh;
+  padding-left:0.5vh;
   background: var(--primary_colour);
-  padding: 1%;
-  padding-top:2.5%;
-  padding-left:2.5%
+  border-radius: 3px;
 }
 
 .letter .letter_stamp {
-  top: 15%;
-  right: 5%;
+  margin-top: 20px;
+  margin-left: 120px;
   border-radius: 100%;
-  height: 10%;
-  width: 10%;
+  height: 30px;
+  width: 30px;
   background: var(--primary_colour);
   opacity: 0.3;
   position:absolute;
 }
 
 .letter_image:hover .animated_mail {
-  transform: translateY(1vh);
-  -webkit-transform: translateY(1vh);
-  -moz-transform: translateY(1vh);
+  transform: translateY(50px);
+  -webkit-transform: translateY(50px);
+  -moz-transform: translateY(50px);
 }
 .letter_image:hover .animated_mail .top_fold {
   transition: transform 0.4s, z-index 0.2s;
@@ -160,10 +159,10 @@ body{
   z-index: 0;
 }
 .letter_image:hover .animated_mail .letter {
-  height: 150%;
+  height: 180px;
 }
 .letter_image:hover .shadow {
-  width: 200%;
+  width: 250px;
 }
 
 /*info pop up*/
@@ -241,9 +240,9 @@ https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of
   height: 0;
   vertical-align: middle;
   border-style: solid;
-  border-width: 1vh 1vh 0 1vh;
+  border-width: 5px 5px 0 5px;
   border-color: #999 transparent transparent transparent;
-  margin-left: 1vh;
+  margin-left: 5px;
   z-index:100
 }
 

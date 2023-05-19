@@ -3,7 +3,6 @@ h1 {
 }
 
 #register_form{
-    margin-top: 5vh;
     width: 90vw;
     max-width: 500px;
     display: flex;

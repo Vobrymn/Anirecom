@@ -1,7 +1,6 @@
-$("#sb").remove();
-
 let valid_u = false
 let valid_p = false
+let valid_p2 = false
 
 
 function check_input(e){
@@ -49,10 +48,12 @@ function check_input(e){
 
         case "password_2":
             if (log == $("#password").val()) {
+                valid_p2 = true;
                 $("#register_error").text("default")
                 $("#register_error").css("opacity","0")
             } 
             else {
+                valid_p2 = false;
                 $("#register_error").text("Passwords must match")
                 $("#register_error").css("opacity","1")
             }
@@ -66,44 +67,26 @@ $("#username").on("input", check_input)
 $("#password").on("input", check_input)
 $("#password_2").on("input", check_input)
 
-$("#register_form").submit(function(event) {
+$("#register_form").submit(async function(event){
     event.preventDefault();
 
-    if (!valid_u){
-        $("#register_error").text("Username must contain only characters and numbers")
-        $("#register_error").css("opacity","1")
-        return
-    }
-    else if (!valid_p){
-        $("#register_error").text("Password must be at least 8 characters")
-        $("#register_error").css("opacity","1")
-        return
-    }
-    else if (!($("#password").val() == $("#password_2").val())){
-        $("#register_error").text("Passwords must match")
-        $("#register_error").css("opacity","1")
-        return
-    }
-
-    if (valid_u && valid_p && $("#password").val() == $("#password_2").val()) {
-      const formData = new FormData(event.target);
+    if (valid_u && valid_p2 && valid_p2){
+        const formData = new FormData(event.target);
   
-      // Send an AJAX POST request to the server
-      $.ajax({
-        url: '/register',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function() {
-          // Success, redirect to the home page
-          window.location.href = "/";
-        },
-        error: function(xhr, textStatus, error) {
-          // Error, update the form with the error message
-          $("#register_error").text(xhr.responseText);
-          $("#register_error").css("opacity","1")
+        // send a POST request to the server
+        const response = await fetch('/register', {
+        method: 'POST',
+        body: formData
+        });
+  
+        // handle the server response
+        if (response.ok) {
+        // success, redirect to the home page
+        window.location.href = "/";
+        } else {
+        // error, update the form with the error message
+        const error = await response.text();
+        $("#register_error").text(error)
         }
-      });
     }
 });
