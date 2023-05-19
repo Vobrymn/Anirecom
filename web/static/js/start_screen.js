@@ -22,13 +22,32 @@ function resize_sb(){
   }
 }
 
+function resize_envelope(){
+  if(window_ratio()){
+    $("#envelope_container").css({"height": "3vh", "width": "6vh", "transform": "translate(-11.8vh, -8vh)"});
+    $(".info_text").css("font-size", "1.2vh")
+    $(".animated_mail .body").css("border-width", "0 0 3vh 6vh")
+    $(".animated_mail .top_fold").css("border-width", "1.7vh 3vh 0 3vh")
+    $(".animated_mail .left_fold").css("border-width", "1.6vh 0 1.5vh 3vh")
+  }
+  else{
+    $("#envelope_container").css({"height": "1.6875vw", "width": "3.375vw", "transform": "translate(-6.6vw, -4.5vw)"});
+    $(".info_text").css("font-size", "0.675vw")
+    $(".animated_mail .body").css("border-width", "0 0 1.6875vw 3.375vw")
+    $(".animated_mail .top_fold").css("border-width", "0.84375vw 1.6875vw 0 1.6875vw")
+    $(".animated_mail .left_fold").css("border-width", "0.84375vw 0 0.84375vw 1.6875vw")
+  }
+}
+
 $(document).ready(function() {
   resize_sb();
+  resize_envelope()
   $("body").css("opacity", "1");
 });
 
 $( window ).on( "resize", function(){
   resize_sb();
+  resize_envelope()
 });
 
 //envelope stuff
@@ -59,27 +78,6 @@ mailPopup.addEventListener('click', function(e) {
   e.stopPropagation();
 });
 
-
-//my attempt at screen resizing, but doesn't work when screen goes crazy small where everything else zooms out. i know there's a function like
-//that above but i just couldn't get it to work properly
-function resize_envelope(){
-  if(window.innerWidth <= 1140){
-    $(".envelope_container").css({"transform": "translate(-105%, -87%) scale(0.2)"});
-  } else if(window.innerWidth <= 500){
-    $(".envelope_container").css({"transform": "translate(-100%, -90%) scale(0.1)"});
-  } else {
-    $(".envelope_container").css({"transform": "translate(-112%, -92%) scale(0.2)"});
-  }
-}
-
-$(document).ready(function() {
-  resize_envelope();
-  $("body").css("opacity", "1");
-});
-
-$(window).on("resize", function(){
-  resize_envelope();
-});
 
 document.querySelector('.close_button').addEventListener('click', function() {
   mailPopup.classList.remove('active');
