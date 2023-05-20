@@ -177,6 +177,7 @@ function autocomplete(inp, arr) {
       }
   
       question = questions[currentQuestionIndex].question;
+      $("#suggest").hide()
       $("#back").hide()
       $("#skip").hide()
       $("#answer").attr("placeholder", "Anime | Manga")
@@ -194,6 +195,7 @@ function autocomplete(inp, arr) {
       input_ac = autocomplete(answerInput, validChoices);
 
       question = questions[currentQuestionIndex].question;
+      $("#suggest").show()
       $("#back").show()
       $("#skip").show()
       $("#next").text("next")
