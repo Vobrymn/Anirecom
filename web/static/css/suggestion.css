@@ -1,7 +1,7 @@
 h1 {
     font-size: 250%;
     margin-top: 110px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 a {
@@ -24,7 +24,6 @@ a {
     height: 30px;
     width: 70;
     font-size: 12px;
-
 }
 
 #refresh_button{
@@ -41,25 +40,21 @@ a {
 /* reference: https://youtu.be/sx0QXhcgplU  */
 .card {
     position: relative;
-    max-width: 320px;
-    max-height: 450px;
-    min-height: 250px;
+    width: 240px;
+    height: 450px; 
     background: rgb(239, 226, 198);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    flex: 33.33%;
-    
 }
-  
 
 .card .poster {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
-}
-
-.card .details{
-    text-align: center;
 }
 
 .card_wrapper {
@@ -67,11 +62,12 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
-    width: 90%; /* adjust the width as needed */
+    width: 100%; /* adjust the width as needed */
     /* margin: 40px 40px 40px 40px; */
+    padding: 10%;
     justify-content: center;
     z-index: 1;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .border {
@@ -82,54 +78,52 @@ a {
     display: flex;
     flex-direction: column;
 }
-  
 
-.card_wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-/* The transparent thing in front */
-.card .poster::before { 
+/* the translucent card */
+.card::before { 
     content: '';
     position: absolute;
-    bottom: -140px;
+    bottom: -100px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(14, 112, 47), 30%, transparent);
+    background: linear-gradient(0deg, var(--primary_colour), transparent);
     transition: 0.5s;
     z-index: 1;
 }
 
-/* the transparent thing go up upon hover */
-.card:hover .poster::before { 
-    bottom: 0px;
+/* the translucent card moving upwards upon hovering */
+.card:hover::before { 
+    bottom: 0;
 }
 
 .card .poster img {
-    position: relative;
-    width: 100%; /* set the width to 100% */
-    height: 100%; /* set the height to 100% */
-    object-fit: cover; /* scale and crop the image to fit the container */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     transition: 0.5s;
-}  
+}
 
-/* Brings the poster up upon hover */
+/* brings poster up upon hover */
 .card:hover .poster img {
-    transform: translateY(-30px);
+    transform: translateY(-15px) scale(1.1);
     filter: blur(5px);
 }
 
 .card .details {
-    position: relative;
-    bottom: 220px;
+    position: absolute;
+    top: 0;
     left: 0;
+    transform: translateY(+60%);
     padding: 20px;
     width: 100%;
+    height: 100%;
     z-index: 2;
     transition: 0.5s;
-    overflow: hidden; /* hide any text that overflows the element's width */
-    white-space: nowrap; /* prevent line breaks within the text */
-    text-overflow: ellipsis; /* show an ellipsis if the text overflows */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
 }
   
 .card .details h3 {
@@ -140,9 +134,9 @@ a {
     text-overflow: ellipsis; /* show an ellipsis if the text overflows */
 }
 
-/* Bring words go up when hover */
+/* Bring details up upon hover */
 .card:hover .details {
-    bottom: 340px;
+    transform: translateY(+35%);
 }
 
 
@@ -162,7 +156,7 @@ a {
 }
 
 .card .details .tags {
-    white-space: break-spaces;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 0 10px;
@@ -181,19 +175,20 @@ a {
     margin-bottom: 5px;
 }
 
+/* changes the card according to window size */
 @media (min-width: 1024px) {
     .card {
-      flex-basis: calc(33.33% - 20px);
-    }
-  }
-  
-@media (max-width: 1023px) and (min-width: 768px) {
-    .card {
-      flex-basis: calc(50% - 20px);
+      flex-basis: calc(33.33% - 30px);
     }
 }
   
-@media (max-width: 767px) {
+@media (max-width: 1023px) and (min-width: 738px) {
+    .card {
+      flex-basis: calc(50% - 30px);
+    }
+}
+  
+@media (max-width: 737px) {
     .card {
       flex-basis: 100%;
     }
