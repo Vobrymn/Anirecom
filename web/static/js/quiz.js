@@ -195,6 +195,7 @@ function autocomplete(inp, arr) {
       input_ac = autocomplete(answerInput, validChoices);
 
       question = questions[currentQuestionIndex].question;
+      $("#suggest").show()
       $("#back").show()
       $("#skip").show()
       $("#next").text("next")
