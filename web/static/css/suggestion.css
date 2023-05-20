@@ -79,7 +79,7 @@ a {
     flex-direction: column;
 }
 
-/* The transparent thing in front */
+/* the translucent card */
 .card::before { 
     content: '';
     position: absolute;
@@ -91,7 +91,7 @@ a {
     z-index: 1;
 }
 
-/* the transparent thing go up upon hover */
+/* the translucent card moving upwards upon hovering */
 .card:hover::before { 
     bottom: 0;
 }
@@ -104,9 +104,9 @@ a {
     transition: 0.5s;
 }
 
-/* Brings the poster up upon hover */
+/* brings poster up upon hover */
 .card:hover .poster img {
-    transform: translateY(-15px) scale(1.1); /* make the img bigger and upwards */
+    transform: translateY(-15px) scale(1.1);
     filter: blur(5px);
 }
 
@@ -134,7 +134,7 @@ a {
     text-overflow: ellipsis; /* show an ellipsis if the text overflows */
 }
 
-/* Bring words go up when hover */
+/* Bring details up upon hover */
 .card:hover .details {
     transform: translateY(+35%);
 }
@@ -175,6 +175,7 @@ a {
     margin-bottom: 5px;
 }
 
+/* changes the card according to window size */
 @media (min-width: 1024px) {
     .card {
       flex-basis: calc(33.33% - 30px);

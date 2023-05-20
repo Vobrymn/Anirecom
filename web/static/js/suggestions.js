@@ -7,8 +7,6 @@
   // Loop through the array of suggestions and create elements
   $.each(suggestions, function(index, entry) {
     // Create the card element
-
-    
     const card = $("<div>").addClass("card");
   
   
@@ -35,7 +33,6 @@
     
     // Create the rating div element
     const rating = $("<div>").addClass("rating");
-    // ------- Can you make it so that it becomes -/10 if there's no ratings given? ------------
     if (entry[3]){
       $("<span>").text(entry[3] + "/10").appendTo(rating);
     }

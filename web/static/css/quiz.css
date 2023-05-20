@@ -24,10 +24,10 @@ h1 {
 }
 
 html {
-  overflow: hidden; /*so users cannot scroll if questions too long*/
+  overflow: hidden; /* so users cannot scroll if questions too long */
 }
 
-/*typing effect*/
+/* typing effect */
 #typing {
   display: inline-block;
   overflow: hidden;
@@ -74,7 +74,7 @@ html {
   margin-top: 15px;
 }
 
-/*the next skip bk buttons stuff*/
+/* the next skip bk buttons stuff */
 button {
   cursor: pointer;
   margin-right: 0.5rem;
@@ -89,7 +89,7 @@ button:last-child {
   justify-content: center;
 }
 
-/*autocomplete stuff*/
+/* autocomplete stuff */
 .autocomplete_items {
   position: absolute;
   border: 1px solid #d4d4d4;

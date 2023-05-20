@@ -85,7 +85,7 @@ h1 {
     margin-bottom: 15px;
 }
 
-
+/* changes the card according to window size */
 @media (max-width: 1023px) and (min-width: 768px) {
   .card {
     flex-basis: calc(50% - 20px);
