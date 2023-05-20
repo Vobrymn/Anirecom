@@ -29,7 +29,7 @@
       $("<h3>").text("Produced by: " + producers.join(", ")).appendTo(details);
     }
     else{
-      $("<h3>").text("Produced by: ").css("opacity", "0").appendTo(details)
+      $("<h3>").text("Produced by: -").appendTo(details);
     }
     
     
