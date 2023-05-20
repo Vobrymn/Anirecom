@@ -1,4 +1,3 @@
-
 h1 {
   font-size: 250%;
   padding-top: 40px;
@@ -118,7 +117,7 @@ button:last-child {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /*this single line was what messed up my code. i was like, i swear the js should work, but why was nothing appearing*/
+  position: relative;
   width: 300px;
   max-width: 300px;
 }
