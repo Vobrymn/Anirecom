@@ -330,11 +330,10 @@ span.psw {
   border: 3px solid rgba(65, 42, 19);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: rgba(221, 213, 190, 1);  
-  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 100;
+  z-index: 9;
 }
 
 #settings_popup h2 {
