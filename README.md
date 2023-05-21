@@ -3,6 +3,14 @@
 **Anime Recommendation Bot
 by: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 
+## Table of Contents
+
+[Project Overview](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#project-overview)
+[Installation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#installation)
+[Usage](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#usage)
+[Development Process and Architecture](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#development-process-and-architecture-including-challenges)
+[Testing](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing)
+
 ## Project Overview
 
 Our project is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 84 tailored recommendations that would align with their interests.
