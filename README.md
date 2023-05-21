@@ -1,6 +1,7 @@
 # CITS3403 Semester 1 2023 Project
 
-**By 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
+**Anime Recommendation Bot
+By: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 
 ## Project Overview
 
