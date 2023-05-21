@@ -246,18 +246,19 @@ function myColor2() {
   document.querySelector('.color_input:nth-of-type(2)').style.backgroundColor = hexToRgba(col2, 0.9);
 }
 
-// When the user interacts with the first color picker, call myColor1() function
-document.getElementById('color1').addEventListener('input', myColor1);
+if (logged_in){
+  // When the user interacts with the first color picker, call myColor1() function
+  document.getElementById('color1').addEventListener('input', myColor1);
 
-// When the user interacts with the second color picker, call myColor2() function
-document.getElementById('color2').addEventListener('input', myColor2);
+  // When the user interacts with the second color picker, call myColor2() function
+  document.getElementById('color2').addEventListener('input', myColor2);
+}
 
 function hexToRgba(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16);
   var g = parseInt(hex.slice(3, 5), 16);
   var b = parseInt(hex.slice(5, 7), 16);
   rgba_val = "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")"
-  console.log(rgba_val)
   return rgba_val;
 }
 
@@ -378,7 +379,6 @@ $("#confirm_password").on("input", check_password)
 
 $("#password_form").submit(function(event) {
     event.preventDefault();
-    console.log("start")
 
     if (!valid_p){
         $("#password_error").text("Password must be at least 8 characters")

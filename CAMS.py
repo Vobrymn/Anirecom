@@ -209,7 +209,6 @@ def change_pwd():
 @app.route('/change_colour', methods=['POST'])
 def change_colour():
    if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session.get("logged_in") and session.get("username"):
-      print("arrived")
       colour_1 = request.form['colour_1']
       colour_2 = request.form['colour_2']
       session['colour_1'] = colour_1
@@ -284,8 +283,7 @@ def quiz():
          cursor.execute("INSERT INTO {} (query) VALUES (?)".format(username), (json.dumps(query),))
          db.commit()
 
-         db.close()
- 
+      db.close()
       return "History updated"
 
    else:
@@ -389,7 +387,6 @@ def suggestions():
 def history():
    if session.get("logged_in") and session.get("username"):
 
-      print("logged in")
       username = session.get("username")
       db = get_db("users")
       cursor = db.cursor()

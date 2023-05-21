@@ -1,11 +1,11 @@
-console.log(search_history)
-  
 // Select the existing card_wrapper div
 const cardWrapper = $(".card_wrapper")
 
+if (search_history == null){
+  $(".word").text("No results")
+}
 // Loop through the array of suggestions and create elements
-if (search_history != "null"){
-
+else{
     $.each(search_history, function(index, entry) {
         
         var ind = entry[0];
@@ -54,7 +54,6 @@ if (search_history != "null"){
         // Create the suggests button
         var suggestsButton = $('<button>').attr('id', 'suggests_b').text('Results').on('click', function() {
             var url = `/suggestions?content_type=${encodeURIComponent(content_type)}&genres=${encodeURIComponent(JSON.stringify(genres))}&themes=${encodeURIComponent(JSON.stringify(themes))}&producers=${encodeURIComponent(JSON.stringify(producers))}&dates=${encodeURIComponent(dates)}`;
-            console.log(url)
             window.location.href = url;
         });
 
@@ -70,9 +69,6 @@ if (search_history != "null"){
         
         card.appendTo(cardWrapper);
     });
-}
-else{
-
 }
 
 

@@ -1,9 +1,9 @@
 
   // Select the existing card_wrapper div
   const cardWrapper = $(".card_wrapper")
-  
-  $("#total_results").text(suggestions.length)
-
+  if (!suggestions.length){
+    $(".word").text("No results")
+  }
   // Loop through the array of suggestions and create elements
   $.each(suggestions, function(index, entry) {
     // Create the card element

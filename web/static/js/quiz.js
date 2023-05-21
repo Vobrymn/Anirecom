@@ -415,14 +415,13 @@ function autocomplete(inp, arr) {
 
   }
 
-  
+
   // query submission
 
   async function submit(){
 
     const formData = new FormData();
     formData.append('query', JSON.stringify(answers));
-    console.log(formData),
 
     $.ajax({
       url: '/quiz',
