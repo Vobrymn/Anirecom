@@ -33,7 +33,7 @@ if (search_history != "null"){
         }
     
         var details = $('<div>').addClass('details');
-        details.append($('<p>').addClass('t_d').text('Log ' + (ind + 1)));
+        details.append($('<p>').addClass('t_d').text('Log ' + (ind)));
         details.append($('<p>').addClass('ques').text('Would you like an anime or a manga?'));
         details.append($('<p>').addClass('ans').text(': ' + content_type));
         details.append($('<p>').addClass('ques').text('Are there any genres you\'re interested in?'));

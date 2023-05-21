@@ -146,28 +146,42 @@ def register():
       
    return render_template('register.html')
 
-@app.route('/change_pwd', methods=['GET', 'POST'])
+@app.route('/change_pwd', methods=['POST'])
 def change_pwd():
-   if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'new_password' in request.form:
-         username = request.form['username']
-         password = request.form['password']
+   if request.method == 'POST' and 'old_password' in request.form and 'new_password' in request.form and 'confirm_password' in request.form and session.get("logged_in") and session.get("username"):
+         old_password = request.form['old_password']
          new_password = request.form['new_password']
+         confirm_password = request.form['confirm_password']
          db = get_db("users")
          cursor = db.cursor()
-         cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
+         cursor.execute('SELECT * FROM accounts WHERE username = ?', (session.get("username"),))
          while (account := cursor.fetchone()):
-            if check_password_hash(account[2], password):
-               cursor.execute("UPDATE accounts set password = ?", generate_password_hash(new_password))
-               db.close()
-               return "Update successful"
-         db.close()
+            if check_password_hash(account[2], old_password):
+               if confirm_password == new_password:
+                  cursor.execute("UPDATE accounts set password = ?", (generate_password_hash(new_password),))
+                  db.commit()
+                  db.close()
+                  return "Update successful"
+               elif (len(new_password) < 8 or len(confirm_password) < 8):
+                  db.close()
+                  error_message = 'Password must be at least 8 characters'
+                  return (make_response(error_message, 400))
+               else:
+                  db.close()
+                  error_message = "Passwords do not match"
+                  return (make_response(error_message, 400))
+               
+         db.close()      
          error_message = "Incorrect password"
          return (make_response(error_message, 400))
-   return redirect(url_for("home"))
+   
+   error_message = 'Error'
+   return (make_response(error_message, 400))
 
-@app.route('/change_colour', methods=['GET', 'POST'])
+@app.route('/change_colour', methods=['POST'])
 def change_colour():
    if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session.get("logged_in") and session.get("username"):
+      print("arrived")
       colour_1 = request.form['colour_1']
       colour_2 = request.form['colour_2']
       session['colour_1'] = colour_1
@@ -175,8 +189,19 @@ def change_colour():
       db = get_db("users")
       cursor = db.cursor()
       cursor.execute("UPDATE accounts SET colour_1 = ?, colour_2 = ? WHERE username = ?", (colour_1, colour_2, session.get("username")))
+      db.commit()
       db.close()
-   return redirect(url_for("home"))
+
+      response = make_response('Colour changed')
+
+      for key, value in session.items():
+         if key in ["colour_1", "colour_2"]:
+            response.set_cookie(key, urllib.parse.quote(str(value)))
+
+      return response
+   
+   error_message = 'Error'
+   return (make_response(error_message, 400))
       
 
 
@@ -210,7 +235,7 @@ def quiz():
 
       session["history"] = session_history
       
-      max_logs = 5
+      max_logs = 9
 
       if len(session["history"]) > max_logs:
          session["history"] = session["history"][:max_logs]
@@ -317,9 +342,9 @@ def suggestions():
       cursor = db.cursor()
 
       if condition:
-         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 84")
+         cursor.execute(f"SELECT * FROM {content_type} WHERE {condition} ORDER BY RANDOM() LIMIT 20")
       else:
-         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 84")
+         cursor.execute(f"SELECT * FROM {content_type} ORDER BY RANDOM() LIMIT 40")
 
       suggestions = cursor.fetchall()
 
@@ -339,7 +364,7 @@ def history():
       history_table = cursor.fetchone()
 
       if history_table:
-         cursor.execute("SELECT * FROM {} ORDER BY log_num DESC LIMIT 20;".format(username))
+         cursor.execute("SELECT * FROM {} ORDER BY log_num DESC LIMIT 18;".format(username))
          history = cursor.fetchall()
          response = make_response(render_template('history.html', history = history))
          response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -348,8 +373,13 @@ def history():
 
          return response
       else:
-         error_message = "User has no history"
-         return (make_response(error_message, 400))
+         response = make_response(render_template('history.html', history = None))
+         response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+         response.headers["Pragma"] = "no-cache"
+         response.headers["Expires"] = "0"
+         
+         return response
+
       
    elif session.get("history"):
       session_history = []
