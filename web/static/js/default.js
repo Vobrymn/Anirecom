@@ -198,3 +198,23 @@ $('#change_color .close, #change_password .close').click(function() {
   $('#change_color, #change_password').fadeOut(200);
 });
 
+//change colour
+function myColor1() {
+  // Get the value returned by the first color picker
+  var col1 = document.getElementById('color1').value;
+  // Set the color as background for the first .maincolor div
+  document.querySelector('.color_input:nth-of-type(1)').style.backgroundColor = col1;
+}
+
+function myColor2() {
+  // Get the value returned by the second color picker
+  var col2 = document.getElementById('color2').value;
+  // Set the color as background for the second .maincolor div
+  document.querySelector('.color_input:nth-of-type(2)').style.backgroundColor = col2;
+}
+
+// When the user interacts with the first color picker, call myColor1() function
+document.getElementById('color1').addEventListener('input', myColor1);
+
+// When the user interacts with the second color picker, call myColor2() function
+document.getElementById('color2').addEventListener('input', myColor2);

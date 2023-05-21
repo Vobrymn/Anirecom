@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main page</title>
-  <script src= "/js/pre_render.js"></script>
-  <link rel="stylesheet" href= "/css/default.css">
-  <link rel="stylesheet" href= "/css/start_screen.css">
-  <link rel="stylesheet" href= "/css/setting.css">
+  <script src= "js/pre_render.js"></script>
+  <link rel="stylesheet" href= "css/default.css">
+  <link rel="stylesheet" href= "css/start_screen.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 
-  <img src="/images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
+  <img src="images/start_screen_bg.jpg" alt="Your Image" id="start_screen_bg" class="background">
 
   <!--pop up stuff-->
   <div id="modal" class="modal">
@@ -24,7 +23,7 @@
     <div class="letter_context">Information Page</div>
     <p class="info_context">By: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice<br>
       <br>
-      <span class="centered">-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈</span>
+      <span>-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈</span>
       <span class="centered">Welcome to our anime/manga recommendation chatbot!</span><br>
       Ever wanted to watch a new anime or manga, but had no idea where to look?<br>
       <br>
@@ -107,7 +106,7 @@
       </div>
       <div class="shadow"></div>
     </div>
-  </div>
+    </div>
 
   <button id="start_button">Start</button>
 
@@ -124,16 +123,17 @@
 
   <div id="sn" class="modal"></div>
 
-  <div id="settings_popup"> 
+  <div id="settings_popup" style="display:none;"> 
+      <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
       <div id="change_color" style="display: none;">
-        <h2>Change Colour</h2>
-        <div class="color-input">
+        <h2> Change Colour </h2>
+        <div class="color_input">
           <label for="color1">Colour 1</label>
-          <input type="color" id="color1" name="color1" value="#000000">
+          <input type="color" id="color1" name="color1" value="#f3f3f1">
         </div>
-        <div class="color-input">
+        <div class="color_input">
           <label for="color2">Colour 2</label>
-          <input type="color" id="color2" name="color2" value="#ffffff">
+          <input type="color" id="color2" name="color2" value="#1b1b17">
         </div>
         <button id="save_button">Save</button>
       </div>
@@ -189,7 +189,7 @@
       </div>
     </form>
   </div>
-<script src="/js/default.js"></script>
-<script src="/js/start_screen.js"></script>
+<script src="js/default.js"></script>
+<script src="js/start_screen.js"></script>
 </body>
 </html>
