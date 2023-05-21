@@ -2,7 +2,7 @@
 
 **By 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 
-##Project Overview
+## Project Overview
 
 Our project is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 64 tailored recommendations that would align with their interests.
 
@@ -30,3 +30,21 @@ Utilizing database migrations, we have successfully implemented the following me
 > Interaction and Result Storage: Upon user submission, their responses, stored in an array, are sent as a JSON object to the server. The server processes each string and matches it with our results database and from there, only the valid results are sent back to the client.
 
 > Search for Previous Interactions: The history feature is available to both logged in and guests, since 
+
+## Installation
+- steps required to set up the development environment and run the application locally, dependencies etc
+
+## Usage
+- describe how users can interact with the application
+
+## Architecture
+- discuss the overall architecture and design patterns used in the application, explain the separation of concerns, such as the division of frontend (HTML, CSS, JavaScript) and backend (Flask) components.
+- describe how the different components interact with each other.
+
+## Development Process
+- an overview of your development process, including any methodologies or tools used (e.g., Agile, version control with Git), explain how codebase was organised, such as folder structure or naming conventions
+- -discuss any challenges faced during development (maybe)
+
+## Testing
+- describe your approach to testing the application, mention any testing frameworks (or if any libraries used)
+- provide examples of test cases and how to run them
