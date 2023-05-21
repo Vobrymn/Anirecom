@@ -265,7 +265,7 @@ span.psw {
   height: 100%; 
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(65, 42, 19); /* Fallback color */
-  background-color: rgba(65, 42, 19, 0.4); /* Black w/ opacity */
+  background-color: rgba(65, 42, 19, 0.0); /* Black w/ opacity */
   padding-top: 80px;
   z-index: 9;
 }
@@ -317,12 +317,12 @@ span.psw {
 
 #settings_popup {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   max-height: 700px;
   max-width: 600px;
   width: 80%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -57.5%);
   border-radius: 5px;
   /* can't be hidden */
   border: 3px solid rgba(65, 42, 19);
@@ -332,12 +332,14 @@ span.psw {
   flex-direction: column;
   align-items: center;
   z-index: 9;
+  padding: 20px;
 }
 
 #settings_popup h2 {
   color: rgba(65, 42, 19);
   text-align: center;
   margin-top: 50px;
+  margin: 40px;
   font-size: 250%;
 }
 
@@ -367,6 +369,8 @@ span.psw {
 
 #change_color input[type="color"] {
   margin: 20px auto; /*add margin to create spacing*/
+  border-radius: 4px;  
+  cursor: pointer;
   display: block;
 }
 
@@ -380,4 +384,25 @@ span.psw {
   border: 3px solid #ae947a;
   border-radius: 10px;
   box-sizing: border-box;
+}
+
+
+#password_form{
+  margin-top: 10px;
+  width: 90vw;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  z-index: 1;
+}
+
+#password_error{
+  word-wrap: break-word;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  opacity: 0;
 }

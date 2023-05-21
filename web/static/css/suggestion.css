@@ -22,7 +22,7 @@ a {
     left: 20px;
     z-index: 2;
     height: 30px;
-    width: px;
+    width: 70px;
     font-size: 12px;
 }
 
@@ -42,6 +42,9 @@ a {
     position: relative;
     width: 240px;
     height: 450px; 
+    max-width: 320px;
+    max-height: 450px;
+    min-height: 250px;
     background: rgb(239, 226, 198);
     border-radius: 20px;
     overflow: hidden;

@@ -27,13 +27,53 @@
 
     <div id = "sn" class="modal"></div>
 
+    <div id="sn" class="modal"></div>
     <div class="side_nav">
-            <a href="/quiz" id="quiz_sn">Quiz</a>
-        <a href="/register" id="register_sn">Register</a>
-        <a href="/#" id="settings_sn">Settings</a>
-        <a href="/history" id="history_sn">History</a>
-        <a href="/logout" id="logout_sn">Log out</a>
-    </div> 
+      <a href="/quiz" id="quiz_sn">Quiz</a>
+      <a href="/history" id="history_sn">History</a>
+      <a href="/register" id="register_sn">Register</a>
+      <a id="settings_sn">Settings</a>
+      <a href="/logout" id="logout_sn">Log out</a>
+      <div class="settings-menu">
+        <a href="#" class="settings-option">Change <br> Colour</a>
+        <a href="#" class="settings-option">Change <br> Password</a>
+        <a href="#" class="settings-option back-button">Back</a>
+      </div>
+    </div>
+
+    <div id="settings" class="modal">
+        <div id="settings_popup" style="display:none;"> 
+            <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
+            <div id="change_color" style="display: none;">
+              <h2> Change Colour </h2>
+              <div class="color_input">
+                <label for="color1">Colour 1</label>
+                <input type="color" id="color1" name="color1" value="#f3f3f1">
+              </div>
+              <div class="color_input">
+                <label for="color2">Colour 2</label>
+                <input type="color" id="color2" name="color2" value="#1b1b17">
+              </div>
+              <button id="save_button">Save</button>
+            </div>
+               
+            <div id="change_password" style="display: none;">
+              <h2>Change Password</h2>
+              <form id="password_form">
+                  <label for="old_password"><b>Old Password</b></label>
+                  <input id="old_password" type="password" placeholder="Enter Old Password" name="old_password" required>
+          
+                  <label for="new_password"><b>New Password</b></label>
+                  <input id="new_password" type="password" placeholder="Enter New Password" name="new_password" required>
+          
+                  <label for="confirm_password"><b>Confirm New Password</b></label>
+                  <input id="confirm_password" type="password" placeholder="Confirm New Password" name="confirm_password" required>
+                  <div id="password_error">default</div>
+                  <input type="submit" class="button" value="Save">
+              </form>
+          </div>
+        </div>
+        </div>
 
     <div id="login_form_box" class="modal">
   
@@ -56,6 +96,7 @@
             </div>
         </form>
     </div>
+
 	<div class="border">
 		<div class="header">
 			<h1 class="word">History</h1>  
@@ -68,28 +109,6 @@
         </select>
         <!-- the histories -->
         <div class = "card_wrapper">
-            <!-- <div class="card">
-                <div class="dot-container">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                  </div>                  
-                <div class="details">
-                    <p class="t_d">1 Time/Date</p>
-                    <p class="ques">Would you like an anime or a manga?</p>
-                    <p class="ans">: anime</p>
-                    <p class="ques">Are there any genres you're interested in?</p>
-                    <p class="ans">: genres</p>
-                    <p class="ques">Are there any themes you're interested in?</p>
-                    <p class="ans">: themes</p>
-                    <p class="ques">Are there any particular studios you'd like to look up?</p>
-                    <p class="ans">: studio</p>
-                    <p class="ques">Are there any year preferences?</p>
-                    <p class="ans">: YYYY-YYYY</p>
-                </div>
-                <button onclick="window.location.href='/suggestions'" id="suggests_b">Suggests</button>
-            </div> -->
         </div>
     </div>
 	<script src="js/default.js"></script>
