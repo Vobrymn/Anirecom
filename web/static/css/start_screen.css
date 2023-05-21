@@ -349,7 +349,7 @@ display: none;
 .loader::after {
 content: "";
 grid-area: 1/1;
---c:linear-gradient(currentColor 0 0);
+--c:linear-gradient(currentColor, currentColor);
 background:
   var(--c) 0 0,
   var(--c) 100% 0,
