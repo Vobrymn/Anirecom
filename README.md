@@ -18,13 +18,13 @@
 
 ## Project Overview
 
-Anirecom (our project) is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 84 tailored recommendations that would align with their interests.
+Anirecom (our project) is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preferences our application will generate up to 84 tailored recommendations that would align with their interests.
 
-Animrecom aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There's also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
+Animrecom aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There is also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
 
 ### Frontend:
 
-We've designed a consistent visual style for all the pages, ensuring a cohesive and recognizable experience for our users, with each page thoughtfully crafted to be visually appealing and engaging while it being completely functional, user-friendly, and accessible. We've implemented it using widely supported technologies such as HTML5, CSS, and JavaScript with all the necessary resources like images and CSS stylesheets appropriately referenced. To maintain high quality, we've ensured the HTML and CSS code has undergone validation and that Anirecom is compatible with popular browsers such as Chrome, Firefox and Microsoft Edge and offers a seamless experience on mobile devices. 
+We have designed a consistent visual style for all the pages, ensuring a cohesive and recognizable experience for our users, with each page thoughtfully crafted to be visually appealing and engaging while it being completely functional, user-friendly, and accessible. We have implemented it using widely supported technologies such as HTML5, CSS, and JavaScript with all the necessary resources like images and CSS stylesheets appropriately referenced. To maintain high quality, we have ensured the HTML and CSS code has undergone validation and that Anirecom is compatible with popular browsers such as Chrome, Firefox and Microsoft Edge and offers a seamless experience on mobile devices. 
 
 The frontend consists of the three main pages/views:
 
@@ -36,7 +36,7 @@ The frontend consists of the three main pages/views:
 
 ### Backend:
 
-The backend functionality of our web application is built using Flask, which we've used to created a reliable and efficient backend that seamlessly handles communication and data management. This integration enables us to provide a user-friendly and engaging experience throughout the application and having enhanced its capabilities with Ajax and DOM manipulation. Our backend includes essential features that contribute to a smooth user experience:
+The backend functionality of our web application is built using Flask, which we have used to created a reliable and efficient backend that seamlessly handles communication and data management. This integration enables us to provide a user-friendly and engaging experience throughout the application and having enhanced its capabilities with Ajax and DOM manipulation. Our backend includes essential features that contribute to a smooth user experience:
 
 > User Account Creation and Tracking: With the register and log in function available, users can create their own accounts that would keep track of their activities such as history and preferences within the application.
 
@@ -64,7 +64,7 @@ When users register or sign in, the navigation bar undergoes changes. The sign-i
 
 > The registration process opens a new page, while signing in is facilitated through a pop-up window.
 
-The suggestions page offers additional functionality, including a quiz button that redirects users back to the start of the quiz and a refresh button that generates new suggestions based on their answers. In addition to this, the history option allows users to access their past responses where clicking on any of the past logs will lead users back to the suggestions page with newly generated suggestions. It's important to note that for non-logged-in users, the history is limited and stored only on the web history, meaning it will be lost upon refreshing the page.
+The suggestions page offers additional functionality, including a quiz button that redirects users back to the start of the quiz and a refresh button that generates new suggestions based on their answers. In addition to this, the history option allows users to access their past responses where clicking on any of the past logs will lead users back to the suggestions page with newly generated suggestions. It is important to note that for non-logged-in users, the history is limited and stored only on the web history, meaning it will be lost upon refreshing the page.
 
 With these interactive features and intuitive navigation options, our application offers users a captivating and accessible experience. Whether exploring the quiz, reviewing their history, or customizing preferences, users can navigate through the application effortlessly and discover personalized anime or manga recommendations.
 
@@ -87,12 +87,10 @@ To ensure the reliability and correctness of our application, we conducted thoro
 
 We made the deliberate choice to avoid using selenium testing, but instead prioritized confirming the visual changes and interactions using the live server, as we believed this approach to be more efficient and aligned with our development goals.
 
-All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
-
-We have placed significant emphasis on ensuring the quality and adherence to standards of our HTML and CSS code. To achieve this, we've utilized an online validator tool to assess the validity and correctness of our HTML and CSS files.
+We have placed significant emphasis on ensuring the quality and adherence to standards of our HTML and CSS code. To achieve this, we have utilized an online validator tool to assess the validity and correctness of our HTML and CSS files.
 
 By validating our code, we aimed to guarantee compliance with web standards, enhance cross-browser compatibility, and promote a robust and error-free user experience which involved identifying and rectifying any issues or errors reported by the validator tool.
 
 As a result of our diligent validation efforts, we can confidently state that all our HTML and CSS code successfully passed the validator tests. This commitment to code quality and standards compliance has helped us ensure a smooth and flawless user interface across various web browsers and devices.
 
-All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
+All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py' in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
