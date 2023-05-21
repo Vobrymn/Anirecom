@@ -36,7 +36,23 @@ Utilizing database migrations, we have successfully implemented the following me
 To run the application, users need to ensure that all the necessary dependencies are installed. The dependencies are listed in the "requirements.txt" file provided with the project and once the dependencies are installed, users should navigate to the project directory in their terminal and launch the application by running the command 'python CAMS.py' which will start the application and make it accessible from the local machine.
 
 ## Usage
-- describe how users can interact with the application
+
+Upon launching the application, users will be greeted with several elements that enable interaction and navigation. The main page consists of a hamburger button on the left-hand side, a sign-in button, an info envelope button, a start button, and a home button.
+
+Clicking the hamburger button opens a side navigation bar that offers three options: Quiz, History, and Register. Selecting the Quiz option leads users to the quiz section, where they are presented with a series of questions to answer, where some questions have an autocomplete feature to assist with responses and if users provide an invalid response, an error message will be displayed to indicate the issue. Once users have answered all desired questions, they will be directed to the suggestions page, which displays relevant anime or manga suggestions based on their answers; if users choose not to answer any questions, the system will generate random suggestions. In the event that no results match their preferences, a message indicating "No results" will be shown.
+
+> The start button provides users with quick access to the quiz section
+> The info envelope button opens a pop-up window that contains an information page. 
+> The home button, available on all pages, allows users to navigate back to the home page for consistent navigation.
+
+When users register or sign in, the navigation bar undergoes changes. The sign-in and register buttons disappear, and instead, a logout option and a settings option appear in the navigation bar. Clicking the settings option allows users to customize their color preferences for buttons and the side navigation bar. It also provides the option to change their passwords.
+
+> The registration process opens a new page, while signing in is facilitated through a pop-up window.
+
+The suggestions page offers additional functionality, including a quiz button that redirects users back to the start of the quiz and a refresh button that generates new suggestions based on their answers. In addition to this, the history option allows users to access their past responses where clicking on any of the past logs will lead users back to the suggestions page with newly generated suggestions. It's important to note that for non-logged-in users, the history is limited and stored only on the web history, meaning it will be lost upon refreshing the page.
+
+
+With these interactive features and intuitive navigation options, our application offers users a captivating and accessible experience. Whether exploring the quiz, reviewing their history, or customizing preferences, users can navigate through the application effortlessly and discover personalized anime or manga recommendations.
 
 ## Development Process and Architecture (including challenges)
 Our development process revolved around leveraging the built-in functionality of Flask to design our codebase, specifically utilizing static and template files provided by Flask for generating and rendering HTML files. To maintain organization and clarity, we implemented a basic separation between file types, such as CSS and JavaScript, allowing for clear file paths and back referencing.
