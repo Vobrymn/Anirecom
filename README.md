@@ -5,15 +5,15 @@ by: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 
 ## Table of Contents
 
-[Project Overview](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#project-overview)
+- [Project Overview](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#project-overview)
 
-[Installation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#installation)
+- [Installation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#installation)
 
-[Usage](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#usage)
+- [Usage](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#usage)
 
-[Development Process and Architecture](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#development-process-and-architecture-including-challenges)
+- [Development Process and Architecture](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#development-process-and-architecture-including-challenges)
 
-[Testing and Validation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing-and-validation)
+- [Testing and Validation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing-and-validation)
 
 ## Project Overview
 
@@ -84,6 +84,14 @@ However, we successfully addressed these challenges by establishing guidelines f
 
 To ensure the reliability and correctness of our application, we conducted thorough testing using the unittest library. Our testing approach involved verifying good requests between the client and server by examining the handling of various requests and we also assessed the visual aspects of our application by running tests on a live development server.
 
-We made the deliberate choice to avoid using selenium testing, but instead prioritized confirming the visual changes and interactions using the live server, as we believed this approach to be more efficient and aligned with our development goals. 
+We made the deliberate choice to avoid using selenium testing, but instead prioritized confirming the visual changes and interactions using the live server, as we believed this approach to be more efficient and aligned with our development goals.
+
+All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
+
+We have placed significant emphasis on ensuring the quality and adherence to standards of our HTML and CSS code. To achieve this, we've utilized an online validator tool to assess the validity and correctness of our HTML and CSS files.
+
+By validating our code, we aimed to guarantee compliance with web standards, enhance cross-browser compatibility, and promote a robust and error-free user experience which involved identifying and rectifying any issues or errors reported by the validator tool.
+
+As a result of our diligent validation efforts, we can confidently state that all our HTML and CSS code successfully passed the validator tests. This commitment to code quality and standards compliance has helped us ensure a smooth and flawless user interface across various web browsers and devices.
 
 All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
