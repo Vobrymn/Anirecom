@@ -1,5 +1,8 @@
 var loader = document.querySelector('.loader');
 
+
+// start_button functionality
+
 $("#start_button").click(function(){
   $(this).hide(); // hide the start button 
   $(".ui_bar").hide(); // hide the ui bar
@@ -13,6 +16,9 @@ $("#start_button").click(function(){
 });
 
 
+
+// resize start_button
+
 function resize_sb(){
   if(window_ratio()){
     $("#start_button").css({"height": "6.0vh", "width": "12.0vh","border-radius": "0.5vh","font-size": "3vh"});
@@ -21,6 +27,9 @@ function resize_sb(){
     $("#start_button").css({"height": "3.375vw", "width": "6.75vw","border-radius": "0.28vw","font-size": "1.69vw"});
   }
 }
+
+
+// resize info envelope
 
 function resize_envelope(){
   if(window_ratio()){
@@ -78,9 +87,6 @@ mailPopup.addEventListener('click', function(e) {
   e.stopPropagation();
 });
 
-
-//my attempt at screen resizing, but doesn't work when screen goes crazy small where everything else zooms out. i know there's a function like
-//that above but i just couldn't get it to work properly
 
 
 document.querySelector('.close_button').addEventListener('click', function() {

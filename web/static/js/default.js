@@ -1,6 +1,9 @@
 var nav_width = "0";
 var transition = false;
 
+
+// checks logged in status
+
 if (logged_in){
   $("#register_sn").remove()
 }
@@ -11,6 +14,8 @@ else{
   $("#settings_sn").remove()
 }
 
+// checks view-port ratio
+
 function window_ratio(){
   if(window.innerHeight / window.innerWidth > 2160 /3840){
     return true;
@@ -19,6 +24,8 @@ function window_ratio(){
   }
 }
 
+// view-port is skinny
+
 function window_skinny() {
   if (window.innerHeight >= window.innerWidth * 1.5 || window.innerWidth < 475) {
     return true;
@@ -26,6 +33,8 @@ function window_skinny() {
     return false;
   }
 }
+
+// resizes background
 
 function resize_bg() {
   if (window_ratio()) {
@@ -36,6 +45,8 @@ function resize_bg() {
     $(".background").width("100vw");
   }
 }
+
+// resizes side_nav
 
 function resize_sn() {
   if (window_skinny()) {
@@ -56,6 +67,8 @@ function resize_sn() {
     }
   }
 }
+
+// activates (open/close) side_nav
 
 function active_sn() {
   if (!transition) {
@@ -101,11 +114,16 @@ $(".hamburger").click(function () {
   active_sn();
 });
 
+// click sign_in button
+
 $('#sb').click(function() {
   $('#login_form_box').show()
   $('.modal').css({"z-index":"14"});
   $('.modal').css({"background-color":"rgba(65, 42, 19, 0.4)"});
 });
+
+
+// modal functionality (click off of element to close)
 
 $(document).click(function(event) {
   if (event.target == document.getElementById('login_form_box')) {
@@ -129,6 +147,8 @@ $(document).click(function(event) {
 }
 });
 
+// x button
+
 $('.x_container').click(function() {
   $('#login_form_box, #settings_popup, #change_color, #change_password').fadeOut(200);
   $('.modal').css({ "z-index": "9" });
@@ -139,6 +159,7 @@ $('.x_container').click(function() {
 });
 
 
+// login_form submission
 
 $("#login_form").submit(function(event) {
   event.preventDefault();
@@ -165,18 +186,19 @@ $("#login_form").submit(function(event) {
   });
 });
 
-//settings stuff
+//open settings
 $('#settings_sn').click(function() {
   $('.side_nav').addClass('settings-expanded');
   reset_pwd_form();
   $('.modal').css({"z-index": "9"});
   
-  //set the change color button as default selected option
   document.getElementById('color1').value = rgba_to_hex(colour_1);
   document.querySelector('.color_input:nth-of-type(1)').style.backgroundColor = colour_1;
   document.getElementById('color2').value = rgba_to_hex(colour_2);
   document.querySelector('.color_input:nth-of-type(2)').style.backgroundColor = colour_2;
 });
+
+//settings back button
 
 $('.back-button').click(function() {
   $('.side_nav').removeClass('settings-expanded');
@@ -266,9 +288,10 @@ function rgba_to_hex(rgbaColor) {
   }
 }
 
+// save colour changes
 
 $("#save_button").click(function(event) {
-  // Get the form data
+
   const formData = new FormData();
   formData.append("colour_1", hexToRgba(document.getElementById('color1').value, 0.9))
   formData.append("colour_2", hexToRgba(document.getElementById('color2').value, 0.9))
@@ -290,6 +313,9 @@ $("#save_button").click(function(event) {
   });
 });
 
+
+// clears password text when closed
+
 function reset_pwd_form(){
   $("#old_password").val("")
   $("#new_password").val("")
@@ -298,6 +324,9 @@ function reset_pwd_form(){
   $("#password_error").css("opacity","0")
 }
 
+
+
+// change password functionality, validity checking
 
 let valid_p = false
 
@@ -342,6 +371,10 @@ function check_password(e){
 
 $("#new_password").on("input", check_password)
 $("#confirm_password").on("input", check_password)
+
+
+
+// change password functionality, submission
 
 $("#password_form").submit(function(event) {
     event.preventDefault();

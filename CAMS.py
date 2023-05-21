@@ -6,6 +6,9 @@ import urllib
 import json
 from config import Config
 
+
+# setting up app config
+
 app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
@@ -15,6 +18,9 @@ app.config.from_object('config.Config')
 
 app.secret_key = 'my-secret-key'
 app.config['CURRENT_DATABASE'] = None
+
+
+# connects to database of choice and allows for switching
 
 def get_db(database_name):
    """Connect to a specific SQLite database."""
@@ -33,12 +39,17 @@ def get_db(database_name):
             app.config['CURRENT_DATABASE'] = database_name
    return db
 
+# closes database connection
+
 def close_db():
    """Close the database connection."""
    db = getattr(g, '_database', None)
    if db is not None:
       db.close()
       app.config['CURRENT_DATABASE'] = None
+
+
+# home route, renders index.html
 
 @app.route('/')
 def home():
@@ -51,6 +62,9 @@ def home():
    
    return response
 
+
+# login route, takes username and password in post request and checks users database
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
@@ -61,6 +75,9 @@ def login():
          cursor.execute('SELECT * FROM accounts WHERE username = ?', (username,))
          while (account := cursor.fetchone()):
             if check_password_hash(account[2], password):
+
+               # setting session variables and cookies
+
                session['logged_in'] = True
                session['username'] = account[1]
                session['colour_1'] = account[3]
@@ -81,6 +98,8 @@ def login():
    return redirect(url_for("home"))
 
  
+# logout route, pops all session variables and deletes related cookies
+
 @app.route('/logout')
 def logout():
    session.pop('logged_in', None)
@@ -94,7 +113,10 @@ def logout():
    response.delete_cookie('colour_1')
    response.delete_cookie('colour_2')
    return response
- 
+
+
+# register route, takes username, password and password_2, sanitises input, checks users and uploads to database, logs user in and returns to home page
+
 @app.route('/register', methods =['GET', 'POST'])
 def register():
    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'password_2' in request.form:
@@ -146,6 +168,9 @@ def register():
       
    return render_template('register.html')
 
+
+#change password route, takes old_password, new_password and confirm_password, sanitises inputs, checks users and updates password
+
 @app.route('/change_pwd', methods=['POST'])
 def change_pwd():
    if request.method == 'POST' and 'old_password' in request.form and 'new_password' in request.form and 'confirm_password' in request.form and session.get("logged_in") and session.get("username"):
@@ -178,6 +203,9 @@ def change_pwd():
    error_message = 'Error'
    return (make_response(error_message, 400))
 
+
+#change password route, takes colour_1 and colour_2, checks users and updates colours
+
 @app.route('/change_colour', methods=['POST'])
 def change_colour():
    if request.method == 'POST' and 'colour_1' in request.form and 'colour_2' in request.form and session.get("logged_in") and session.get("username"):
@@ -203,6 +231,9 @@ def change_colour():
    error_message = 'Error'
    return (make_response(error_message, 400))
       
+
+#quiz route, on load (get) sends valid question options for use in autocomplete
+#            after quiz completion receives post request with tags list to store as user history
 
 
 @app.route('/quiz', methods=['GET', 'POST'])
@@ -263,10 +294,11 @@ def quiz():
       return (make_response(error_message, 400))
 
 
+#suggestions route, on load (get) receives tags, returns corresponding content entries, accessible directly from browser url
+
 @app.route('/suggestions', methods=['GET'])
 def suggestions():
       VALID_PARAMS = ['content_type', 'genres', 'themes', 'producers', 'dates']
-      # Check for any invalid parameters
       invalid_params = [param for param in request.args.keys() if param not in VALID_PARAMS]
       if invalid_params:
          error_message = f"Invalid parameter(s): {', '.join(invalid_params)}"
@@ -351,6 +383,7 @@ def suggestions():
       return render_template("suggestions.html", suggestions = suggestions)
 
 
+# history route, returns entries of session history or stored history from database
 
 @app.route('/history')
 def history():

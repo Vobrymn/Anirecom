@@ -3,6 +3,7 @@ $("#sb").remove();
 let valid_u = false
 let valid_p = false
 
+// checks for valid user name and password
 
 function check_input(e){
     const log = $(this).val();
@@ -62,9 +63,16 @@ function check_input(e){
     }
 }
 
+
+// input listeners
+
 $("#username").on("input", check_input)
 $("#password").on("input", check_input)
 $("#password_2").on("input", check_input)
+
+
+
+// register form submission
 
 $("#register_form").submit(function(event) {
     event.preventDefault();
@@ -88,7 +96,6 @@ $("#register_form").submit(function(event) {
     if (valid_u && valid_p && $("#password").val() == $("#password_2").val()) {
       const formData = new FormData(event.target);
   
-      // Send an AJAX POST request to the server
       $.ajax({
         url: '/register',
         type: 'POST',
@@ -96,11 +103,9 @@ $("#register_form").submit(function(event) {
         processData: false,
         contentType: false,
         success: function() {
-          // Success, redirect to the home page
           window.location.href = "/";
         },
         error: function(xhr, textStatus, error) {
-          // Error, update the form with the error message
           $("#register_error").text(xhr.responseText);
           $("#register_error").css("opacity","1")
         }

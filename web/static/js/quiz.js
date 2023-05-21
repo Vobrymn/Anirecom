@@ -1,4 +1,5 @@
 /*stole this off w3schools. like i modified it to be ours though, like excluding already typed in answers etc*/
+// creates autocomplete
 function autocomplete(inp, arr) {
   let currentFocus;
 
@@ -107,8 +108,8 @@ function autocomplete(inp, arr) {
 
 
 
-  //[genre],[theme],[producer]
 
+  // valid question options
 
   const questions = [
     {
@@ -148,7 +149,7 @@ function autocomplete(inp, arr) {
   const backButton = document.getElementById("back");
   const nextButton = document.getElementById("next");
   const skipButton = document.getElementById("skip");
-  //answers thing
+  //stored answers
   let answers = {
     content_type: "",
     genres: [],
@@ -157,12 +158,17 @@ function autocomplete(inp, arr) {
     dates: ""
   };
 
+  // button event listeners
+
   backButton.addEventListener("click", goBack);
   nextButton.addEventListener("click", goNext);
   skipButton.addEventListener("click", goSkip);
 
   let timeoutIds = []; 
   let input_ac = null;
+
+
+  // updates the displayed question
 
   function displayQuestion() {
 
@@ -280,7 +286,7 @@ function autocomplete(inp, arr) {
       cursor.remove();
     }
   }
-
+  // back functionality
   function goBack() {
     if (currentQuestionIndex > 0) {
       currentQuestionIndex--;
@@ -288,7 +294,8 @@ function autocomplete(inp, arr) {
     }
   }
 
-  function goNext() { //deep breath
+  // next functionality, input validity checking
+  function goNext() { 
     if (currentQuestionIndex === 0) {
       const answer = answerInput.value.trim().toLowerCase();
       if (questions[0].choices.includes(answer)) {
@@ -407,6 +414,9 @@ function autocomplete(inp, arr) {
     }
 
   }
+
+  
+  // query submission
 
   async function submit(){
 
