@@ -49,7 +49,6 @@ input[type=text], input[type=password] {
 button, .button{
   background-color: var(--primary_colour);
   color: white;
-  padding: none;
   border-radius: 4px;  
   cursor: pointer;
   text-align: center;
