@@ -2,7 +2,7 @@
   --primary_colour: rgba(14, 112, 47, 0.9);
   --secondary_colour: rgba(203, 119, 174, 0.9);
 }
-
+/* * is for all */
 html * {
   font-family: 'Quicksand', sans-serif !important;
   font-weight: bold !important;

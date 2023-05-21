@@ -28,6 +28,7 @@ h1 {
     border-color: rgba(65, 42, 19);
 }
 
+/*stuff for the cards*/
 .card {
     position: relative;
     max-width: 320px;
@@ -60,6 +61,7 @@ h1 {
     display: none;
 }
 
+/*card design*/
 .dot-container {
     display: flex;
     justify-content: center;
