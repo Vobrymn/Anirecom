@@ -1,14 +1,14 @@
+/* general */
 h1 {
     font-size: 250%;
     margin-top: 110px;
     margin-bottom: 20px;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'PT Sans', sans-serif;
 }
 
 .border {
@@ -28,6 +28,7 @@ h1 {
     border-color: rgba(65, 42, 19);
 }
 
+/* history card */
 .card {
     position: relative;
     max-width: 320px;
@@ -55,6 +56,12 @@ h1 {
     margin-bottom: 50px;
 }
 
+.card_wrapper::-webkit-scrollbar,
+.card::-webkit-scrollbar {
+    display: none;
+}
+
+/*card design*/
 .dot-container {
     display: flex;
     justify-content: center;
@@ -85,7 +92,6 @@ h1 {
     margin-bottom: 15px;
 }
 
-/* changes the card according to window size */
 @media (max-width: 1023px) and (min-width: 768px) {
   .card {
     flex-basis: calc(50% - 20px);
