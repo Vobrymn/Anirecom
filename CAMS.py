@@ -403,7 +403,7 @@ def history():
 
          return response
       else:
-         response = make_response(render_template('history.html', history = None))
+         response = make_response(render_template('history.html', history = "null"))
          response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
          response.headers["Pragma"] = "no-cache"
          response.headers["Expires"] = "0"
@@ -425,7 +425,7 @@ def history():
 
    else:
 
-      response = make_response(render_template('history.html', history = None))
+      response = make_response(render_template('history.html', history = "null"))
       response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "0"

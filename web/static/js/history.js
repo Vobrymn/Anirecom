@@ -1,7 +1,7 @@
 // Select the existing card_wrapper div
 const cardWrapper = $(".card_wrapper")
 
-if (search_history == null){
+if (search_history == "null"){
   $(".word").text("No results")
 }
 // Loop through the array of suggestions and create elements
