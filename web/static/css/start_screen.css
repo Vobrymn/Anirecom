@@ -307,7 +307,6 @@ added important just incase*/
   transform: translate(-50%, -50%);
   background-color: var(--secondary_colour);
   color: white;
-  padding: none;
   cursor: pointer;
   text-align: center;
   height: 6vh;
@@ -345,7 +344,7 @@ display: none;
 .loader::after {
 content: "";
 grid-area: 1/1;
---c:linear-gradient(currentColor 0 0);
+--c:linear-gradient(currentColor, currentColor);
 background:
   var(--c) 0 0,
   var(--c) 100% 0,
