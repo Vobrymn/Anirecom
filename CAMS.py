@@ -4,17 +4,16 @@ import sqlite3 as sql
 import re
 import urllib
 import json
+from config import Config
 
 app = Flask(__name__,
             static_url_path='', 
             static_folder='web/static',
             template_folder='web/templates')
 
+app.config.from_object('config.Config')
+
 app.secret_key = 'my-secret-key'
-app.config['DATABASES'] = {
-   'users': 'databases/users.db',
-   'content': 'databases/content.db',
-}
 app.config['CURRENT_DATABASE'] = None
 
 def get_db(database_name):
@@ -310,12 +309,10 @@ def suggestions():
             else:
                error_message = "Invalid query"
                return (make_response(error_message, 400)) 
-        
-      # join the conditions using AND operator      
+          
 
       condition = ' AND '.join(conditions)     
 
-      # select rows with the specified conditions
       db = get_db("content")
       cursor = db.cursor()
 
@@ -338,10 +335,12 @@ def history():
       username = session.get("username")
       db = get_db("users")
       cursor = db.cursor()
-      cursor.execute("SELECT * FROM {} ORDER BY log_num DESC LIMIT 20;".format(username))
-      history = cursor.fetchall()
-      if history:
-         
+      cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name= ?;", (username,))
+      history_table = cursor.fetchone()
+
+      if history_table:
+         cursor.execute("SELECT * FROM {} ORDER BY log_num DESC LIMIT 20;".format(username))
+         history = cursor.fetchall()
          response = make_response(render_template('history.html', history = history))
          response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
          response.headers["Pragma"] = "no-cache"

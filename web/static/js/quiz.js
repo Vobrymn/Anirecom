@@ -162,7 +162,7 @@ function autocomplete(inp, arr) {
   skipButton.addEventListener("click", goSkip);
 
   let timeoutIds = []; 
-  let input_ac;
+  let input_ac = null;
 
   function displayQuestion() {
 
@@ -185,7 +185,6 @@ function autocomplete(inp, arr) {
 
     else if (currentQuestionIndex === 1){
 
-      console.log(input_ac)
       if (input_ac){
         input_ac.disableAutocomplete(answerInput)
       }
@@ -411,6 +410,7 @@ function autocomplete(inp, arr) {
 
     const formData = new FormData();
     formData.append('query', JSON.stringify(answers));
+    console.log(formData),
 
     $.ajax({
       url: '/quiz',
