@@ -25,7 +25,4 @@ The backend functionality of our web application is built using Flask, which we'
 
 > User Account Creation and Tracking: With the register and log in function available, users can create their own accounts that would keep track of their activities such as history and preferences within the application.
 
-With the use of database migrations we were able to implement the following methods:
-> Interaction and Result Storage: Once the user clicks submits, their responses that are stored in an  array are then sent as a json object to the server that then processes each string and matches them up with our 'available results' database (pls rephrase this) then sends valid results to the client 
 
-> Search for Previous Interactions: The history feature is available to both logged in and guests, since 
