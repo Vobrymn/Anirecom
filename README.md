@@ -18,13 +18,13 @@
 
 ## Project Overview
 
-Our project is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 84 tailored recommendations that would align with their interests.
+Anirecom (our project) is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 84 tailored recommendations that would align with their interests.
 
-The website aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There's also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
+Animrecom aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There's also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
 
 ### Frontend:
 
-We've designed a consistent visual style for all the pages, ensuring a cohesive and recognizable experience for our users, with each page thoughtfully crafted to be visually appealing and engaging while it being completely functional, user-friendly, and accessible. We've implemented it using widely supported technologies such as HTML5, CSS, and JavaScript with all the necessary resources like images and CSS stylesheets appropriately referenced. To maintain high quality, we've ensured the HTML and CSS code has undergone validation and that our website is compatible with popular browsers such as Chrome, Firefox and Microsoft Edge and offers a seamless experience on mobile devices. 
+We've designed a consistent visual style for all the pages, ensuring a cohesive and recognizable experience for our users, with each page thoughtfully crafted to be visually appealing and engaging while it being completely functional, user-friendly, and accessible. We've implemented it using widely supported technologies such as HTML5, CSS, and JavaScript with all the necessary resources like images and CSS stylesheets appropriately referenced. To maintain high quality, we've ensured the HTML and CSS code has undergone validation and that Anirecom is compatible with popular browsers such as Chrome, Firefox and Microsoft Edge and offers a seamless experience on mobile devices. 
 
 The frontend consists of the three main pages/views:
 
