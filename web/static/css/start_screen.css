@@ -88,7 +88,7 @@ body{
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 1.6vh 0 1.5vh 3vh;
+  border-width: 1.5vh 0 1.5vh 3vh;
   border-color: transparent transparent transparent var(--primary_colour);
   /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4)); */
   z-index: 2;
@@ -107,31 +107,27 @@ body{
   transition: 0.4s 0.2s;
 }
 .letter .letter_border {
-  height: 7%;
+  height: 10%;
   width: 100%;
   background: repeating-linear-gradient(-45deg,var(--primary_colour), var(--primary_colour) 8%, transparent 8%, transparent 18%);
 }
 
 .letter .letter_title {
   margin-top: 7.5%;
-  margin-left: 2%;
+  margin-left: 5%;
   height: 6%;
   width: 65%;
   background: var(--primary_colour);
   padding: 1%;
-  padding-top:2.5%;
-  padding-left:2.5%
 }
 
 .letter .letter_context {
   margin-top: 7.5%;
-  margin-left: 2%;
+  margin-left: 5%;
   height: 6%;
   width: 40%;
   background: var(--primary_colour);
   padding: 1%;
-  padding-top:2.5%;
-  padding-left:2.5%
 }
 
 .letter .letter_stamp {
@@ -311,7 +307,6 @@ added important just incase*/
   transform: translate(-50%, -50%);
   background-color: var(--secondary_colour);
   color: white;
-  padding: none;
   cursor: pointer;
   text-align: center;
   height: 6vh;

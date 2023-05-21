@@ -27,13 +27,53 @@
     <a href="/" id = "hb" class="button"><img src="/images/hb.png" id="hb_pic" alt="Home"></a>
   </div>
 
-  <div id = "sn" class="modal"></div>
-  <div class="side_nav">
+  <div id="sn" class="modal"></div>
+    <div class="side_nav">
+      <a href="/quiz" id="quiz_sn">Quiz</a>
       <a href="/history" id="history_sn">History</a>
       <a href="/register" id="register_sn">Register</a>
-      <a href="/#" id="settings_sn">Settings</a>
+      <a id="settings_sn">Settings</a>
       <a href="/logout" id="logout_sn">Log out</a>
-  </div> 
+      <div class="settings-menu">
+        <a href="#" class="settings-option">Change <br> Colour</a>
+        <a href="#" class="settings-option">Change <br> Password</a>
+        <a href="#" class="settings-option back-button">Back</a>
+      </div>
+    </div>
+
+    <div id="settings" class="modal">
+      <div id="settings_popup" style="display:none;"> 
+          <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
+          <div id="change_color" style="display: none;">
+            <h2> Change Colour </h2>
+            <div class="color_input">
+              <label for="color1">Colour 1</label>
+              <input type="color" id="color1" name="color1" value="#f3f3f1">
+            </div>
+            <div class="color_input">
+              <label for="color2">Colour 2</label>
+              <input type="color" id="color2" name="color2" value="#1b1b17">
+            </div>
+            <button id="save_button">Save</button>
+          </div>
+             
+          <div id="change_password" style="display: none;">
+            <h2>Change Password</h2>
+            <form id="password_form">
+                <label for="old_password"><b>Old Password</b></label>
+                <input id="old_password" type="password" placeholder="Enter Old Password" name="old_password" required>
+        
+                <label for="new_password"><b>New Password</b></label>
+                <input id="new_password" type="password" placeholder="Enter New Password" name="new_password" required>
+        
+                <label for="confirm_password"><b>Confirm New Password</b></label>
+                <input id="confirm_password" type="password" placeholder="Confirm New Password" name="confirm_password" required>
+                <div id="password_error">default</div>
+                <input type="submit" class="button" value="Save">
+            </form>
+        </div>
+      </div>
+      </div>
 
   <div id="login_form_box" class="modal">
   
@@ -57,8 +97,9 @@
     </form>
   </div> 
     <div id="question_container">
-        <div id="typing">
+        <div id="typing"> <!-- questions generate here -->
         </div>
+        <p id="suggest">(suggestions appear when typed)</p>
         <div class="input_container">
             <input type="text" id="answer" autocomplete="off">
         </div>
@@ -67,7 +108,7 @@
             <button id="next">Next</button>
             <button id="skip">Skip</button>
         </div>
-        <div id="error_message">
+        <div id="error_message"> <!-- error message generate here -->
         </div>
     </div>
     

@@ -27,8 +27,8 @@ function resize_envelope(){
     $("#envelope_container").css({"height": "3vh", "width": "6vh", "transform": "translate(-11.8vh, -8vh)"});
     $(".info_text").css("font-size", "1.2vh")
     $(".animated_mail .body").css("border-width", "0 0 3vh 6vh")
-    $(".animated_mail .top_fold").css("border-width", "1.7vh 3vh 0 3vh")
-    $(".animated_mail .left_fold").css("border-width", "1.6vh 0 1.5vh 3vh")
+    $(".animated_mail .top_fold").css("border-width", "1.5vh 3vh 0 3vh")
+    $(".animated_mail .left_fold").css("border-width", "1.5vh 0 1.5vh 3vh")
   }
   else{
     $("#envelope_container").css({"height": "1.6875vw", "width": "3.375vw", "transform": "translate(-6.6vw, -4.5vw)"});
@@ -79,6 +79,10 @@ mailPopup.addEventListener('click', function(e) {
 });
 
 
+//my attempt at screen resizing, but doesn't work when screen goes crazy small where everything else zooms out. i know there's a function like
+//that above but i just couldn't get it to work properly
+
+
 document.querySelector('.close_button').addEventListener('click', function() {
   mailPopup.classList.remove('active');
   mailPopup.classList.remove('opened');
@@ -127,3 +131,4 @@ function toggleNestedDropdown(event) {
     nestedIcon.classList.remove('active');
   }
 }
+

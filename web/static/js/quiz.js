@@ -162,7 +162,7 @@ function autocomplete(inp, arr) {
   skipButton.addEventListener("click", goSkip);
 
   let timeoutIds = []; 
-  let input_ac;
+  let input_ac = null;
 
   function displayQuestion() {
 
@@ -177,6 +177,7 @@ function autocomplete(inp, arr) {
       }
   
       question = questions[currentQuestionIndex].question;
+      $("#suggest").hide()
       $("#back").hide()
       $("#skip").hide()
       $("#answer").attr("placeholder", "Anime | Manga")
@@ -185,7 +186,6 @@ function autocomplete(inp, arr) {
 
     else if (currentQuestionIndex === 1){
 
-      console.log(input_ac)
       if (input_ac){
         input_ac.disableAutocomplete(answerInput)
       }
@@ -194,10 +194,11 @@ function autocomplete(inp, arr) {
       input_ac = autocomplete(answerInput, validChoices);
 
       question = questions[currentQuestionIndex].question;
+      $("#suggest").show()
       $("#back").show()
       $("#skip").show()
       $("#next").text("next")
-      $("#answer").attr("placeholder", "___, ___, ___, | choose up to 3")
+      $("#answer").attr("placeholder", "___, ___, ___ | choose up to 3")
       $(".background").attr("src", "/images/genre_bg.png");
     }
     else if (currentQuestionIndex === 2){
@@ -213,7 +214,7 @@ function autocomplete(inp, arr) {
       $("#back").show()
       $("#skip").show()
       $("#next").text("next")
-      $("#answer").attr("placeholder", "___, ___, ___, | choose up to 3")
+      $("#answer").attr("placeholder", "___, ___, ___ | choose up to 3")
       $(".background").attr("src", "/images/theme_bg.png");
     }
     else if (currentQuestionIndex === 3){
@@ -225,11 +226,10 @@ function autocomplete(inp, arr) {
       question = selectedOption === "anime" ? questions[currentQuestionIndex].anime_question : questions[currentQuestionIndex].manga_question;
       validChoices = selectedOption === "anime" ? questions[currentQuestionIndex].anime_choices : questions[currentQuestionIndex].manga_choices;
       input_ac = autocomplete(answerInput, validChoices);
-
       $("#back").show()
       $("#skip").show()
       $("#next").text("next")
-      $("#answer").attr("placeholder", "___, ___, | choose up to 2")
+      $("#answer").attr("placeholder", "___, ___ | choose up to 2")
       $(".background").attr("src", "/images/author_director_bg.png");
     }
     else if (currentQuestionIndex === 4){
@@ -239,6 +239,7 @@ function autocomplete(inp, arr) {
       }
       
       question = questions[currentQuestionIndex].question;
+      $("#suggest").hide()
       $("#skip").hide()
       $("#next").text("submit")
       $("#answer").attr("placeholder", "YYYY-YYYY")
@@ -411,6 +412,7 @@ function autocomplete(inp, arr) {
 
     const formData = new FormData();
     formData.append('query', JSON.stringify(answers));
+    console.log(formData),
 
     $.ajax({
       url: '/quiz',
