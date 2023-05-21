@@ -6,9 +6,13 @@ by: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 ## Table of Contents
 
 [Project Overview](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#project-overview)
+
 [Installation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#installation)
+
 [Usage](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#usage)
+
 [Development Process and Architecture](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#development-process-and-architecture-including-challenges)
+
 [Testing](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing)
 
 ## Project Overview
