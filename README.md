@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Our project is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 64 tailored recommendations that would align with their interests.
+Our project is an interactive anime recommendation chatbot designed to engage users by helping them discover personalized anime and manga recommendations. Users can answer questions about their preferences, including genres, themes, and authors, and once the user has provided their preference our application will generate up to 84 tailored recommendations that would align with their interests.
 
 The website aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There's also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
 
@@ -29,22 +29,32 @@ Utilizing database migrations, we have successfully implemented the following me
 
 > Interaction and Result Storage: Upon user submission, their responses, stored in an array, are sent as a JSON object to the server. The server processes each string and matches it with our results database and from there, only the valid results are sent back to the client.
 
-> Search for Previous Interactions: The history feature is available to both logged in and guests, since 
+> Search for Previous Interactions: The history feature is enabled for both registered and un-registered users by our dual storage design. For unregistered users, we store up to the 5 most recent search results during their session, providing a convenient reference. However, since this data expires with the session, while registered users have the advantage of a more permanent record; since their search history is stored in our database, it allows for unlimited access to their search history (currently limited to 18 entries on the website). This feature ensures that users can easily track and revisit their past responses and re-generate recommendations for new things to look up.
 
 ## Installation
-- steps required to set up the development environment and run the application locally, dependencies etc
+
+To run the application, users need to ensure that all the necessary dependencies are installed. The dependencies are listed in the "requirements.txt" file provided with the project and once the dependencies are installed, users should navigate to the project directory in their terminal and launch the application by running the command 'python CAMS.py' which will start the application and make it accessible from the local machine.
 
 ## Usage
 - describe how users can interact with the application
 
-## Architecture
-- discuss the overall architecture and design patterns used in the application, explain the separation of concerns, such as the division of frontend (HTML, CSS, JavaScript) and backend (Flask) components.
-- describe how the different components interact with each other.
+## Development Process and Architecture (including challenges)
+Our development process revolved around leveraging the built-in functionality of Flask to design our codebase, specifically utilizing static and template files provided by Flask for generating and rendering HTML files. To maintain organization and clarity, we implemented a basic separation between file types, such as CSS and JavaScript, allowing for clear file paths and back referencing.
 
-## Development Process
-- an overview of your development process, including any methodologies or tools used (e.g., Agile, version control with Git), explain how codebase was organised, such as folder structure or naming conventions
-- -discuss any challenges faced during development (maybe)
+For consistency across pages, we employed a system of default vs specified files, where shared or reusable JavaScript and CSS functions or designs were defined in default files that were called by multiple pages, while more specific functions or design elements were placed in files corresponding to the specific pages.
+
+With a team of three members, we had designated members for design, JavaScript and backend (Flask) tasks, where each member took responsibility for their respective areas, enabling us to work simultaneously on different aspects of the project and providing clear direction for functionality and aesthetics. This collaborative workflow allowed us to delegate tasks, seek assistance, and have a fresh perspective from other team members whenever needed. 
+
+The use of Git and its integration into VScode facilitated seamless collaboration, making it easy to pull and push code changes to the server. We followed a branching strategy, where each team member primarily worked on separate elements, minimizing code conflicts and maximizing development efficiency and at key milestones we would merge our branches, syncing all changes to the main branch, creating a new baseline of functionality to reference in future tasks. Main merging tasks were predominantly handled by the backend member, who ensured version compatibility due to their broad scope of the project, enabling us to safely combine features for testing and further development.
+
+Initially, our main challenge stemmed from differences in coding styles, an unclear naming system within files, and an ambiguous DOM structure in our HTML files. The absence of clear conventions for classes and IDs resulted in multiple referencing and re-referencing in our CSS. Moreover, the structure of our HTML elements, such as hidden containers for storing elements, posed difficulties during the initial testing and required extensive trial and error. This issue became more pronounced when dynamically adjusting specific elements, as it necessitated additional JavaScript to accommodate for the peculiarities, occasionally requiring the creation of new elements to achieve the intended functionality.
+
+However, we successfully addressed these challenges by establishing guidelines for new element construction, enabling the use of standardized building blocks and mitigating the issue. Additionally, we resolved complications arising from conflicting styles between the two main JavaScript developers, resulting in a more consistent and cohesive codebase. Recognizing the need for modularization and function creation, we restructured our codebase to promote better organization and facilitate the integration of subsequent features. Through our collective efforts and a commitment to continuous improvement, we successfully resolved these issues and achieved a more streamlined and harmonious development process. 
 
 ## Testing
-- describe your approach to testing the application, mention any testing frameworks (or if any libraries used)
-- provide examples of test cases and how to run them
+
+To ensure the reliability and correctness of our application, we conducted thorough testing using the unittest library. Our testing approach involved verifying good requests between the client and server by examining the handling of various requests and we also assessed the visual aspects of our application by running tests on a live development server.
+
+We made the deliberate choice to avoid using selenium testing, but instead prioritized confirming the visual changes and interactions using the live server, as we believed this approach to be more efficient and aligned with our development goals. 
+
+All our tests are located in the designated 'tests' folder and can be executed by running the command 'python -m test_name.py in the terminal. These tests serve as a crucial part of our development process, ensuring that our application functions as intended and upholds high standards of quality and performance.
