@@ -8,7 +8,7 @@ Our project is an interactive anime recommendation chatbot designed to engage us
 
 The website aims to be effective by providing valuable information, entertainment, and a sense of community to users. It offers various views, including an opening view that describes the application's purpose and allows users to create an account or log in. There's also a chat view where users can interact with the application, and a search view that enables users to review their history and previous interactions.
 
-**Frontend:**
+### Frontend:
 
 We've designed a consistent visual style for all the pages, ensuring a cohesive and recognizable experience for our users, with each page thoughtfully crafted to be visually appealing and engaging while it being completely functional, user-friendly, and accessible. We've implemented it using widely supported technologies such as HTML5, CSS, and JavaScript with all the necessary resources like images and CSS stylesheets appropriately referenced. To maintain high quality, we've ensured the HTML and CSS code has undergone validation and that our website is compatible with popular browsers such as Chrome, Firefox and Microsoft Edge and offers a seamless experience on mobile devices. 
 The frontend consists of the three main pages/views:
@@ -19,7 +19,7 @@ The frontend consists of the three main pages/views:
 
 > Previous Interactions Search Page: The history page is available through the side bar and enables users to easily search and review their past interactions within the application.
 
-**Backend:**
+### Backend:
 
 The backend functionality of our web application is built using Flask, which we've used to created a reliable and efficient backend that seamlessly handles communication and data management. This integration enables us to provide a user-friendly and engaging experience throughout the application and having enhanced its capabilities with Ajax and DOM manipulation. Our backend includes essential features that contribute to a smooth user experience:
 
