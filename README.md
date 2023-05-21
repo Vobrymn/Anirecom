@@ -13,7 +13,7 @@ by: 23346272 Fiona Hii, 22891996 Xavier Picart, 23484481 Victoria Felice**
 
 [Development Process and Architecture](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#development-process-and-architecture-including-challenges)
 
-[Testing](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing)
+[Testing and Validation](https://github.com/Vobrymn/CITS3403_proj/blob/main/README.md#testing-and-validation)
 
 ## Project Overview
 
@@ -80,7 +80,7 @@ Initially, our main challenge stemmed from differences in coding styles, an uncl
 
 However, we successfully addressed these challenges by establishing guidelines for new element construction, enabling the use of standardized building blocks and mitigating the issue. Additionally, we resolved complications arising from conflicting styles between the two main JavaScript developers, resulting in a more consistent and cohesive codebase. Recognizing the need for modularization and function creation, we restructured our codebase to promote better organization and facilitate the integration of subsequent features. Through our collective efforts and a commitment to continuous improvement, we successfully resolved these issues and achieved a more streamlined and harmonious development process. 
 
-## Testing
+## Testing and Validation
 
 To ensure the reliability and correctness of our application, we conducted thorough testing using the unittest library. Our testing approach involved verifying good requests between the client and server by examining the handling of various requests and we also assessed the visual aspects of our application by running tests on a live development server.
 
