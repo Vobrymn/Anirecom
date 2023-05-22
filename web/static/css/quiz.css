@@ -1,4 +1,4 @@
-
+/* general */
 h1 {
   font-size: 250%;
   padding-top: 40px;
@@ -24,10 +24,10 @@ h1 {
 }
 
 html {
-  overflow: hidden; /*so users cannot scroll if questions too long*/
+  overflow: hidden;
 }
 
-/*typing effect*/
+/* typing effect */
 #typing {
   display: inline-block;
   overflow: hidden;
@@ -74,7 +74,7 @@ html {
   margin-top: 15px;
 }
 
-/*the next skip bk buttons stuff*/
+/* quizs' buttons */
 button {
   cursor: pointer;
   margin-right: 0.5rem;
@@ -89,7 +89,7 @@ button:last-child {
   justify-content: center;
 }
 
-/*autocomplete stuff*/
+/* autocomplete */
 .autocomplete_items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -112,12 +112,12 @@ button:last-child {
   background-color: #e9e9e9;
 }
 
-
+/* input */
 .input_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /*this single line was what messed up my code. i was like, i swear the js should work, but why was nothing appearing*/
+  position: relative;
   width: 300px;
   max-width: 300px;
 }

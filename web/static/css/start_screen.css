@@ -4,8 +4,8 @@ body{
   transition: opacity 3s ease-in-out;
 }
 
-/*info mail*/
-/*animated envelope design is from https://codepen.io/jakegilesphillips/pen/MveNLe*/
+/* info mail */
+/* reference: https://codepen.io/jakegilesphillips/pen/MveNLe */
 .envelope_container {
   position: absolute;
   top: 50%;
@@ -47,6 +47,7 @@ body{
   -moz-transition: 0.4s;
   transition: 0.4s;
 }
+
 .animated_mail .body {
   position: absolute;
   bottom: 0;
@@ -58,6 +59,7 @@ body{
   /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.6)); */
   z-index: 2;
 }
+
 .animated_mail .top_fold {
   position: absolute;
   top: 0vh;
@@ -74,6 +76,7 @@ body{
   border-color: var(--primary_colour) transparent transparent transparent;
   z-index: 2;
 }
+
 .animated_mail .back_fold {
   position: absolute;
   bottom: 0;
@@ -82,6 +85,7 @@ body{
   background: var(--primary_colour);
   z-index: 0;
 }
+
 .animated_mail .left_fold {
   position: absolute;
   bottom: 0;
@@ -93,6 +97,7 @@ body{
   /* filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.4)); */
   z-index: 2;
 }
+
 .animated_mail .letter {
   left: 5%;
   bottom: 10%;
@@ -106,6 +111,7 @@ body{
   -moz-transition: 0.4s 0.2s;
   transition: 0.4s 0.2s;
 }
+
 .letter .letter_border {
   height: 10%;
   width: 100%;
@@ -146,6 +152,7 @@ body{
   -webkit-transform: translateY(1vh);
   -moz-transform: translateY(1vh);
 }
+
 .letter_image:hover .animated_mail .top_fold {
   transition: transform 0.4s, z-index 0.2s;
   transform: rotateX(180deg);
@@ -155,15 +162,16 @@ body{
   -moz-transform: rotateX(180deg);
   z-index: 0;
 }
+
 .letter_image:hover .animated_mail .letter {
   height: 150%;
 }
+
 .letter_image:hover .shadow {
   width: 200%;
 }
 
 /*info pop up*/
-/*the pop up design is the same as the letter from the above envelope*/
 .mail_popup {
   display:none;
   position: fixed;
@@ -190,8 +198,8 @@ body{
   transform: translate(-50%,-50%) scale(1);
   opacity: 1;
 }
-/*even though this is only for chrome, the scroll bar looks fine on firefox and edge. without these, the one on chrome just looks bad
-i learnt about scrollbars from https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
+
+/* reference: https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
 .mail_popup::-webkit-scrollbar {
   width: 0.7vh;
   padding-right:0.2vh
@@ -208,7 +216,8 @@ i learnt about scrollbars from https://www.w3schools.com/howto/howto_css_custom_
   font-size: 3vh;
   cursor: pointer;
 }
-/*extra stuff for html*/
+
+
 .info_context{
   padding:1vh
 }
@@ -218,7 +227,8 @@ i learnt about scrollbars from https://www.w3schools.com/howto/howto_css_custom_
   text-align: center;
   font-size:larger
 }
-/*dropdown texts*/
+
+/* dropdown texts */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -229,8 +239,7 @@ i learnt about scrollbars from https://www.w3schools.com/howto/howto_css_custom_
   cursor: pointer;
 }
 
-/*i learnt how to make the triangle icon off stackoverflow
-https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of-dropdown-content-box-in-menu-bar-with-pu*/
+/* reference: https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of-dropdown-content-box-in-menu-bar-with-pu*/
 .dropdown_icon {
   display: inline-block;
   width: 0;
@@ -244,9 +253,8 @@ https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of
 }
 
 .dropdown_icon.active {
-  transform: rotate(180deg); /*rotate triangle when clicked (active)*/
+  transform: rotate(180deg); 
 }
-
 
 .dropdown_content {
   display: none;
@@ -287,8 +295,6 @@ https://stackoverflow.com/questions/25382767/how-to-place-triangle-on-the-tip-of
   z-index: 101;
 }
 
-/*modal modifs for the pop up
-added important just incase*/
 .fade-in {
   opacity: 1 !important;
   transition: opacity 1s;
@@ -327,8 +333,8 @@ added important just incase*/
   border: none !important;
 }
 
-/*loader
-got this loader off https://www.cssportal.com/css-loader-generator/*/
+/* loader */
+/* reference: https://www.cssportal.com/css-loader-generator/*/
 .loader {
 position: absolute;
 top: 50%;
@@ -355,10 +361,12 @@ animation:
   l10-1 2s infinite linear,
   l10-2 2s infinite linear;
 }
+
 .loader::after {
 margin:10px;
 transform: scale(-1);
 }
+
 @keyframes l10-1 {
 0%   {background-size: 0    4px,4px 0   ,0    4px,4px 0   }
 12.5%{background-size: 100% 4px,4px 0   ,0    4px,4px 0   }

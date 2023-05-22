@@ -22,8 +22,38 @@
 	<div class="ui_bar">
         <a href="/" id = "hb" class="button"><img src="images/hb.png" id="hb_pic" alt="Home"></a>
 	</div>
-    
-    <div id="sn" class="modal"></div>
+    <div id = "sn" class="modal"></div>
+    <div id="settings_popup" style="display:none;"> 
+        <!-- reference: https://www.geeksforgeeks.org/how-to-create-hex-color-generator-using-html-css-and-javascript/ -->
+        <div id="change_color" style="display: none;">
+          <h2> Change Colour </h2>
+          <div class="color_input">
+            <label for="color1">Colour 1</label>
+            <input type="color" id="color1" name="color1" value="#f3f3f1">
+          </div>
+          <div class="color_input">
+            <label for="color2">Colour 2</label>
+            <input type="color" id="color2" name="color2" value="#1b1b17">
+          </div>
+          <button id="save_button">Save</button>
+        </div>
+           
+        <div id="change_password" style="display: none;">
+          <h2>Change Password</h2>
+          <form id="password_form">
+              <label for="old_password"><b>Old Password</b></label>
+              <input id="old_password" type="password" placeholder="Enter Old Password" name="old_password" required>
+      
+              <label for="new_password"><b>New Password</b></label>
+              <input id="new_password" type="password" placeholder="Enter New Password" name="new_password" required>
+      
+              <label for="confirm_password"><b>Confirm New Password</b></label>
+              <input id="confirm_password" type="password" placeholder="Confirm New Password" name="confirm_password" required>
+      
+              <button type="submit" id="save_password">Save</button>
+          </form>
+      </div>
+    </div>
     <div class="side_nav">
       <a href="/quiz" id="quiz_sn">Quiz</a>
       <a href="/history" id="history_sn">History</a>

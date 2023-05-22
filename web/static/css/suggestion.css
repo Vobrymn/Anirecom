@@ -1,3 +1,4 @@
+/* general */
 h1 {
     font-size: 250%;
     margin-top: 110px;
@@ -16,6 +17,7 @@ a {
     font-family: 'PT Sans', sans-serif;
 }
 
+/* buttons */
 #back_button{
     position: absolute;
     top: 100px;
@@ -65,9 +67,8 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 30px;
-    width: 100%; /* adjust the width as needed */
-    /* margin: 40px 40px 40px 40px; */
-    padding: 50px;
+    width: 100%;
+    padding: 10%;
     justify-content: center;
     z-index: 1;
     margin-bottom: 30px;
@@ -94,7 +95,7 @@ a {
     z-index: 1;
 }
 
-/* the translucent card moving upwards upon hovering */
+/* the translucent card animation */
 .card:hover::before { 
     bottom: 0;
 }
@@ -107,7 +108,7 @@ a {
     transition: 0.5s;
 }
 
-/* brings poster up upon hover */
+/* image animation */
 .card:hover .poster img {
     transform: translateY(-15px) scale(1.1);
     filter: blur(5px);
@@ -132,18 +133,18 @@ a {
 .card .details h3 {
     font-size: 0.8em;
     color: #fff;
-    overflow: hidden; /* hide any text that overflows the element's width */
-    white-space: nowrap; /* prevent line breaks within the text */
-    text-overflow: ellipsis; /* show an ellipsis if the text overflows */
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
 }
 
-/* Bring details up upon hover */
+/* datails animation */
 .card:hover .details {
     transform: translateY(+35%);
 }
 
 
-/* makes it ... */
+/* additional detailings */
 .logo {
     font-size: 30px;
     white-space: nowrap;
@@ -151,7 +152,7 @@ a {
     text-overflow: ellipsis;
   }
 
-/* added padding to the 3 things */
+
 .card .details .rating {
     position: relative;
     padding: 5px 0;
@@ -178,7 +179,6 @@ a {
     margin-bottom: 5px;
 }
 
-/* changes the card according to window size */
 @media (min-width: 1024px) {
     .card {
       flex-basis: calc(33.33% - 30px);
