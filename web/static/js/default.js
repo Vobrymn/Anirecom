@@ -329,7 +329,7 @@ function reset_pwd_form(){
 
 // change password functionality, validity checking
 
-let valid_p = false
+let validp = false
 
 function check_password(e){
     const log = $(this).val();
@@ -338,7 +338,7 @@ function check_password(e){
         
         case "new_password":
             if (log.length < 8) {
-                valid_p = false;
+                validp = false;
                 if (log != ""){
                     $("#password_error").text("Password must be at least 8 characters")
                     $("#password_error").css("opacity","1")
@@ -349,7 +349,7 @@ function check_password(e){
                 }
             } 
             else {
-                valid_p = true;
+                validp = true;
                 $("#password_error").text("default")
                 $("#password_error").css("opacity","0")
             }
@@ -380,7 +380,7 @@ $("#confirm_password").on("input", check_password)
 $("#password_form").submit(function(event) {
     event.preventDefault();
 
-    if (!valid_p){
+    if (!validp){
         $("#password_error").text("Password must be at least 8 characters")
         $("#password_error").css("opacity","1")
         return
@@ -391,7 +391,7 @@ $("#password_form").submit(function(event) {
         return
     }
 
-    if (valid_p && $("#new_password").val() == $("#confirm_password").val() && logged_in) {
+    if (validp && $("#new_password").val() == $("#confirm_password").val() && logged_in) {
       const formData = new FormData(event.target);
   
       // Send an AJAX POST request to the server
