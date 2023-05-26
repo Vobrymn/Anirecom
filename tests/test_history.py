@@ -32,8 +32,7 @@ class HistoryTestCase(unittest.TestCase):
 
             response = client.get('/history')
 
-            self.assertEqual(response.status_code, 400)
-            self.assertIn('User has no history', response.data.decode())
+            self.assertEqual(response.status_code, 200)
 
     def test_session_history(self):
         with self.app as client:

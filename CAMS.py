@@ -283,7 +283,7 @@ def quiz():
          cursor.execute("INSERT INTO {} (query) VALUES (?)".format(username), (json.dumps(query),))
          db.commit()
 
-      db.close()
+         db.close() # not indented in submission
       return "History updated"
 
    else:
